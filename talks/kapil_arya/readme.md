@@ -57,3 +57,6 @@ Python are demonstrated.
 [1] http://dmtcp.sourceforge.net
 
 [2] https://github.com/fred-dbg/fred
+
+Link to SciPy2013 paper:
+https://github.com/scipy/scipy_proceedings/tree/2013/papers/kapil_arya
