@@ -1,6 +1,6 @@
 
-Title : exampletitle
-=====================
+Title : SunPy: Python for Solar Physics
+=======================================
 
 Authors : 
 ----------
