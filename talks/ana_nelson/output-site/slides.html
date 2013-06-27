@@ -1,0 +1,174 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Writing Reproducible Papers with Dexy</title>
+    <link href="impress-demo.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+    <div class="slide step" id="slide0">
+<h2>Writing Reproducible Papers with Dexy</h2>
+<p><br /><br />
+<a href="http://dexy.it">http://dexy.it</a><br />
+<a href="http://twitter.com/dexyit">@dexyit</a><br />
+<br /><br />
+Ana Nelson<br />
+<a href="http://twitter.com/ananelson">@ananelson</a><br />
+ana@ananelson.com<br />
+<a href="http://github.com/ananelson/talks">http://github.com/ananelson/talks</a></p>
+</div>
+
+<div class="slide step" id="slide1">
+<h2>Reproducibility</h2>
+<ul>
+<li>I want to redo the exact steps I did this morning on this machine, so I can update my article [with different data or code].</li>
+<li>I want to understand how someone else got to the results in their published paper.</li>
+<li>I want to make use of someone else's code and data so I can extend their work.</li>
+</ul>
+</div>
+
+<div class="slide step" id="slide2">
+<h2>Ingredients</h2>
+<ul>
+<li>Operating System/Software</li>
+<li>Data</li>
+<li>Source Code</li>
+<li>Workflow</li>
+</ul>
+</div>
+
+<div class="slide step" id="slide3">
+<h2>Reproducibility</h2>
+<ul>
+<li><em>Capture</em> - capture of the steps carried out in an experiment</li>
+<li><em>Representation</em> - creation of an executable specification of the experiment (e.g. workflow)</li>
+<li><em>Portability</em> - ability for an experiment to be re-executed in an environment different from the one originally used</li>
+<li><em>Document Linkage</em> - linkage between experiments and documents, creation of executable documents</li>
+<li><em>Verification and Exploration</em> - ability to reproduce the original results and to vary original parameters/data</li>
+<li><em>Archival</em> - archival of experiment and data (e.g. repository)</li>
+<li><em>Longevity</em> - ability to maintain an experiment's consistency and reproducibility a long-term basis</li>
+</ul>
+</div>
+
+<div class="slide step" id="slide4">
+<h2>Capturing &amp; Tangling</h2>
+<ul>
+<li>Use virtual machine images (for example) to automatically capture full environments including software and data?</li>
+<li>Have self-contained documents with data, analysis and code?</li>
+</ul>
+</div>
+
+<div class="slide step" id="slide5">
+<h2>Dexy's Approach</h2>
+<p>Dexy runs other tools<br />
+- in the order you specify,<br />
+- acting on the input data you specify,<br />
+- and helps you get all this content into static (but refreshable) documents.</p>
+</div>
+
+<div class="slide step" id="slide6">
+<h2>Example</h2>
+<p><a href="/example">&rarr; A tiny example to make this more intuitive.</a></p>
+</div>
+
+<div class="slide step" id="slide7">
+<h2>Dexy's Approach</h2>
+<p>Dexy runs other tools<br />
+- in the order you specify,<br />
+- acting on the input data you specify,<br />
+- and helps you get all this content into static (but refreshable) documents.</p>
+</div>
+
+<div class="slide step" id="slide8">
+<h2>What Tools?</h2>
+<ul>
+<li>Any automatable tools (interpreters/compilers, syntax highlighters, code analyzers, graphing/statistics tools)...</li>
+<li>... which have a command line interface or other API.</li>
+<li><a href="http://dexy.it/filters">http://dexy.it/filters</a></li>
+</ul>
+</div>
+
+<div class="slide step" id="slide9">
+<h2>What Input Data?</h2>
+<ul>
+<li>Scripts, data files, document templates.</li>
+<li>Dexy works on file system directories (hopefully under version control).</li>
+</ul>
+</div>
+
+<div class="slide step" id="slide10">
+<h2>What Documents?</h2>
+<ul>
+<li>There is no native dexy document format. You can write documents using any text-based (or otherwise parseable/automatable) format.</li>
+<li>You can use a templating system (such as jinja) to insert references to locations in other files into your documents.</li>
+<li>Dexy will run any tool you want to convert your text plus the dynamically inserted content into other formats (e.g. run pdflatex on .tex, or run docutils on .rst, or run pandoc on .md) </li>
+</ul>
+</div>
+
+<div class="slide step" id="slide11">
+<p><img src="logo.png" width="400px;" /></p>
+<ul>
+<li>document-oriented 'make'</li>
+<li>project automation</li>
+<li>code is code, prose is prose, data is data</li>
+<li>many-to-many relationships of prose to code/data</li>
+<li>document live code</li>
+<li>Open Source (MIT)</li>
+<li>Written in Python</li>
+</ul>
+</div>
+
+<div class="slide step" id="slide12">
+<h2>Software Documentation</h2>
+<p>You can also use Dexy to document your:</p>
+<ul>
+<li>command line tool</li>
+<li>library</li>
+<li>web app</li>
+</ul>
+</div>
+
+<div class="slide step" id="slide13">
+<h2>Get Started</h2>
+<p>http://www.dexy.it/guide/getting-started.html<br />
+info@dexy.it</p>
+</div>
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="impress.js"></script>
+<script src="jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.step').map(function (i, x) {
+            var rand = Math.round(Math.random() * 10) + 1;
+            $(x).attr('data-y', rand * 7000);
+            $(x).attr('data-x', 10000 * i);
+            $(x).attr('data-scale', rand);
+        });
+
+        impress().init();
+    });
+</script>
+
+</body>
+</html>

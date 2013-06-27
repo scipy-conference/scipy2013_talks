@@ -1,0 +1,18 @@
+.md|jinja|markdown|easyhtml:
+    - .py|idio
+    - .py|idio|pycon|pyg:
+        - pycon: {
+            add-new-files: True,
+            record-vars: True
+        }
+        - .csv
+
+    # A virtual file
+    - tree.sh|shint|pyg:
+        - shint: { use-wd: False }
+        - contents: "cd example\nls"
+
+    # For documenting this yaml and the markdown source
+    - .yaml|pyg
+    - .md|pyg:
+        - pyg: { 'lexer' : 'rst+jinja' }
