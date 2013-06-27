@@ -48,3 +48,5 @@ to interdict parameter constraints into the API right under the users nose!
 This talk will focus on xdress's type system and its use cases.
 
 http://xdress.org/
+
+Talk repository available at https://github.com/xdress/scipy2013
