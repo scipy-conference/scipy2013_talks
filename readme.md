@@ -5,7 +5,7 @@ Instructions for Inclusion
 --------------------------
 
 Here are the steps to include your presentation or poster in this repository 
-(tutorials folks can skip steps 2 and 3):
+(tutorials folks can skip steps 2 and 3, go straight to your prepped directory):
 
 1. Fork the [scipy2013_talks](https://github.com/scipy/scipy2013_talks)
   repository on GitHub.
