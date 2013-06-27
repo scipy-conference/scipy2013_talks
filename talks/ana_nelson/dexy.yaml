@@ -1,0 +1,19 @@
+slides.md|jinja|impress|markdown:
+    - title: Writing Reproducible Papers with Dexy
+    - source
+
+assets:
+    - .css|jinja
+    - .js
+    - .png
+    - .jpg
+    - .*|pyg:
+        - ws-template: False
+        - pyg: { noclasses: True }
+
+source:
+    - .txt
+    - .md
+    - .py|idio
+    - .yaml|idio
+    - .yaml|pyg
