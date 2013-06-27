@@ -6,21 +6,23 @@ Instructions for Inclusion
 
 Here are the steps to include your presentation in this repository :
 
-- Fork the [scipy2013_talks](https://github.com/scipy/scipy2013_talks)
-  repository on GitHub.
+1. Fork the [scipy2013_talks](https://github.com/scipy/scipy2013_talks)
+   repository on GitHub.
 
-- An example talk is provided in ``talks/jane_doe``.
-  Create a new directory ``talks/firstname_surname``.
+1. An example talk is provided in ``talks/jane_doe``.
+   Create a new directory ``talks/firstname_surname``.
 
-- Copy the contents of the example directory into it, and
-  replace the example.pdf file with your actual presentation materials. 
+1. Copy the contents of the example directory into it.
 
-- Edit the readme.md to include the title, co-authors, track, your abstract,
-  and any other information that might be useful. 
+1. Edit the readme.md in your directory to include the title, co-authors, date,
+   time, your abstract, and any other information that might be archivally useful. 
 
-- Once you are ready to submit your materials, file a pull request on GitHub.
+1. Fill the directory with your actual presentation materials. **If 
+   all of your material is already online, just include a link in the readme.** 
 
-- Please do not modify any files outside of your talk or poster directory.
+1. Once you are ready to submit your materials, file a pull request on GitHub.
+
+1. Please do not modify any files outside of your talk or poster directory.
 
 Pull requests submitted soon are more likely to be included.
 

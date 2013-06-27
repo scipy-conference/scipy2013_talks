@@ -14,11 +14,13 @@ Here are the steps to include your presentation or poster in this repository
   provided in ``posters/jane_doe``.  Create a new
   directory in either the talks or posters directory. Call it ``firstname_surname``.
 
-1. Copy the contents of the example directory into it, and
-  replace the example.pdf file with your actual presentation materials. 
+1. Copy the contents of the example directory into it.
 
 1. Edit the readme.md in your directory to include the title, co-authors, date, time, your abstract,
   and any other information that might be archivally useful. 
+
+1. Fill the directory with your actual presentation materials. **If 
+   all of your material is already online, just include a link in the readme.** 
 
 1. Once you are ready to submit your materials, file a pull request on GitHub.
 
