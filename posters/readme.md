@@ -6,7 +6,7 @@ Instructions for Inclusion
 
 Here are the steps to include your poster in this repository:
 
-- Fork the `scipy2013_talks <https://github.com/scipy/scipy2013_talks>`__
+- Fork the [scipy2013_talks](https://github.com/scipy/scipy2013_talks)
   repository on GitHub.
 
 - An example poster is provided in ``posters/jane_doe``.  Create a new
