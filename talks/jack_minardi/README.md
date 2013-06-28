@@ -1,4 +1,3 @@
-
 Title : `open('/dev/real_world')` - Raspberry Pi Sensor and Actuator Control
 =====================
 
@@ -40,4 +39,5 @@ Materials :
 -----------
 
 **Code:** https://github.com/jminardi/scipy2013
+
 **Slides:** https://docs.google.com/a/minardi.org/presentation/d/19ErI3QJfSZ8uIBDV2MK0VvFkfcgkvK-Tm0Sz84AxvNI/edit#slide=id.gc8567ed3_028
