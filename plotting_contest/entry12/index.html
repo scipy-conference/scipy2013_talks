@@ -1,0 +1,1381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 12 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 13" href="../entry13/index.html" />
+    <link rel="prev" title="Entry 11" href="../entry11/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry13/index.html" title="Entry 13"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry11/index.html" title="Entry 11"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-12">
+<h1>Entry 12<a class="headerlink" href="#entry-12" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry12.png" src="../_images/entry12.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Arulalan.T</li>
+</ul>
+</div>
+<div class="section" id="about-the-data">
+<h2>About the data<a class="headerlink" href="#about-the-data" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Madden-Julian Oscillation Phase 2 Dimensional Diagram</p>
+<blockquote>
+<div><p>The nc file <a class="reference download internal" href="../_downloads/mjo_npcs.nc"><tt class="xref download docutils literal"><span class="pre">mjo_npcs.nc</span></tt></a> contains MJO
+Normalized PC1 &amp; PC2 for the years from 1979-1-1 to 2005-12-31. I
+Just plotted for the first year alone.  User can test/draw the
+phase diagrams with different years dataset.  This mjo pc1, pc2
+is produced by myself using my python/uvcdat code.</p>
+<p>Plot Properties Reference:
+<a class="reference external" href="http://climate.snu.ac.kr/mjo_diagnostics/index.htm">http://climate.snu.ac.kr/mjo_diagnostics/index.htm</a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Monsoon Intraseasonal Oscillation Phase 2 Dimensional Diagram</p>
+<blockquote>
+<div><p>The nc file <a class="reference download internal" href="../_downloads/miso_phases.nc"><tt class="xref download docutils literal"><span class="pre">miso_phases.nc</span></tt></a> is a fake
+data produced by myself to plot the Monsoon Intraseasonal
+Oscillation Phase.</p>
+<p>Plot Properties Reference: &#8220;An Indian monsoon intraseasonal
+oscillations (MISO) index for real time monitoring and forecast
+verification&#8221;, E. Suhas • J. M. Neena • B. N. Goswami, Clim Dyn,
+DOI 10.1007/s00382-012-1462-5</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="about-the-code">
+<h2>About the code<a class="headerlink" href="#about-the-code" title="Permalink to this headline">¶</a></h2>
+<p>There is no module/method/function in python/cdat to plot these kind
+of (8) phase diagrams (As for as I know). So I just written this
+python function phase2d to plot it.</p>
+<p><tt class="xref py py-obj docutils literal"><span class="pre">phase2d</span></tt> function needs it dependencies modules which are all written
+by myself namely <tt class="xref py py-obj docutils literal"><span class="pre">timeutils</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">trig</span></tt>.</p>
+<p>In <tt class="xref py py-obj docutils literal"><span class="pre">timeutils</span></tt> I have written more than 20 methods (about 3000 lines)
+to make time utilities. But here I have included only 2 methods which
+is needed to the phase2d function. Soon we will release the full
+timeutils module to the public!</p>
+<p>Code, Data &amp; Plots License: GPL V3</p>
+</div>
+<div class="section" id="reproducing-plots">
+<h2>Reproducing plots<a class="headerlink" href="#reproducing-plots" title="Permalink to this headline">¶</a></h2>
+<p>To plot and save it as ps files, you may need to run the
+<a class="reference download internal" href="../_downloads/plot_phase_diagrams.py"><tt class="xref download docutils literal"><span class="pre">plot_phase_diagrams.py</span></tt></a>.</p>
+<div class="section" id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">To run these python scripts you must need CDAT5.2 <a class="footnote-reference" href="#f1" id="id1">[1]</a> / UVCDAT
+1.2.0 <a class="footnote-reference" href="#f2" id="id2">[2]</a></p>
+</li>
+<li><p class="first">grace software must be installed in your operating system. I didnt
+use VCS, instead of that I used xmgrace package to do line plot.  If
+you are using ubuntu system, then:</p>
+<div class="highlight-python"><pre>$ apt-get install grace</pre>
+</div>
+</li>
+<li><p class="first">Developed &amp; Tested In Ubuntu 12.04 LTS OS and UVCDAT 1.2.0</p>
+</li>
+</ul>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www2-pcmdi.llnl.gov/cdat">http://www2-pcmdi.llnl.gov/cdat</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://uv-cdat.llnl.gov/">http://uv-cdat.llnl.gov/</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/miso_phase2d_monsoon.pdf"><tt class="xref download docutils literal"><span class="pre">miso_phase2d_monsoon.pdf</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/mjo_phase2d_summer.pdf"><tt class="xref download docutils literal"><span class="pre">mjo_phase2d_summer.pdf</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/mjo_phase2d_summer_red.pdf"><tt class="xref download docutils literal"><span class="pre">mjo_phase2d_summer_red.pdf</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/mjo_phase2d_winter.pdf"><tt class="xref download docutils literal"><span class="pre">mjo_phase2d_winter.pdf</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/mjo_phase2d_winter_red.pdf"><tt class="xref download docutils literal"><span class="pre">mjo_phase2d_winter_red.pdf</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/phase2d_red.pdf"><tt class="xref download docutils literal"><span class="pre">phase2d_red.pdf</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: phase2d</span>
+<span class="sd">   :synopsis: A useful module for plotting 2 dimensional line diagram among</span>
+<span class="sd">              eight phases. phase2d is a generic function to plot any model</span>
+<span class="sd">              data and create user&#39;s own functions with customisable args.</span>
+<span class="sd">              Also contains mjo_phase2d, miso_phase2d template functions.</span>
+<span class="sd">.. moduleauthor:: Arulalan.T &lt;arulalant@gmail.com&gt;</span>
+<span class="sd">   License : GPL V3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">cdutil</span>
+<span class="kn">from</span> <span class="nn">genutil</span> <span class="kn">import</span> <span class="n">xmgrace</span>
+<span class="kn">from</span> <span class="nn">timeutils</span> <span class="kn">import</span> <span class="n">TimeUtility</span>
+<span class="kn">import</span> <span class="nn">trig</span>
+
+<span class="n">timobj</span> <span class="o">=</span> <span class="n">TimeUtility</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">phase2d</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">sxyphase</span><span class="p">,</span> <span class="n">dmin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;red&#39;</span><span class="p">],</span>
+            <span class="n">tcomment</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">bcomment</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">lcomment</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">rcomment</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s">&#39;Phase Diagram&#39;</span><span class="p">,</span> <span class="n">stitle1</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">stitle2</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">ctitle</span><span class="o">=</span><span class="s">&#39;Weak&#39;</span><span class="p">,</span>
+            <span class="n">pposition1</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pdirection</span><span class="o">=</span><span class="s">&#39;anticlock&#39;</span><span class="p">,</span> <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">mintick</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    phase2d : This will allow user to plot the 2 dimensional line plot in</span>
+<span class="sd">              circular path among 8 phases. Also named as phase space diagram.</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">        xdata : single dimensional xaxis dataset.</span>
+<span class="sd">                eg : normalized pc1 time series</span>
+<span class="sd">        ydata : single dimensional yaxis dataset.</span>
+<span class="sd">                eg : normalized pc2 time series</span>
+<span class="sd">                Both xdata &amp; ydata should be continous time series dataset.</span>
+
+<span class="sd">        xdata.id and ydata.id will be set as xaxis &amp; yaxis label.</span>
+
+<span class="sd">        dmin : data min - xaxis and yaxis minimum scale/label value.</span>
+<span class="sd">               It must be -ve.</span>
+<span class="sd">        dmin : data max - xaxis and yaxis maximum scale/label value.</span>
+<span class="sd">               It must be +ve.</span>
+<span class="sd">               By default both dmin, dmax takes as None. If it is None, then</span>
+<span class="sd">               this function will automatically find out the min &amp; max from</span>
+<span class="sd">               the xdata &amp; ydata. Finally set dmin = -dmax. So that we will</span>
+<span class="sd">               get squared region.</span>
+
+<span class="sd">        colors : phase line colors. It should be eithre string or list of</span>
+<span class="sd">                 colors. If it is string or single color list, the it will</span>
+<span class="sd">                 apply that color through out the data line in the graph.</span>
+<span class="sd">                 If user passed it as list of colors (more than one colors)</span>
+<span class="sd">                 then it will apply those colors to the available months data</span>
+<span class="sd">                 set. So make sure that your colorlist and available months</span>
+<span class="sd">                 length should be same.</span>
+
+<span class="sd">        tcomment : Top Comment</span>
+<span class="sd">        bcomment : Bottom Comment</span>
+<span class="sd">        lcomment : Left Comment</span>
+<span class="sd">        rcomment : Right Comment</span>
+<span class="sd">        title : Title of the diagram</span>
+<span class="sd">        stitle1 : Sub Title 1 - By default it will draw string as start year</span>
+<span class="sd">                  and end year from the xdata.</span>
+<span class="sd">        stitle2 : Sub Title 2 - By default it will draw string as season of</span>
+<span class="sd">                  available months (from startmonth to endmonth).</span>
+<span class="sd">                  User can overwrite the stitle1 &amp; stitle2 strings.</span>
+<span class="sd">        ctitle : Centred Title or text inside the circle.</span>
+
+<span class="sd">        sxyphase : start x, y phase - start x,y points of xdata, ydata phase</span>
+<span class="sd">                   number. So user can pass the phase number of the starting</span>
+<span class="sd">                   points of the whole data (xdata, ydata). With depends upon</span>
+<span class="sd">                   pdirection it will be draw the phase name over the 8</span>
+<span class="sd">                   half quadrants of the graph. User no need to pass phase</span>
+<span class="sd">                   numbers for the whole datasets (xdata, ydata). Just pass</span>
+<span class="sd">                   the first or start day of season phase alone. User can use</span>
+<span class="sd">                   pposition1 argument also instead of sxyphase argument.</span>
+<span class="sd">                   No default argument takes place here. So user must pass</span>
+<span class="sd">                   argument to this sxyphase arg. If user need to use</span>
+<span class="sd">                   pposition1 arg, then they must pass None to this sxyphase</span>
+<span class="sd">                   argument.</span>
+
+<span class="sd">        pposition1 : phase position 1 - Lets understand the distribution of</span>
+<span class="sd">                    8 phases. Lets consider from 0 to 45 degree region as</span>
+<span class="sd">                    phase position 1 (pposition1).From 45 to 90 degree region</span>
+<span class="sd">                    as phase position 2(pposition2) and so on. So if we walk</span>
+<span class="sd">                    in anti-clock wise direction we will endup with pposition8</span>
+<span class="sd">                    in the region of 315 to 360 degree.</span>
+<span class="sd">                        User can pass argument to pposition1 as integer from</span>
+<span class="sd">                    1 to 8. So whatever user passed in the pposition1 phase</span>
+<span class="sd">                    number, that phase no string will be draw within in range</span>
+<span class="sd">                    from 0 to 45 degree.</span>
+<span class="sd">                       eg : pposition1=5 . i.e. phase name &#39;PHASE 5&#39; will be</span>
+<span class="sd">                            drawn in the 0 to 45 degree region of the graph.</span>
+
+<span class="sd">                       By default it takes None argument.</span>
+
+<span class="sd">                    ..note:: User can not use both sxyphase and pposition1</span>
+<span class="sd">                             args. Can be used either sxyphase or pposition1</span>
+<span class="sd">                             only.</span>
+
+<span class="sd">        pdirection : phase direction - It can be either &#39;clock&#39; or &#39;anticlock&#39;</span>
+<span class="sd">                     It will determine what is the phase number in the</span>
+<span class="sd">                     pposition2, pposition3, ..., pposition8 w.r.t the input</span>
+<span class="sd">                     of pposition1 argument or sxyphase and clock/anticlock</span>
+<span class="sd">                     direction.</span>
+<span class="sd">                     eg 1: pposition1 = 5, pdirection = &#39;anticlock&#39;</span>
+<span class="sd">                       pposition1=5, pposition2=6, pposition3=7, pposition4=8,</span>
+<span class="sd">                       pposition5=1, pposition6=2, pposition7=3, pposition8=4.</span>
+
+<span class="sd">                     i.e. w.r.t pposition1 as 5 and pdirection as &#39;anticlock&#39;</span>
+<span class="sd">                          the phase names of the rest phase positions are</span>
+<span class="sd">                        determined as increment trend of pnames in ppositions.</span>
+
+<span class="sd">                   eg 2: pposition1 = 5, pdirection = &#39;clock&#39;</span>
+<span class="sd">                       pposition1=5, pposition2=4, pposition3=3, pposition4=2,</span>
+<span class="sd">                       pposition5=1, pposition6=8, pposition7=7, pposition8=6.</span>
+
+<span class="sd">                     i.e. w.r.t pposition1 as 5 and pdirection as &#39;clock&#39;</span>
+<span class="sd">                          the phase names of the rest phase positions are</span>
+<span class="sd">                        determined as decrement trend of pnames in ppositions.</span>
+
+<span class="sd">                     same examples we can play with sxyphase also.</span>
+
+<span class="sd">        plocation : It takes input as &#39;in/inside/out/outside&#39;. If it is</span>
+<span class="sd">                    &#39;in&#39; or &#39;inside&#39;, then the phase name/number will be drawn</span>
+<span class="sd">                    inside the squared graph itself.</span>
+<span class="sd">                    If it is &#39;out&#39; or &#39;outside&#39;, then the phase name/number</span>
+<span class="sd">                    will be drawn outside the squared graph.</span>
+<span class="sd">        mintick : minor ticks count. By default it takes as 0. user can pass 4</span>
+<span class="sd">                  also.</span>
+
+<span class="sd">    Methods Used : _sortMonths, getTimeAxisMonths, getHalfQuadrantOfCircle</span>
+
+<span class="sd">    Return :</span>
+<span class="sd">        It should return the &#39;x&#39; of the xmgrace object which has plotted the</span>
+<span class="sd">        data with this MJO args. User can either save it into ps, pdf, etc.,</span>
+<span class="sd">        or modify/update further.</span>
+
+<span class="sd">    Author : Arulalan.T</span>
+
+<span class="sd">    Date : 20.02.2013</span>
+
+<span class="sd">    License : GPL V3</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">sxyphase</span> <span class="ow">and</span> <span class="n">pposition1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;pass either sxyphase or pposition1 argument.</span><span class="se">\</span>
+<span class="s">                                                Dont pass both args!&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sxyphase</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pposition1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;You must pass either sxyphase or pposition1 argument&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sxyphase</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sxyphase</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;sxyphase argument must be integer type&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sxyphase</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">sxyphase</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;sxyphase argument must be within 1 to 8 only!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">pposition1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pposition1</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;pposition1 argument must be integer type&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pposition1</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">pposition1</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;pposition1 argument must be within 1 to 8 only!&quot;</span><span class="p">)</span>
+
+    <span class="c"># create our xmgrace object</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">xmgrace</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">portrait</span><span class="p">()</span>
+
+    <span class="c"># Now let&#39;s set the area of graph 0</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vymin</span> <span class="o">=</span> <span class="o">.</span><span class="mi">20</span>  <span class="c"># starts at 55% of the page</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vymax</span> <span class="o">=</span> <span class="o">.</span><span class="mi">75</span>   <span class="c"># stops at 90% of the page</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vxmin</span> <span class="o">=</span> <span class="o">.</span><span class="mi">15</span>  <span class="c"># starts at 10% of the page</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vxmax</span> <span class="o">=</span> <span class="o">.</span><span class="mi">90</span>   <span class="c"># stops at 75% of the page</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">dmin</span> <span class="ow">and</span> <span class="n">dmax</span><span class="p">):</span>
+        <span class="c"># user not passed the data min &amp; data max values.</span>
+        <span class="c"># So what, lets find it !</span>
+        <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">xdata</span><span class="p">)</span>
+        <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ydata</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">ydata</span><span class="p">)</span>
+        <span class="n">dmin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">])</span>
+        <span class="n">dmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmin</span><span class="p">)</span> <span class="o">==</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmax</span><span class="p">):</span>
+            <span class="n">dmax</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">dmax</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dmax</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">dmin</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmax</span><span class="p">)]))</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="c"># end of if abs(umin) == abs(umax):</span>
+        <span class="n">dmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">dmax</span>
+    <span class="c"># end of if not (min and max):</span>
+
+    <span class="c"># ok now let&#39;s set the min ans max for the Y axis</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">min</span> <span class="o">=</span> <span class="n">dmin</span>  <span class="c"># ymin for graph 0</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">max</span> <span class="o">=</span> <span class="n">dmax</span>  <span class="c"># ymax for graph 0</span>
+
+    <span class="c"># Now let&#39;s set the tick marks for Graph 0</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick</span><span class="o">.</span><span class="n">inc</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c"># Main tick every unit</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick</span><span class="o">.</span><span class="n">minor_ticks</span> <span class="o">=</span> <span class="n">mintick</span>
+
+    <span class="c"># ok now let&#39;s set the min ans max for the X axis</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">min</span> <span class="o">=</span> <span class="n">dmin</span>  <span class="c"># xmin for graph 0</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">max</span> <span class="o">=</span> <span class="n">dmax</span>  <span class="c"># xmax for graph 0</span>
+
+    <span class="c"># Now let&#39;s set the tick marks for Graph 0</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick</span><span class="o">.</span><span class="n">inc</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c"># Main tick every unit</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick</span><span class="o">.</span><span class="n">minor_ticks</span> <span class="o">=</span> <span class="n">mintick</span>
+
+    <span class="k">for</span> <span class="n">setno</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">setno</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c"># adding set to graph 0 to add lines</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c"># end of if setno != 0:</span>
+        <span class="c"># First let&#39;s set the line width, style, color</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">setno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">setno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s">&#39;black&#39;</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">setno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s">&#39;solid&#39;</span>
+    <span class="c"># end of for setno in range(4):</span>
+
+    <span class="c"># line co-ordinates points</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="p">]</span>
+    <span class="n">p3</span> <span class="o">=</span> <span class="p">[</span><span class="n">dmax</span><span class="p">,</span> <span class="n">dmin</span><span class="p">]</span>
+    <span class="c"># line x, y co-ordinates</span>
+    <span class="n">lines1</span> <span class="o">=</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span>
+    <span class="n">lines2</span> <span class="o">=</span> <span class="p">[</span><span class="n">p2</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">]</span>
+    <span class="c"># plotting + and x cross lines to connect all the corners of the graph.</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lines1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">lines2</span><span class="p">)</span>
+
+    <span class="c"># adding set to graph 0 to add the centred circle</span>
+    <span class="n">csetno</span> <span class="o">=</span> <span class="n">setno</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c"># set centred circle properties</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c"># circle should follow its path on these conditions/points</span>
+    <span class="c"># (x=1, y=0),(x=-1, y=0),(x=0,y=1),(x=0,y=-1).</span>
+    <span class="c"># We set size of the circle according to the above rules!</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mf">9.175</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s">&#39;black&#39;</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fcolor</span> <span class="o">=</span> <span class="s">&#39;white&#39;</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c"># plotting the centred circle</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">plot</span><span class="p">([[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">G</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">csetno</span><span class="p">)</span>
+
+    <span class="c"># to point the starting day of event, set its x, y, color properties</span>
+    <span class="n">start_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">start_y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">start_clr</span> <span class="o">=</span> <span class="s">&#39;red&#39;</span>
+
+    <span class="c"># plot type</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">ptype</span> <span class="o">=</span> <span class="s">&#39;single&#39;</span>
+        <span class="n">start_clr</span> <span class="o">=</span> <span class="n">colors</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ptype</span> <span class="o">=</span> <span class="s">&#39;single&#39;</span>
+        <span class="n">start_clr</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ptype</span> <span class="o">=</span> <span class="s">&#39;multi&#39;</span>
+        <span class="n">avlColors</span> <span class="o">=</span> <span class="n">colors</span>
+    <span class="c"># end of if isinstance(colors, str):</span>
+
+    <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="s">&#39;single&#39;</span><span class="p">:</span>
+        <span class="n">csetno</span> <span class="o">=</span> <span class="n">csetno</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c"># set the line properties color &amp; inter points color, size</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">start_clr</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s">&#39;solid&#39;</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mf">0.125</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">start_clr</span>
+        <span class="c"># plotting the xdata, ydata in circle manner</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ydata</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xdata</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">csetno</span><span class="p">)</span>
+        <span class="c"># to point the starting day of event by filled color square symbol</span>
+        <span class="c"># set its start_x, start_y</span>
+        <span class="n">start_x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">start_y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="n">ptype</span> <span class="o">==</span> <span class="s">&#39;multi&#39;</span><span class="p">:</span>
+        <span class="c"># available months in dictionary format contains years, month string</span>
+        <span class="c"># and dates</span>
+        <span class="n">xtimeAxis</span> <span class="o">=</span> <span class="n">xdata</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span>
+        <span class="n">ytimeAxis</span> <span class="o">=</span> <span class="n">ydata</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">xtimeAxis</span><span class="p">[:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">!=</span> <span class="n">ytimeAxis</span><span class="p">[:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;xdata (</span><span class="si">%s</span><span class="s">), ydata (</span><span class="si">%s</span><span class="s">) time axis are not same!&quot;</span>
+                                                     <span class="o">%</span> <span class="p">(</span><span class="n">xdata</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">ydata</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+        <span class="c"># end of if xtimeAxis[:].tolist() != ytimeAxis[:].tolist():</span>
+        <span class="n">cdutil</span><span class="o">.</span><span class="n">setAxisTimeBoundsDaily</span><span class="p">(</span><span class="n">xtimeAxis</span><span class="p">)</span>
+        <span class="n">avlMonths</span> <span class="o">=</span> <span class="n">timobj</span><span class="o">.</span><span class="n">getTimeAxisMonths</span><span class="p">(</span><span class="n">xtimeAxis</span><span class="p">)</span>
+        <span class="n">avlMonthsList</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">avlMonths</span><span class="p">:</span>
+            <span class="n">months</span> <span class="o">=</span> <span class="n">avlMonths</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="c"># sort the month string</span>
+            <span class="n">months</span> <span class="o">=</span> <span class="n">timobj</span><span class="o">.</span><span class="n">_sortMonths</span><span class="p">(</span><span class="n">months</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">mon</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+                <span class="n">avlMonthsList</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">mon</span><span class="p">,</span> <span class="n">avlMonths</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="n">mon</span><span class="p">]))</span>
+            <span class="c"># end of for mon in months:</span>
+        <span class="c"># end of for year in avlMonths:</span>
+
+        <span class="c"># innter lock connection months</span>
+        <span class="n">conMonths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c"># now lets do innter lock connection between months last &amp; first date</span>
+        <span class="n">preMonthLastDate</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">mon</span><span class="p">,</span> <span class="p">(</span><span class="n">fdate</span><span class="p">,</span> <span class="n">ldate</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">avlMonthsList</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">conMonths</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">mon</span><span class="p">,</span> <span class="p">(</span><span class="n">fdate</span><span class="p">,</span> <span class="n">ldate</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># previous month&#39;s last date as first day of this month &amp;</span>
+                <span class="c"># this month last date for the purpose of continous line plot</span>
+                <span class="c"># while changing colors for different months.</span>
+                <span class="n">conMonths</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">mon</span><span class="p">,</span> <span class="p">(</span><span class="n">preMonthLastDate</span><span class="p">,</span> <span class="n">ldate</span><span class="p">)))</span>
+            <span class="c"># end of if idx == 0:</span>
+            <span class="n">preMonthLastDate</span> <span class="o">=</span> <span class="n">ldate</span>
+        <span class="c"># end of for idx, fdate, ldate in enumerate(avlMonthsList):</span>
+        <span class="c"># make memory free</span>
+        <span class="k">del</span> <span class="n">avlMonths</span><span class="p">,</span> <span class="n">avlMonthsList</span>
+
+        <span class="c"># month string x position to indicate below the graph with</span>
+        <span class="c"># corresponding line color</span>
+        <span class="n">monx</span> <span class="o">=</span> <span class="mf">0.4</span>
+        <span class="k">for</span> <span class="n">montime</span><span class="p">,</span> <span class="n">colr</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">conMonths</span><span class="p">,</span> <span class="n">avlColors</span><span class="p">):</span>
+            <span class="c"># get the month name string</span>
+            <span class="n">mon</span> <span class="o">=</span> <span class="n">montime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c"># month first last component time object date</span>
+            <span class="n">monFLDate</span> <span class="o">=</span> <span class="n">montime</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c"># get the current month pc1 and pc2 data</span>
+            <span class="n">pc1</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">monFLDate</span><span class="p">)</span>
+            <span class="n">pc2</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">monFLDate</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">monx</span> <span class="o">==</span> <span class="mf">0.4</span><span class="p">:</span>
+                <span class="c"># do it only one time, assign the first day of first month to</span>
+                <span class="c"># start_x, start_y, color to point the starting day of event</span>
+                <span class="c"># by filled color square symbol</span>
+                <span class="n">start_x</span> <span class="o">=</span> <span class="n">pc1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">start_y</span> <span class="o">=</span> <span class="n">pc2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="c"># set the starting color as begining of multi color list</span>
+                <span class="n">start_clr</span> <span class="o">=</span> <span class="n">colr</span>
+            <span class="c"># end of if monx == 0.4:</span>
+            <span class="n">csetno</span> <span class="o">=</span> <span class="n">csetno</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="c"># set the line properties color &amp; inter points color, size</span>
+            <span class="c"># for this month dataset</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">colr</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s">&#39;solid&#39;</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mf">0.125</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">colr</span>
+            <span class="c"># plotting the xdata, ydata in circle manner</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pc2</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">pc1</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">csetno</span><span class="p">)</span>
+            <span class="c"># darw the month string with same as color of that month line</span>
+            <span class="c"># color to indicate monthly event</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="n">monx</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="n">mon</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colr</span><span class="p">,</span>
+                            <span class="n">char_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+            <span class="c"># increment the month string position</span>
+            <span class="n">monx</span> <span class="o">+=</span> <span class="mf">0.05</span>
+        <span class="c"># end of for mon, colr in zip(conMonths, avlColors):</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Wrong plot &#39;</span><span class="si">%s</span><span class="s">&#39; type has passed. </span><span class="se">\</span>
+<span class="s">                          Pass either &#39;single&#39; or &#39;multi&#39;&quot;</span> <span class="o">%</span> <span class="n">ptype</span><span class="p">)</span>
+    <span class="c"># end of if ptype == &#39;single&#39;:</span>
+
+    <span class="c"># adding set to draw a small square symbol at the begining of the season.</span>
+    <span class="c"># it must be square symbol only. Becuause we can not plot this symbol</span>
+    <span class="c"># out side of the graph, using viewport.</span>
+    <span class="n">csetno</span> <span class="o">=</span> <span class="n">csetno</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_set</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c"># &#39;square&#39; type</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mf">0.45</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">start_clr</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">Graph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="n">csetno</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fcolor</span> <span class="o">=</span> <span class="n">start_clr</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">plot</span><span class="p">([[</span><span class="n">start_y</span><span class="p">]],</span> <span class="p">[[</span><span class="n">start_x</span><span class="p">]],</span> <span class="n">G</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">csetno</span><span class="p">)</span>
+
+    <span class="c"># Since we can not use viewport to plot the symbol to indicate what the</span>
+    <span class="c"># above square symbol meant to be, here we are using add_box function to</span>
+    <span class="c"># draw a small square below the graph with text &#39;Start day of season&#39;.</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_box</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.158</span><span class="p">,</span> <span class="mf">0.758</span><span class="p">,</span> <span class="mf">0.164</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">start_clr</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="n">start_clr</span><span class="p">)</span>
+    <span class="c"># drawing the text behind to the above small square box</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.83</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="s">&#39;Start day of season&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span>
+                                    <span class="n">char_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c"># draw the xdata id as xaxis label</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="n">xdata</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                                                     <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c"># draw the ydata id as yaxis label</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">,</span> <span class="n">ydata</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                                                    <span class="n">rot</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c"># draw the bottom comment</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">,</span> <span class="n">bcomment</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span>
+                                                     <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c"># draw the top comment</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">,</span> <span class="n">tcomment</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span>
+                                                     <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c"># draw the left comment</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">,</span> <span class="n">lcomment</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span>
+                                                    <span class="n">rot</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c"># draw the right comment</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.97</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">,</span> <span class="n">rcomment</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span>
+                                                   <span class="n">rot</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+    <span class="c"># phase quadrant/positions no, and its x, y coordinate points to draw</span>
+    <span class="c"># phase name inside the graph</span>
+    <span class="n">phases_loc_in</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)),</span>
+                  <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">)),</span>
+                  <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">)),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="c"># phase quadrant/positions no, its x, y coordinate points to draw</span>
+    <span class="c"># phase name and its rotation(direction) outside the graph</span>
+    <span class="n">phases_loc_out</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mf">4.25</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="mi">270</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.25</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.25</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="mi">90</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">),</span> <span class="mi">90</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.65</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.65</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mf">4.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">),</span> <span class="mi">270</span><span class="p">))</span>
+
+    <span class="c"># general phase sequence</span>
+    <span class="n">phase_sequence</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sxyphase</span><span class="p">:</span>
+        <span class="c"># passed start x, y points of xdata, ydata phase name/number.</span>
+        <span class="c"># assign the above phase name/number of start x, y points</span>
+        <span class="c"># of xdata, ydata</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">sxyphase</span>
+        <span class="c"># get the actual half quadrant of the circle of the start x, y points</span>
+        <span class="c"># of xdata, ydata. subtract 1 for python index access of list.</span>
+        <span class="n">hq</span> <span class="o">=</span> <span class="n">trig</span><span class="o">.</span><span class="n">getHalfQuadrantOfCircle</span><span class="p">(</span><span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="c"># reorder the phase_sequence w.r.t starting x,y points of xdata,ydata</span>
+        <span class="n">phase_sequence</span> <span class="o">=</span> <span class="n">phase_sequence</span><span class="p">[</span><span class="n">hq</span><span class="p">:]</span> <span class="o">+</span> <span class="n">phase_sequence</span><span class="p">[:</span><span class="n">hq</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">pposition1</span><span class="p">:</span>
+        <span class="c"># passed phase name/number of pposition1 or first positive half</span>
+        <span class="c"># quadrant of the circle region phase name/number</span>
+        <span class="c"># assign the first position phase number as passed by user arg</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">pposition1</span>
+    <span class="c"># end of if sxyphase:</span>
+
+    <span class="n">phases_name</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">pdirection</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;clock&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+        <span class="c"># for clock wise phase increment should be -ve w.r.t phase positions</span>
+        <span class="n">inc</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">pdirection</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;aclock&#39;</span><span class="p">,</span> <span class="s">&#39;anticlock&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="c"># for anti-clock wise phase increment should be +ve w.r.t</span>
+        <span class="c"># phase positions</span>
+        <span class="n">inc</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Wrong pdirection &#39;</span><span class="si">%s</span><span class="s">&#39; has passed.</span><span class="se">\</span>
+<span class="s">                pass either &#39;clock&#39; or &#39;anticlock&#39;&quot;</span> <span class="o">%</span> <span class="n">pdirection</span><span class="p">)</span>
+    <span class="c"># end of if pdirection in [&#39;clock&#39;, 1]:</span>
+
+    <span class="c"># loop through phase positions from 1 to 8.</span>
+    <span class="k">for</span> <span class="n">phase_position</span> <span class="ow">in</span> <span class="n">phase_sequence</span><span class="p">:</span>
+        <span class="c"># assign the phase name to the corresponding phase position as per</span>
+        <span class="c"># user input for the pposition1.</span>
+        <span class="n">phases_name</span><span class="p">[</span><span class="n">phase_position</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;PHASE &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="c"># if phase name is reached 8, then next phase name should be 1 in</span>
+        <span class="c"># case of anticlock wise direction. inc will take care of the below</span>
+        <span class="c"># pos = 0 to convert pos = 1.</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">8</span> <span class="ow">and</span> <span class="n">inc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c"># if phase name is reached 1, then next phase name should be 8 in</span>
+        <span class="c"># case of clock wise direction. inc will take care of the below</span>
+        <span class="c"># pos = 9 to convert pos = 8.</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">inc</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">9</span>
+        <span class="c"># either increment or decrement w.r.t clock/anticlock wise direction</span>
+        <span class="n">pos</span> <span class="o">+=</span> <span class="n">inc</span>
+    <span class="c"># end of for phase_position in phase_sequence:</span>
+
+    <span class="c"># draw strings/names of 8 phases inside/outside of the graph</span>
+    <span class="k">if</span> <span class="n">plocation</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;inside&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">))</span> <span class="ow">in</span> <span class="n">phases_loc_in</span><span class="p">:</span>
+            <span class="n">pname</span> <span class="o">=</span> <span class="n">phases_name</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="c"># to plot the string w.r.t some x, y position justification</span>
+            <span class="c"># must be 0 and location type must be world.</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">pname</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span>
+                         <span class="n">char_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="c"># make the loctype as world to recently added string</span>
+            <span class="c"># (i.e. the above string added)</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">String</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">loctype</span> <span class="o">=</span> <span class="s">&#39;world&#39;</span>
+        <span class="c"># end of for (idx, (px, py)) in phases_loc:</span>
+    <span class="k">elif</span> <span class="n">plocation</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="s">&#39;outside&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">),</span> <span class="n">r</span><span class="p">)</span> <span class="ow">in</span> <span class="n">phases_loc_out</span><span class="p">:</span>
+            <span class="n">pname</span> <span class="o">=</span> <span class="n">phases_name</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="c"># to plot the string outside with rotation</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">pname</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span>
+                         <span class="n">char_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">String</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">loctype</span> <span class="o">=</span> <span class="s">&#39;world&#39;</span>
+        <span class="c"># end of for (idx, (px, py), r) in phases_loc_out:</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Wrong plocation &#39;</span><span class="si">%s</span><span class="s">&#39; has passed.</span><span class="se">\</span>
+<span class="s">                    pass either &#39;in&#39; or &#39;out&#39;&quot;</span> <span class="o">%</span> <span class="n">plocation</span><span class="p">)</span>
+    <span class="c"># end of if plocation in [&#39;in&#39;, &#39;inside&#39;]:</span>
+
+    <span class="c"># set the subtitle1 as year if user not passed</span>
+    <span class="n">st1x</span> <span class="o">=</span> <span class="mf">0.76</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">stitle1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="s">&#39;single&#39;</span><span class="p">:</span>
+            <span class="n">taxis</span> <span class="o">=</span> <span class="n">xdata</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span><span class="o">.</span><span class="n">asComponentTime</span><span class="p">()</span>
+            <span class="n">syear</span><span class="p">,</span> <span class="n">eyear</span> <span class="o">=</span> <span class="n">taxis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">taxis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">year</span>
+            <span class="c"># make memory free</span>
+            <span class="k">del</span> <span class="n">taxis</span>
+        <span class="k">elif</span> <span class="n">ptype</span> <span class="o">==</span> <span class="s">&#39;multi&#39;</span><span class="p">:</span>
+            <span class="n">syear</span><span class="p">,</span> <span class="n">eyear</span> <span class="o">=</span> <span class="n">conMonths</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">conMonths</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">year</span>
+        <span class="c"># end of if ptype == &#39;single&#39;:</span>
+        <span class="n">stitle1</span> <span class="o">=</span> <span class="s">&#39;Year : </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">syear</span>
+        <span class="k">if</span> <span class="n">syear</span> <span class="o">&lt;</span> <span class="n">eyear</span><span class="p">:</span>
+            <span class="n">stitle1</span> <span class="o">+=</span> <span class="s">&#39; to </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">eyear</span>
+            <span class="n">st1x</span> <span class="o">=</span> <span class="mf">0.795</span>
+    <span class="c"># end of if not stitle1:</span>
+
+    <span class="c"># set the subtitle2 as season months if user not passed</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">stitle2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="s">&#39;single&#39;</span><span class="p">:</span>
+            <span class="n">taxis</span> <span class="o">=</span> <span class="n">xdata</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span><span class="o">.</span><span class="n">asComponentTime</span><span class="p">()</span>
+            <span class="n">smon</span> <span class="o">=</span> <span class="n">cdutil</span><span class="o">.</span><span class="n">getMonthString</span><span class="p">(</span><span class="n">taxis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
+            <span class="n">emon</span> <span class="o">=</span> <span class="n">cdutil</span><span class="o">.</span><span class="n">getMonthString</span><span class="p">(</span><span class="n">taxis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
+            <span class="c"># make memory free</span>
+            <span class="k">del</span> <span class="n">taxis</span>
+            <span class="n">stitle2</span> <span class="o">=</span> <span class="s">&#39;Season : </span><span class="si">%s</span><span class="s"> to </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">smon</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()[:</span><span class="mi">3</span><span class="p">],</span>
+                                             <span class="n">emon</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()[:</span><span class="mi">3</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">ptype</span> <span class="o">==</span> <span class="s">&#39;multi&#39;</span><span class="p">:</span>
+            <span class="n">stitle2</span> <span class="o">=</span> <span class="s">&#39;Season : </span><span class="si">%s</span><span class="s"> to </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">conMonths</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()[:</span><span class="mi">3</span><span class="p">],</span>
+                                         <span class="n">conMonths</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()[:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="c"># end of if not stitle2:</span>
+    <span class="c"># draw the title, subtitle1 and subtitle2</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.52</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="n">st1x</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="n">stitle1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.84</span><span class="p">,</span> <span class="n">stitle2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="c"># draw the centred title / circle title</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ctitle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">char_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">String</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">loctype</span> <span class="o">=</span> <span class="s">&#39;world&#39;</span>
+    <span class="c"># update the x to plot all the strings</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">x</span>
+<span class="c"># end of def phase2d(xdata, ydata, ...):</span>
+
+
+<span class="k">def</span> <span class="nf">mjo_phase2d</span><span class="p">(</span><span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span><span class="p">,</span> <span class="n">sxyphase</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;magenta&#39;</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="s">&#39;violet&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">],</span>
+        <span class="n">tcomment</span><span class="o">=</span><span class="s">&#39;Western Pacific&#39;</span><span class="p">,</span> <span class="n">bcomment</span><span class="o">=</span><span class="s">&#39;Indian Ocean&#39;</span><span class="p">,</span>
+        <span class="n">lcomment</span><span class="o">=</span><span class="s">&#39;Western Hemisphere &amp; Africa&#39;</span><span class="p">,</span>
+        <span class="n">rcomment</span><span class="o">=</span><span class="s">&#39;Maritime Continent&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;MJO Phase diagram of PC-1 and PC-2&#39;</span><span class="p">,</span>
+        <span class="n">stitle1</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">stitle2</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">ctitle</span><span class="o">=</span><span class="s">&#39;Weak MJO&#39;</span><span class="p">,</span> <span class="n">pposition1</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pdirection</span><span class="o">=</span><span class="s">&#39;anticlock&#39;</span><span class="p">,</span>
+        <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">mintick</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    mjo_phase2d : Madden-Julian Oscillation Phase 2 Dimensional Diagram</span>
+
+<span class="sd">    Inputs :</span>
+<span class="sd">        npc1 : Normalized PC1 (xdata)</span>
+<span class="sd">        npc2 : Normalized PC2 (ydata)</span>
+<span class="sd">        sxyphase : phase number of start x,y points of npc1, npc2. By default</span>
+<span class="sd">                   it takes None. For the simplicity to the user, passed the</span>
+<span class="sd">                   default/correct argument to the pposition1 as 5.</span>
+<span class="sd">        pposition1 : phase number of the phase position1 of the graph. For the</span>
+<span class="sd">                     MJO it must be 5. User can over write the sxyphase and</span>
+<span class="sd">                     pposition1 args while calling this function, if needed.</span>
+<span class="sd">        pdirection : By default it takes &#39;anticlock&#39; to this MJO.</span>
+<span class="sd">        plocation : Phase name/string drawn inside/outside of the graph. By</span>
+<span class="sd">                    default it takes &#39;in&#39;.</span>
+<span class="sd">        colors : list contains 6 colors to indicate 6 months dataset. User</span>
+<span class="sd">                 can overwrite it either by single or many color.</span>
+<span class="sd">    Return :</span>
+<span class="sd">        It should return the &#39;x&#39; of the xmgrace object which has plotted the</span>
+<span class="sd">        data with this MJO args. User can either save it into ps, pdf, etc.,</span>
+<span class="sd">        or modify/update further.</span>
+
+<span class="sd">    Refer : phase2d() for the detailed documents of all the arguments.</span>
+<span class="sd">    </span>
+<span class="sd">    Plot Properties Reference :</span>
+<span class="sd">                    http://climate.snu.ac.kr/mjo_diagnostics/index.htm</span>
+<span class="sd">                    </span>
+<span class="sd">    Author : Arulalan.T</span>
+
+<span class="sd">    Date : 20.02.2013</span>
+
+<span class="sd">    License : GPL V3</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">phase2d</span><span class="p">(</span><span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span><span class="p">,</span> <span class="n">sxyphase</span><span class="p">,</span> <span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">tcomment</span><span class="p">,</span>
+                   <span class="n">bcomment</span><span class="p">,</span> <span class="n">lcomment</span><span class="p">,</span> <span class="n">rcomment</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">stitle1</span><span class="p">,</span> <span class="n">stitle2</span><span class="p">,</span>
+                   <span class="n">ctitle</span><span class="p">,</span> <span class="n">pposition1</span><span class="p">,</span> <span class="n">pdirection</span><span class="p">,</span> <span class="n">plocation</span><span class="p">,</span> <span class="n">mintick</span><span class="p">)</span>
+<span class="c"># end of mjo_phase2d(npc1, npc2, ...):</span>
+
+
+<span class="k">def</span> <span class="nf">miso_phase2d</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">sxyphase</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dmin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;violet&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">],</span>
+        <span class="n">tcomment</span><span class="o">=</span><span class="s">&#39;Centre India &amp; North India&#39;</span><span class="p">,</span> <span class="n">bcomment</span><span class="o">=</span><span class="s">&#39;Southern tp &amp; IO&#39;</span><span class="p">,</span>
+        <span class="n">lcomment</span><span class="o">=</span><span class="s">&#39;Peninsular &amp; Centre India&#39;</span><span class="p">,</span> <span class="n">rcomment</span><span class="o">=</span><span class="s">&#39;FootHill &amp; SIO&#39;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s">&#39;Indian Monsoon Intraseasonal Oscillation Index&#39;</span><span class="p">,</span>
+        <span class="n">stitle1</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">stitle2</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">ctitle</span><span class="o">=</span><span class="s">&#39;Weak MISO&#39;</span><span class="p">,</span>
+        <span class="n">pposition1</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pdirection</span><span class="o">=</span><span class="s">&#39;clock&#39;</span><span class="p">,</span> <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">mintick</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    miso_phase2d : Monsoon Intraseasonal Oscillation Phase 2 Dimensional</span>
+<span class="sd">                   Diagram</span>
+<span class="sd">    Inputs :</span>
+<span class="sd">        xdata : Normalized PC1 or relevant data</span>
+<span class="sd">        ydata : Normalized PC2 or relevant data</span>
+<span class="sd">        sxyphase : phase number of start x,y points of npc1, npc2. By default</span>
+<span class="sd">                   it takes None. For the simplicity to the user, passed the</span>
+<span class="sd">                   default/correct argument to the pposition1 as 8.</span>
+<span class="sd">        pposition1 : phase number of the phase position1 of the graph. For the</span>
+<span class="sd">                     MJO it must be 8. User can over write the sxyphase and</span>
+<span class="sd">                     pposition1 args while calling this function, if needed.</span>
+<span class="sd">        pdirection : By default it takes &#39;clock&#39; to this MJO.</span>
+<span class="sd">        plocation : Phase name/string drawn inside/outside of the graph. By</span>
+<span class="sd">                    default it takes &#39;in&#39;.</span>
+<span class="sd">        colors : list contains 6 colors to indicate 6 months dataset. User</span>
+<span class="sd">                 can overwrite it either by single or many color.</span>
+<span class="sd">    Return :</span>
+<span class="sd">        It should return the &#39;x&#39; of the xmgrace object which has plotted the</span>
+<span class="sd">        data with this MJO args. User can either save it into ps, pdf, etc.,</span>
+<span class="sd">        or modify/update further.</span>
+
+<span class="sd">    Refer : phase2d() for the detailed documents of all the arguments.</span>
+<span class="sd">    </span>
+<span class="sd">    Plot Properties Reference : &quot;An Indian monsoon intraseasonal oscillations</span>
+<span class="sd">         (MISO) index for real time monitoring and forecast verification&quot;,</span>
+<span class="sd">         E. Suhas • J. M. Neena • B. N. Goswami, Clim Dyn, </span>
+<span class="sd">         DOI 10.1007/s00382-012-1462-5</span>
+<span class="sd">    </span>
+<span class="sd">    Author : Arulalan.T</span>
+
+<span class="sd">    Date : 20.02.2013</span>
+
+<span class="sd">    License : GPL V3</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">phase2d</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">sxyphase</span><span class="p">,</span> <span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">tcomment</span><span class="p">,</span>
+                   <span class="n">bcomment</span><span class="p">,</span> <span class="n">lcomment</span><span class="p">,</span> <span class="n">rcomment</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">stitle1</span><span class="p">,</span> <span class="n">stitle2</span><span class="p">,</span>
+                   <span class="n">ctitle</span><span class="p">,</span> <span class="n">pposition1</span><span class="p">,</span> <span class="n">pdirection</span><span class="p">,</span> <span class="n">plocation</span><span class="p">,</span> <span class="n">mintick</span><span class="p">)</span>
+<span class="c"># end of miso_phase2d(npc1, npc2, ...):</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/phase2d.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">phase2d.py</span></tt></a></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span>  <span class="nn">cdms2</span>
+<span class="kn">from</span> <span class="nn">phase2d</span> <span class="kn">import</span> <span class="n">mjo_phase2d</span><span class="p">,</span> <span class="n">miso_phase2d</span>
+
+<span class="c"># plotting MJO Phase diagrams</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">cdms2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;mjo_npcs.nc&#39;</span><span class="p">)</span>
+
+<span class="c"># Summer Data Extraction</span>
+<span class="n">npc1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s">&#39;norm_pcs1&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;1979-5-1&#39;</span><span class="p">,</span> <span class="s">&#39;1979-10-31&#39;</span><span class="p">))</span>
+<span class="n">npc1</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s">&#39;Normalized PC1&#39;</span>
+<span class="n">npc2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s">&#39;norm_pcs2&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;1979-5-1&#39;</span><span class="p">,</span> <span class="s">&#39;1979-10-31&#39;</span><span class="p">))</span>
+<span class="n">npc2</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s">&#39;Normalized PC2&#39;</span>
+<span class="c"># summer mjo phase plotting</span>
+<span class="c"># here sxyphase is 3 for this (&#39;1979-5-1&#39;, &#39;1979-10-31&#39;) time season only.</span>
+<span class="c"># this is just demonstration that we can pass sxyphase purpose only.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mjo_phase2d</span><span class="p">(</span><span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span><span class="p">,</span> <span class="n">sxyphase</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">pposition1</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;in&#39;</span><span class="p">,</span>
+                                      <span class="n">mintick</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pdirection</span><span class="o">=</span><span class="s">&#39;anticlock&#39;</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">ps</span><span class="p">(</span><span class="s">&#39;mjo_phase2d_summer&#39;</span><span class="p">)</span>
+
+<span class="c"># only single red color plot of summer</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mjo_phase2d</span><span class="p">(</span><span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span><span class="p">,</span> <span class="n">sxyphase</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;red&#39;</span><span class="p">],</span> <span class="n">pposition1</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                      <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">mintick</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pdirection</span><span class="o">=</span><span class="s">&#39;anticlock&#39;</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">ps</span><span class="p">(</span><span class="s">&#39;mjo_phase2d_summer_red&#39;</span><span class="p">)</span>
+<span class="c"># make memory free</span>
+<span class="k">del</span> <span class="n">x</span><span class="p">,</span> <span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span>
+
+<span class="c"># Winter Data Extraction</span>
+<span class="n">npc1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s">&#39;norm_pcs1&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;1979-11-1&#39;</span><span class="p">,</span> <span class="s">&#39;1980-4-30&#39;</span><span class="p">))</span>
+<span class="n">npc1</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s">&#39;Normalized PC1&#39;</span>
+<span class="n">npc2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s">&#39;norm_pcs2&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;1979-11-1&#39;</span><span class="p">,</span> <span class="s">&#39;1980-4-30&#39;</span><span class="p">))</span>
+<span class="n">npc2</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s">&#39;Normalized PC2&#39;</span>
+<span class="c"># winter mjo phase plotting</span>
+<span class="c"># this is generic function call demonstration. For MJO we can make sxyphase </span>
+<span class="c"># as None and using default argument to the pposition1 as 5.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mjo_phase2d</span><span class="p">(</span><span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span><span class="p">,</span> <span class="n">sxyphase</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">mintick</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">ps</span><span class="p">(</span><span class="s">&#39;mjo_phase2d_winter&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c"># only single red color plot of winter</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mjo_phase2d</span><span class="p">(</span><span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span><span class="p">,</span> <span class="n">sxyphase</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">mintick</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">ps</span><span class="p">(</span><span class="s">&#39;mjo_phase2d_winter_red&#39;</span><span class="p">)</span>
+<span class="c"># make memory free</span>
+<span class="k">del</span> <span class="n">x</span><span class="p">,</span> <span class="n">npc1</span><span class="p">,</span> <span class="n">npc2</span>
+
+
+<span class="c"># plotting MISO Phase diagrams</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">cdms2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;miso_phases.nc&#39;</span><span class="p">)</span>
+<span class="n">xdata</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s">&#39;miso1&#39;</span><span class="p">)</span>
+<span class="n">xdata</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s">&#39;MISO1&#39;</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s">&#39;miso2&#39;</span><span class="p">)</span>
+<span class="n">ydata</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s">&#39;MISO2&#39;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">miso_phase2d</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">sxyphase</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">plocation</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">mintick</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">ps</span><span class="p">(</span><span class="s">&#39;miso_phase2d_monsoon&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c"># make memory free</span>
+<span class="k">del</span> <span class="n">x</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/plot_phase_diagrams.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">plot_phase_diagrams.py</span></tt></a></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">atan</span>
+
+
+<span class="k">def</span> <span class="nf">getHalfQuadrantOfCircle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    getHalfQuadrantOfCircle : return the half quadrant of the circle for the</span>
+<span class="sd">        given x, y points. Usually we split the circle into 4 equal quadrants,</span>
+<span class="sd">        but in this function we split circle into 8 equal parts. Thats why</span>
+<span class="sd">        we call it as half quadrants. i.e we split one quadrant into two equal</span>
+<span class="sd">        parts (two equal half quadrants).</span>
+
+<span class="sd">    Written By : Arulalan.T</span>
+
+<span class="sd">    Date : 02.04.2013</span>
+<span class="sd">    </span>
+<span class="sd">    License : GPL V3</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span> <span class="n">tmp</span> <span class="o">+=</span> <span class="n">pi</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span> <span class="n">tmp</span> <span class="o">+=</span> <span class="n">pi</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span> <span class="n">tmp</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span>
+    <span class="c"># end of if (y*x &gt; 0):</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">tmp</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">pi</span><span class="p">):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">pi</span><span class="o">+</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">pi</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">pi</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">):</span> <span class="n">hq</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">hq</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">hq</span>
+<span class="c"># end of def getHalfQuadrant(x, y):</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/trig.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">trig.py</span></tt></a></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: timeutils</span>
+<span class="sd">   :synopsis: A useful module for cdtime.comptime conversion to timestr,</span>
+<span class="sd">              moveTime, tRange, xtRange, cdtime.timeAxis and more ...</span>
+<span class="sd">.. moduleauthor:: Arulalan.T &lt;arulalant@gmail.com&gt;</span>
+<span class="sd">   License : GPL V3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">cdms2</span>
+<span class="kn">import</span> <span class="nn">cdutil</span>
+<span class="kn">import</span> <span class="nn">cdtime</span>
+
+
+<span class="k">class</span> <span class="nc">_TimeUtilityError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">DaysError Error : &quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">i</span>
+
+
+<span class="k">class</span> <span class="nc">_TimeUtilityStringError</span><span class="p">(</span><span class="n">_TimeUtilityError</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">_TimeUtilityIntegerError</span><span class="p">(</span><span class="n">_TimeUtilityError</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">_TimeUtilityTypeError</span><span class="p">(</span><span class="n">_TimeUtilityError</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">_TimeUtilityInputError</span><span class="p">(</span><span class="n">_TimeUtilityError</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">TimeUtility</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeAxis</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c"># set cdtime.comptime pattern regular expression object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comppattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot;&quot;&quot;</span>
+<span class="s">                                ([0-9]{1,4})          # YYYY formate (1 to 4</span>
+<span class="s">                                                      # digits of year accept)</span>
+<span class="s">                                -                     # ifen - seperator</span>
+<span class="s">                                ([01]?[0-9])          # MM formate</span>
+<span class="s">                                -                     # ifen - seperator</span>
+<span class="s">                                ([0123]?[0-9])        # DD formate</span>
+<span class="s">                                (\s{1}                # space seperator</span>
+<span class="s">                                ([012]?[0-9])         # hh formate</span>
+<span class="s">                                :?                    # colon : seperator</span>
+<span class="s">                                ([012345]?[0-9])?     # mm formate</span>
+<span class="s">                                :?                    # colon : seperator</span>
+<span class="s">                                ([012345]?[0-9])?     # ss formate (Sec)</span>
+<span class="s">                                .?                    # dot seperator</span>
+<span class="s">                                ([0-9]))?             # ss formate (millisec)</span>
+<span class="s">                                $                     # End of input</span>
+<span class="s">                                # hh:mm:ss.ss all are optional one by suffix ?</span>
+<span class="s">                                &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+        <span class="c"># set yyyymmddhh pattern regular expression object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ymdpattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot;&quot;&quot;</span>
+<span class="s">                               (\d{4})                 # YYYY formate</span>
+<span class="s">                               ([01][1-9])             # MM formate</span>
+<span class="s">                               ([0123][0-9])           # DD formate</span>
+<span class="s">                               ([01][0-9]|[2][0-3])?   # HH formate (optional)</span>
+<span class="s">                               $                       # End of input</span>
+<span class="s">                               &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+    <span class="c"># end of def __init__(self):</span>
+
+    <span class="k">def</span> <span class="nf">timestr2comp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :func:`timestr2comp`: To convert date from yyyymmdd[hh] formate into</span>
+<span class="sd">                          cdtime.comptime formate</span>
+<span class="sd">        Condition :</span>
+<span class="sd">                passing date must be yyyymmdd formate in either int or str</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">                date in yyyymmdd formate or yyyymmddhh formate.</span>
+<span class="sd">                i.e. hour(hh) is optional.</span>
+<span class="sd">        Outputs:</span>
+<span class="sd">                It should return the date in cdtime.comptime object type</span>
+<span class="sd">        Usage:</span>
+<span class="sd">            example1:</span>
+<span class="sd">                &gt;&gt;&gt; timestr2comp(20110423)</span>
+<span class="sd">                2011-4-23 0:0:0.0</span>
+<span class="sd">                  .. note:: It should return as cdtime.comptype. Here we didnt</span>
+<span class="sd">                            pass the hour. i.e only yyyymmdd formate</span>
+<span class="sd">            example2:</span>
+<span class="sd">                &gt;&gt;&gt; timestr2comp(2011082010)</span>
+<span class="sd">                2011-8-20 10:0:0.0</span>
+<span class="sd">                  ..note:: Here it should return cdtime with hours also.</span>
+<span class="sd">                           We passed yyyymmddhh formate. i.e include hh</span>
+<span class="sd">            example3:</span>
+<span class="sd">                &gt;&gt;&gt; timestr2comp(2011082023)</span>
+<span class="sd">                2011-8-20 23:0:0.0</span>
+<span class="sd">                  ..note:: we cannot pass 24 as hour here. Max 23 hours only.</span>
+
+<span class="sd">        Written by: Arulalan.T</span>
+
+<span class="sd">        Date: 23.04.2011</span>
+<span class="sd">        Updated : 21.08.2011</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">date</span><span class="p">))</span> <span class="o">==</span> <span class="s">&quot;&lt;type &#39;comptime&#39;&gt;&quot;</span><span class="p">:</span>
+            <span class="c"># passed date itself comptime object only</span>
+            <span class="k">return</span> <span class="n">date</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="c"># re match</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comppattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+            <span class="c"># i.e. date is comptime in string formate</span>
+            <span class="c"># so make it as comptime object</span>
+            <span class="k">return</span> <span class="n">cdtime</span><span class="o">.</span><span class="n">s2c</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymdpattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+            <span class="c"># i.e date is yyyymmdd string formate</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+            <span class="n">month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+            <span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">hour</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+                <span class="k">return</span> <span class="n">cdtime</span><span class="o">.</span><span class="n">comptime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">cdtime</span><span class="o">.</span><span class="n">comptime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">_TimeUtilityStringError</span><span class="p">(</span><span class="s">&#39;The given date either comptime </span><span class="se">\</span>
+<span class="s">                         object or comptime string or yyyymmdd formate only&#39;</span><span class="p">)</span>
+    <span class="c"># end of def timestr2comp(self, date):</span>
+
+    <span class="k">def</span> <span class="nf">comp2timestr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comptime</span><span class="p">,</span> <span class="n">returnHour</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :func:`comp2timestr`: To convert date from cdtime.comptime into</span>
+<span class="sd">                                &#39;yyyymmdd&#39; formate or &#39;yyyymmddhh&#39; formate</span>
+<span class="sd">                                as string</span>
+
+<span class="sd">        Condition :   passing date must be comptime formate</span>
+
+<span class="sd">        Inputs :    date in comptime.</span>
+<span class="sd">                    returnHour takes &#39;y&#39; or &#39;yes&#39; or &#39;n&#39; or &#39;no&#39;.</span>
+<span class="sd">                    Default it takes &#39;y&#39;.</span>
+
+<span class="sd">        Outputs : It should return the date in &#39;yyyymmddhh&#39; string formate, if</span>
+<span class="sd">                  returnHour passed &#39;y&#39; or &#39;yes&#39;.</span>
+<span class="sd">                  It should return the date in &#39;yyyymmdd&#39; string formate, if</span>
+<span class="sd">                  returnHour passed &#39;n&#39; or &#39;no&#39;.</span>
+
+<span class="sd">        Usage :</span>
+<span class="sd">          example1 :</span>
+<span class="sd">             &gt;&gt;&gt; compobj = cdtime.comptime(2010,4,29) -&gt; 2010-4-29 0:0:0.0</span>
+<span class="sd">             &gt;&gt;&gt; comp2timestr(compobj)</span>
+<span class="sd">             &gt;&gt;&gt; &#39;2010042900&#39;</span>
+<span class="sd">           .. note:: It should return in yyyymmddhh string formate by default.</span>
+<span class="sd">                     Hour is 00.</span>
+
+<span class="sd">          example2 :</span>
+<span class="sd">             &gt;&gt;&gt; compobj = cdtime.comptime(2010,4,29,10) -&gt; 2010-4-29 10:0:0.0</span>
+<span class="sd">             &gt;&gt;&gt; comp2timestr(compobj)</span>
+<span class="sd">             &gt;&gt;&gt; &#39;2010042910&#39;</span>
+<span class="sd">           .. note:: It should return in yyyymmddhh string formate by default.</span>
+<span class="sd">                     Hour is 10.</span>
+
+<span class="sd">          example2 :</span>
+<span class="sd">             &gt;&gt;&gt; compobj = cdtime.comptime(2010,4,29,10) -&gt; 2010-4-29 10:0:0.0</span>
+<span class="sd">             &gt;&gt;&gt; comp2timestr(compobj, returnHour = &#39;n&#39;)</span>
+<span class="sd">             &gt;&gt;&gt; &#39;20100429&#39;</span>
+<span class="sd">           .. note:: It should return in yyyymmdd string formate only even</span>
+<span class="sd">                     though hour passed in the component object. Because we</span>
+<span class="sd">                     passed returnHour as &#39;n&#39;.</span>
+
+<span class="sd">        Written by : Arulalan.T</span>
+
+<span class="sd">        Date : 29.04.2011</span>
+<span class="sd">        Updated : 21.08.2011</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">comptime</span><span class="p">))</span> <span class="o">==</span> <span class="s">&quot;&lt;type &#39;comptime&#39;&gt;&quot;</span><span class="p">:</span>
+            <span class="c"># convert comptime into yyyymmdd</span>
+            <span class="n">yyyymmdd</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">comptime</span><span class="o">.</span><span class="n">absvalue</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">comptime</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c"># if comptime is string</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comppattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">comptime</span><span class="p">):</span>
+                <span class="n">comptime</span> <span class="o">=</span> <span class="n">cdtime</span><span class="o">.</span><span class="n">s2c</span><span class="p">(</span><span class="n">comptime</span><span class="p">)</span>
+                <span class="n">yyyymmdd</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">comptime</span><span class="o">.</span><span class="n">absvalue</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">_TimeUtilityTypeError</span><span class="p">(</span><span class="s">&quot;passed date is not </span><span class="se">\</span>
+<span class="s">                              cdtime.comptime object or its string formate&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">returnHour</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;yes&#39;</span><span class="p">]:</span>
+            <span class="n">hh</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">comptime</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hh</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c"># make h as hh formate</span>
+                <span class="n">hh</span> <span class="o">=</span> <span class="s">&#39;0&#39;</span> <span class="o">+</span> <span class="n">hh</span>
+            <span class="k">return</span> <span class="n">yyyymmdd</span> <span class="o">+</span> <span class="n">hh</span>
+        <span class="k">elif</span> <span class="n">returnHour</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;no&#39;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">yyyymmdd</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">_TimeUtilityTypeError</span><span class="p">(</span><span class="s">&quot;returnHour takes either &#39;y/yes&#39; </span><span class="se">\</span>
+<span class="s">                                                    or &#39;n/no&#39; option only&quot;</span><span class="p">)</span>
+        <span class="c"># end of def comp2timestr(self, comptime):</span>
+
+    <span class="k">def</span> <span class="nf">_sortMonths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">months</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :func:`_sortMonths`: Sorting the months and seasons with respect to</span>
+<span class="sd">                             the calendar.</span>
+
+<span class="sd">        Inputs : months is list which contains the combinations of months name</span>
+<span class="sd">                 and seasons name.</span>
+
+<span class="sd">        Outputs : It should return the list which contains the sorted months</span>
+<span class="sd">                  first and then followed by seasons.</span>
+
+<span class="sd">        Usage :</span>
+
+<span class="sd">            example 1:</span>
+<span class="sd">                &gt;&gt;&gt; x = [&#39;JANUARY&#39;, &#39;august&#39;, &#39;November&#39;, &#39;mar&#39;]</span>
+<span class="sd">                &gt;&gt;&gt; _sortMonths(x)</span>
+<span class="sd">                [&#39;JANUARY&#39;, &#39;mar&#39;, &#39;august&#39;, &#39;November&#39;]</span>
+
+<span class="sd">            example 2:</span>
+<span class="sd">                &gt;&gt;&gt; x = [&#39;DJF&#39;, &#39;JJAS&#39;]</span>
+<span class="sd">                &gt;&gt;&gt; t._sortMonths(x)</span>
+<span class="sd">                [&#39;JJAS&#39;, &#39;DJF&#39;]</span>
+
+<span class="sd">            example 3:</span>
+<span class="sd">                &gt;&gt;&gt; x = [&#39;DJF&#39;, &#39;december&#39;, &#39;March&#39;, &#39;JJAS&#39;, &#39;Nov&#39;]</span>
+<span class="sd">                &gt;&gt;&gt; _sortMonths(x)</span>
+<span class="sd">                [&#39;March&#39;, &#39;Nov&#39;, &#39;december&#39;, &#39;JJAS&#39;, &#39;DJF&#39;]</span>
+
+<span class="sd">             ..note::  Here we passed various type of month string types.</span>
+<span class="sd">                       i.e. Here case is in-senstive. Even we mixed the months</span>
+<span class="sd">                       and seasons, it should be arranged the sorted months</span>
+<span class="sd">                       and then sorted seasons.</span>
+
+<span class="sd">        Written By : Arulalan.T</span>
+
+<span class="sd">        Date : 03.12.2011</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Months</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">Seasons</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">sortedMonths</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">mon</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">cdutil</span><span class="o">.</span><span class="n">getMonthIndex</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c"># Got Season</span>
+                <span class="n">Seasons</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">mon</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># Got Month</span>
+                <span class="n">Months</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">mon</span>
+        <span class="c"># Sort the month and append to the list</span>
+        <span class="n">mkeys</span> <span class="o">=</span> <span class="n">Months</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">mkeys</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">monidx</span> <span class="ow">in</span> <span class="n">mkeys</span><span class="p">:</span>
+            <span class="n">sortedMonths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Months</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">monidx</span><span class="p">))</span>
+        <span class="c"># Sort the season and append to the list</span>
+        <span class="n">skeys</span> <span class="o">=</span> <span class="n">Seasons</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">skeys</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">seaidx</span> <span class="ow">in</span> <span class="n">skeys</span><span class="p">:</span>
+            <span class="n">sortedMonths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Seasons</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">seaidx</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">sortedMonths</span>
+    <span class="c"># end of def sortMonths(self, months):</span>
+
+    <span class="k">def</span> <span class="nf">getTimeAxisMonths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeAxis</span><span class="p">,</span> <span class="n">returnType</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">returnHour</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :func:`getTimeAxisMonths`: Get the available months name and its</span>
+<span class="sd">                             firstday &amp; lastday from the passed timeAxis.</span>
+
+<span class="sd">        Condition : timeAxis must be an instance of cdms2.axis.TransientAxis</span>
+
+<span class="sd">        Inputs : Pass the any range of timeAxis object.</span>
+<span class="sd">                 returnType is either &#39;c&#39; or &#39;s&#39;. If &#39;c&#39; means the dates are</span>
+<span class="sd">                 cdtime.comptime object itself. if &#39;s&#39; means the dates are</span>
+<span class="sd">                 yyyymmddhh string (by default) or yyyymmdd w.r.t returnHour.</span>
+<span class="sd">                 returnHour takes either &#39;y/yes&#39; or &#39;n/no&#39;.</span>
+
+<span class="sd">        Outputs : It should return a dictionary which has key as the year.</span>
+<span class="sd">                  This year key has the value as dictionary type itself.</span>
+<span class="sd">                  The nested dictionary has month as key and</span>
+<span class="sd">                  value as tuple, which contains the stardate and enddate of</span>
+<span class="sd">                  that month.</span>
+<span class="sd">                  It should return month only for the available months in the</span>
+<span class="sd">                  passed timeAxis.</span>
+
+<span class="sd">        Usage :</span>
+<span class="sd">            ..seealso:: we can pass any range of timeAxis. Even its hourly</span>
+<span class="sd">                        series, it should works.</span>
+<span class="sd">        ..seealso:: getTimeAxisFullMonths(), getTimeAxisPartialMonths()</span>
+
+<span class="sd">            example 1:</span>
+<span class="sd">                &gt;&gt;&gt; tim = _generateTimeAxis(70, &#39;2011-5-25&#39;)</span>
+<span class="sd">                &gt;&gt;&gt; tim</span>
+<span class="sd">                   id: time</span>
+<span class="sd">                   Designated a time axis.</span>
+<span class="sd">                   units:  days since 2011-5-25</span>
+<span class="sd">                   Length: 70</span>
+<span class="sd">                   First:  0</span>
+<span class="sd">                   Last:   69</span>
+<span class="sd">                   Other axis attributes:</span>
+<span class="sd">                      calendar: gregorian</span>
+<span class="sd">                      axis: T</span>
+<span class="sd">                   Python id:  0x8aea74c</span>
+
+<span class="sd">                &gt;&gt;&gt; getTimeAxisMonths(tim)</span>
+<span class="sd">                {2011: {</span>
+<span class="sd">                &#39;MAY&#39;: (2011-5-25 0:0:0.0, 2011-5-31 0:0:0.0),</span>
+<span class="sd">                &#39;JUNE&#39;: (2011-6-1 0:0:0.0, 2011-6-30 0:0:0.0),</span>
+<span class="sd">                &#39;JULY&#39;: (2011-7-1 0:0:0.0, 2011-7-31 0:0:0.0),</span>
+<span class="sd">                &#39;AUGUST&#39;: (2011-8-1 :0:0.0, 2011-8-2 0:0:0.0)}</span>
+<span class="sd">                }</span>
+
+<span class="sd">             ..note::  Here 2011 as the key for the primary dictionary.</span>
+<span class="sd">                       And MAY, JUNE, JULY and AUGUST are the keys for the</span>
+<span class="sd">                       secondary(inner) dictionary, which contains the</span>
+<span class="sd">                       stardate and enddate of that month and year.</span>
+
+<span class="sd">                &gt;&gt;&gt; tim.asComponentTime()[0]</span>
+<span class="sd">                2011-5-25 0:0:0.0</span>
+<span class="sd">             ..note:: The actual firstdate of the timeAxis is 25th may 2011.</span>
+<span class="sd">                      But its not complete month. Even though it is returning</span>
+<span class="sd">                      that available may month startdate and its enddate.</span>
+
+<span class="sd">                &gt;&gt;&gt; tim.asComponentTime()[-1]</span>
+<span class="sd">                2011-8-2 0:0:0.0</span>
+<span class="sd">             ..note:: The actual lastdate of the timeAxis is 2nd aug 2011.</span>
+<span class="sd">                      But its not complete month. Even though it is returning</span>
+<span class="sd">                      that available may month startdate and its enddate.</span>
+
+<span class="sd">             ..note:: It also returnning the fully available months, in this</span>
+<span class="sd">                      example June &amp; July.</span>
+
+<span class="sd">            example 2:</span>
+<span class="sd">                &gt;&gt;&gt; tim1 = _generateTimeAxis(70, &#39;2011-12-1&#39;)</span>
+<span class="sd">                &gt;&gt;&gt; tim1</span>
+<span class="sd">                   id: time</span>
+<span class="sd">                   Designated a time axis.</span>
+<span class="sd">                   units:  days since 2011-12-1</span>
+<span class="sd">                   Length: 70</span>
+<span class="sd">                   First:  0</span>
+<span class="sd">                   Last:   69</span>
+<span class="sd">                   Other axis attributes:</span>
+<span class="sd">                      calendar: gregorian</span>
+<span class="sd">                      axis: T</span>
+<span class="sd">                   Python id:  0xa2c10ac</span>
+
+<span class="sd">                &gt;&gt;&gt; getTimeAxisMonths(tim1, returnType = &#39;s&#39;,</span>
+<span class="sd">                                             returnHour = &#39;n&#39;)</span>
+<span class="sd">                {2011: {&#39;DECEMBER&#39;: (&#39;20111201&#39;, &#39;20111231&#39;)},</span>
+<span class="sd">                 2012: {&#39;JANUARY&#39;: (&#39;20120101&#39;, &#39;20120131&#39;)}}</span>
+
+<span class="sd">              ..note:: In this example, we will get 2011 and 2012 are the</span>
+<span class="sd">                       keys of the primary dictionary. And 2011 has &#39;DECEMBER&#39;</span>
+<span class="sd">                       month and its startdate &amp; enddate as key and value.</span>
+<span class="sd">                       Same as for 2012 has &#39;JANUARY&#39; month and its startdate</span>
+<span class="sd">                       &amp; enddate as key and value. Here dates are in yyyymmdd</span>
+<span class="sd">                       string formate. Here we passed returnHour as &#39;n&#39;.</span>
+
+<span class="sd">        Written By : Arulalan.T</span>
+
+<span class="sd">        Date : 06.03.2013</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">timeAxis</span><span class="p">,</span> <span class="n">cdms2</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">TransientAxis</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeAxis</span><span class="p">,</span> <span class="n">cdms2</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">FileAxis</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeAxis</span><span class="p">,</span> <span class="n">cdms2</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">Axis</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">_TimeUtilityTypeError</span><span class="p">(</span><span class="s">&quot;Passed timeAxis is not the type of </span><span class="se">\</span>
+<span class="s">                                cdms2.axis.Axis or cdms2.axis.TransientAxis&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">returnType</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">_TimeUtilityTypeError</span><span class="p">(</span><span class="s">&quot;returnType either should &#39;s&#39; or &#39;c&#39;.</span><span class="se">\</span>
+<span class="s">                if &#39;s&#39; means the return date should be in string type. </span><span class="se">\</span>
+<span class="s">               if &#39;c&#39; means the return date should be cdtime type itself&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">returnHour</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;yes&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;no&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">_TimeUtilityInputError</span><span class="p">(</span><span class="s">&quot;returnHour must be &#39;y/n&#39; only&quot;</span><span class="p">)</span>
+        <span class="n">availableMonths</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c"># store the timeAxis as component time objects in list</span>
+        <span class="n">timeAxisCompTime</span> <span class="o">=</span> <span class="n">timeAxis</span><span class="o">.</span><span class="n">asComponentTime</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+            <span class="c"># Doing the find process for all the 12 months</span>
+            <span class="c"># getting the month string</span>
+            <span class="n">month</span> <span class="o">=</span> <span class="n">cdutil</span><span class="o">.</span><span class="n">getMonthString</span><span class="p">(</span><span class="n">month</span><span class="p">)</span>
+            <span class="c"># slice the timeaxis based on month</span>
+            <span class="n">monthlist</span> <span class="o">=</span> <span class="n">cdutil</span><span class="o">.</span><span class="n">monthBasedSlicer</span><span class="p">(</span><span class="n">timeAxis</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">monthlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="c"># day are available in this month. i.e. not empty month</span>
+                <span class="c"># get the first and last index of the month in timeAxis</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">monthlist</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="c"># this loop is for big scale timeAxis</span>
+                    <span class="n">monthFirstIndex</span> <span class="o">=</span> <span class="n">monthlist</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">monthLastIndex</span> <span class="o">=</span> <span class="n">monthlist</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                   <span class="c"># get the first and last date of month from the timeAxis</span>
+                    <span class="c"># as component time object.</span>
+                    <span class="n">monthFirstTime</span> <span class="o">=</span> <span class="n">timeAxisCompTime</span><span class="p">[</span><span class="n">monthFirstIndex</span><span class="p">]</span>
+                    <span class="n">monthLastTime</span> <span class="o">=</span> <span class="n">timeAxisCompTime</span><span class="p">[</span><span class="n">monthLastIndex</span><span class="p">]</span>
+                    <span class="c"># get the year</span>
+                    <span class="n">year</span> <span class="o">=</span> <span class="n">monthFirstTime</span><span class="o">.</span><span class="n">year</span>
+
+                    <span class="k">if</span> <span class="n">returnType</span> <span class="o">==</span> <span class="s">&#39;s&#39;</span><span class="p">:</span>
+                        <span class="c"># get the stardate &amp; enddate as string</span>
+                        <span class="n">monthFirstTime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp2timestr</span><span class="p">(</span><span class="n">monthFirstTime</span><span class="p">,</span>
+                                                          <span class="n">returnHour</span><span class="p">)</span>
+                        <span class="n">monthLastTime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp2timestr</span><span class="p">(</span><span class="n">monthLastTime</span><span class="p">,</span>
+                                                          <span class="n">returnHour</span><span class="p">)</span>
+                    <span class="c"># end of if returnType == &#39;s&#39;:</span>
+                    <span class="n">monthTimeRange</span> <span class="o">=</span> <span class="p">(</span><span class="n">monthFirstTime</span><span class="p">,</span> <span class="n">monthLastTime</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">availableMonths</span><span class="p">:</span>
+                        <span class="n">availableMonths</span><span class="p">[</span><span class="n">year</span><span class="p">][</span><span class="n">month</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthTimeRange</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">availableMonths</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">month</span><span class="p">:</span> <span class="n">monthTimeRange</span><span class="p">}</span>
+                    <span class="c"># end of if year in availableMonths:</span>
+                <span class="c"># end of for n in range(0, len(monthlist[0])):</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># days are not available in this month, in the passed timeAxis</span>
+                <span class="k">continue</span>
+            <span class="c"># end of if monthlist[0]:</span>
+        <span class="c"># end of for month in range(1, 13):</span>
+        <span class="c"># make memory free</span>
+        <span class="k">del</span> <span class="n">timeAxisCompTime</span>
+        <span class="c"># return the fully available months of the timeAxis</span>
+        <span class="k">return</span> <span class="n">availableMonths</span>
+    <span class="c"># end of def getTimeAxisMonths(self, timeAxis, ...):</span>
+<span class="c"># end of class TimeUtility():</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/timeutils.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">timeutils.py</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/miso_phases.nc"><tt class="xref download docutils literal"><span class="pre">Data</span> <span class="pre">1</span> <span class="pre">miso_phases.nc</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/mjo_npcs.nc"><tt class="xref download docutils literal"><span class="pre">Data</span> <span class="pre">2</span> <span class="pre">mjo_npcs.nc</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 12</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#about-the-data">About the data</a></li>
+<li><a class="reference internal" href="#about-the-code">About the code</a></li>
+<li><a class="reference internal" href="#reproducing-plots">Reproducing plots</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry11/index.html"
+                        title="previous chapter">Entry 11</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry13/index.html"
+                        title="next chapter">Entry 13</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry12/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry13/index.html" title="Entry 13"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry11/index.html" title="Entry 11"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

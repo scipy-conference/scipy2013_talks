@@ -1,0 +1,878 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 7 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 8" href="../entry8/index.html" />
+    <link rel="prev" title="Entry 6" href="../entry6/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry8/index.html" title="Entry 8"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry6/index.html" title="Entry 6"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-7">
+<h1>Entry 7<a class="headerlink" href="#entry-7" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry7.png" src="../_images/entry7.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Edward Taylor</li>
+</ul>
+</div>
+<div class="section" id="caption">
+<h2>Caption<a class="headerlink" href="#caption" title="Permalink to this headline">¶</a></h2>
+<p>Demonstrating the quality of our fits to the joint colour&#8211;mass
+distributions.— The histograms in each panel show the
+incompleteness-corrected distribution of colours of z &lt; 0.12 galaxies,
+computed in bins of log M∗ centred on log M∗ = 8.8, 9.0, ...,
+11.4. The left panel is for the effective (g-i) colour; the right
+panel is for the intrinsic, dust-corrected, stellar colour, (g-i)*.
+The errorbars show the statistical uncertainties on each these
+distributions, derived by bootstrap resampling. The smooth curves show
+the results of our modelling: the blue and red curves show the fit
+distributions for the B- and R-populations; the black curves shows the
+net B+R distributions. Underlaid beneath all this, the grey points
+show the data themselves; the size of each point reflects the relative
+1/Vmax scaling used to account for selection effects. Note that we
+have not binned the data in the course of the fits; the binning in
+this Figure is for illustrative purposes only. It is clear that the
+fit model provides an excellent description of the observed data.</p>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>These two panels are the showpiece of a new study that i have spent
+the last 3 years (!!) working on, looking into the idea of
+&#8216;bimodality&#8217; among galaxies.  I have just (finally!) submitted this
+work to MNRAS; the paper is actually the first in a series of 5 in
+which i am developing a phenomenological description of the main
+stages of galaxy evolution.</p>
+<p>The observational result of &#8216;bimodality&#8217; has played a crucial role in
+the development of our theoretical understanding of the process of
+galaxy formation and evolution.  Let me explain how, as briefly as i
+can.</p>
+<p>It seems that there are two and only two kinds of galaxies: red ones,
+and blue ones.  (This is, of course, an over simplification &#8211; in
+fact, it is exactly this kind of oversimplification that i am trying
+to bust!  But it is fair to say that this is how a lot of people in
+the field talk about things, even if they don&#8217;t really believe it.)
+In simple terms, a blue colour implies that a galaxy has formed at
+least some stars in the past few hundred million years.  A red colour
+can mean one of two things: it can mean either a very old stellar
+population, with no star formation over the past billion years or so,
+or it can mean that there is a lot of dust in the galaxy.  (Dust makes
+things red: think about a sunset on a smoggy evening.)  So - modulo
+dust - the difference between red and blue is the difference between
+&#8216;star-forming&#8217; and &#8216;dead&#8217;</p>
+<p>The weird thing is that the most massive galaxies tend to be red and
+dead.  This is weird because gravity is what drives star formation.
+Naively, you might think that more mass means more gravity, and so
+more star formation.  But that&#8217;s not what happens: apparently, there
+is something that kills or &#8216;quenches&#8217; the process of star formation in
+massive galaxies.  Nobody knows what this might be, even though this
+quenching problem is one of the most intensively studied areas of
+extragalactic astronomy over the last ten or twelve years.</p>
+<p>Models of galaxy evolution have to include some ad hoc prescription
+for when star formation is quenched, but pretty much every model has
+its own prescription &#8211; no one really understands what the real
+physical mechanism is.  As ridiculous as it sounds, the best way to
+constrain these models is simply to measure the relative and absolute
+numbers of &#8216;red&#8217; and &#8216;blue&#8217; galaxies.</p>
+<p>Even more ridiculously, even after ten or twelve years, no one has
+really measured this well. Let me explain what i mean by that.</p>
+<p>What people have done in the part (with only one notable exception, in
+2004) is simply to draw a line that divides &#8216;red&#8217; galaxies from &#8216;blue&#8217;
+ones.  The problem with this is that if you draw a different line, you
+get a different answer.  And the decision about precisely where to
+draw the line is always arguable, hence arbitrary.  This is even worse
+than it sounds: different choices for the line give you
+<em>qualitatively</em> different measurements.</p>
+<p>So what I have done is to develop a mixture modelling approach.
+Instead of drawing a line to separate &#8216;red&#8217; and &#8216;blue&#8217; <em>galaxies</em>, I
+model the data as a mixture of two distinct but overlapping
+<em>populations</em>.  This lets me figure out the number of galaxies in the
+&#8216;red&#8217; and &#8216;blue&#8217; populations without ever specifying whether any
+particular galaxy belongs to which population.  This lets me get
+around the problem of having to draw a line &#8211; in fact, it gives a way
+to derive an objective, phenomenological classification scheme that is
+<em>based on the data</em>.</p>
+<p>These plots show just how good a description of the data the mixture
+modelling provides.</p>
+<p>What&#8217;s more, in the &#8216;intrinsic&#8217; plot, I have actually performed a
+correction for dust, so that I really am distinguishing galaxies based
+on their stars, not just their apparent colours.  And even better than
+that, although this point isn&#8217;t visually emphasised in the plots I&#8217;ve
+submitted, i get the same answer in both cases.  In other words, if
+you do the mixture modelling well, you get the right answer, no matter
+whether you do the dust correction or not &#8211; I have definitely gotten
+around the dust problem.  And that&#8217;s pretty neat.</p>
+<p>The only other thing that I&#8217;ll say is that I had to learn a lot of
+statistics in order to do all this.  The fits shown in each panel have
+35-40 parameters (having done the full and proper Bayesian model
+selection to make sure that these really are the best and simplest
+descriptions of the data).  This is a level of statistical rigor that
+is very, very rare in the field. But it is, in my opinion the way
+forward in the new age of &#8216;big data&#8217; astronomy.</p>
+<p>That was a lot of background, but i hope it wasn&#8217;t too painful to
+read!</p>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<p>There are two <tt class="xref py py-obj docutils literal"><span class="pre">json</span></tt> archives that contain the data
+for each of the two panels.  There is also the script <tt class="xref py py-obj docutils literal"><span class="pre">bimix.py</span></tt> that
+should use these data to make the two plots.  You can either (i hope!)
+just <tt class="xref py py-obj docutils literal"><span class="pre">python</span> <span class="pre">bimix.py</span></tt> at the command line, or run <tt class="xref py py-obj docutils literal"><span class="pre">bimix.makePlots()</span></tt>
+in interactive mode.</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/bimix_effective.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span> <span class="pre">Panel</span> <span class="pre">1</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/bimix_intrinsic.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span> <span class="pre">Panel</span> <span class="pre">2</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">p</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">time</span>
+
+<span class="n">bluecolor</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">185</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
+<span class="n">redcolor</span> <span class="o">=</span>  <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">185</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
+
+<span class="n">masslimit</span> <span class="o">=</span> <span class="mf">8.7</span>
+
+<span class="k">def</span> <span class="nf">plotFitDistros</span><span class="p">(</span> <span class="n">parVec</span><span class="p">,</span> <span class="n">argList</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">figstring</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">nbins</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">scaleby</span><span class="o">=</span><span class="mf">0.765</span><span class="p">,</span> <span class="n">massbin</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">massbins</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+                    <span class="n">showdata</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">showbad</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scalepoints</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                    <span class="n">applyerrors</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">nowhite</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">bootstraps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">printthings</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                    <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mf">8.675</span><span class="p">,</span> <span class="mf">11.525</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.45</span><span class="p">),</span> 
+                    <span class="n">xlabel</span><span class="o">=</span><span class="s">&#39;stellar mass, log $M_*$&#39;</span><span class="p">,</span> 
+                    <span class="n">ylabel</span><span class="o">=</span><span class="s">&#39;intrinsic stellar colour, $(g-i)_*$     &#39;</span><span class="p">,</span>
+                    <span class="n">bestfit</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">logyblue</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                    <span class="n">redcolor</span><span class="o">=</span><span class="n">redcolor</span><span class="p">,</span> <span class="n">bluecolor</span><span class="o">=</span><span class="n">bluecolor</span><span class="p">,</span>
+                    <span class="p">):</span>
+
+    <span class="c"># compute the best fit (or whatever) model from parVec</span>
+    <span class="p">(</span> <span class="n">xobs</span><span class="p">,</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">xerr</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">xycovar</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">redlike</span><span class="p">,</span> <span class="n">bluelike</span><span class="p">,</span> <span class="n">badlike</span><span class="p">,</span>
+      <span class="n">bluem</span><span class="p">,</span> <span class="n">pblue</span><span class="p">,</span> <span class="n">redm</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">bluem1</span><span class="p">,</span> <span class="n">pblue1</span><span class="p">,</span> <span class="n">redm1</span><span class="p">,</span> <span class="n">pred1</span><span class="p">,</span> 
+      <span class="n">bluem2</span><span class="p">,</span> <span class="n">pblue2</span><span class="p">,</span> <span class="n">redm2</span><span class="p">,</span> <span class="n">pred2</span><span class="p">,</span> <span class="n">bluey</span><span class="p">,</span> <span class="n">bluedy</span><span class="p">,</span> <span class="n">redy</span><span class="p">,</span> <span class="n">reddy</span><span class="p">,</span> <span class="n">result</span> <span class="p">)</span> \
+      <span class="o">=</span> <span class="n">bivarModel</span><span class="p">(</span> <span class="n">parVec</span><span class="p">,</span> <span class="o">*</span><span class="n">argList</span><span class="p">,</span> <span class="n">returnFullModel</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">plotprob</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>
+    <span class="n">goodlike</span> <span class="o">=</span> <span class="n">redlike</span> <span class="o">+</span> <span class="n">bluelike</span>
+
+    <span class="k">if</span> <span class="n">yerr</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">yobs</span><span class="o">.</span><span class="n">shape</span> <span class="p">:</span> <span class="n">applyerrors</span> <span class="o">=</span> <span class="bp">False</span>        
+
+    <span class="c"># open the figure</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figure</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span> <span class="p">)</span> <span class="p">;</span> <span class="n">p</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span> <span class="n">left</span><span class="o">=</span><span class="mf">0.22</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.995</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.065</span> <span class="p">)</span>
+    
+    <span class="c"># define point sizes, colors, etc.</span>
+    <span class="k">if</span> <span class="n">scalepoints</span>  <span class="p">:</span>
+        <span class="n">psize</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">+</span> <span class="mf">1.</span><span class="o">/</span><span class="n">weights</span> <span class="o">*</span> <span class="mf">2.</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">psize</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">pcolor</span><span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray_r</span><span class="p">(</span> <span class="mf">0.2</span> <span class="p">)</span>
+    <span class="n">palpha</span><span class="o">=</span> <span class="mf">1.</span>
+
+    <span class="n">bsize</span> <span class="o">=</span> <span class="mf">68.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span> <span class="n">badlike</span> <span class="o">/</span> <span class="p">(</span> <span class="n">badlike</span> <span class="o">+</span> <span class="n">goodlike</span> <span class="p">),</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span> <span class="p">)</span><span class="o">**</span><span class="mf">2.</span>
+ 
+    <span class="c"># plot the datapoints</span>
+    <span class="k">if</span> <span class="n">showdata</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">showbad</span> <span class="p">:</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">xobs</span><span class="p">,</span> <span class="n">bsize</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span> <span class="p">)</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">xobs</span><span class="p">,</span> <span class="n">psize</span><span class="p">,</span> <span class="n">pcolor</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">palpha</span><span class="p">,</span> 
+                   <span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">9</span> <span class="p">)</span>
+
+<span class="c">#    p.xlim( ylim ) ; p.draw()</span>
+    
+    <span class="c"># define the mass bins in which histograms will be plotted</span>
+    <span class="k">if</span> <span class="n">massbins</span> <span class="o">==</span> <span class="bp">None</span> <span class="p">:</span>
+        <span class="n">massbins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="n">masslimit</span><span class="p">,</span> <span class="mf">11.5</span><span class="o">+</span><span class="n">massbin</span><span class="p">,</span> <span class="n">massbin</span> <span class="p">)[</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span>
+<span class="c">#    print massbins</span>
+
+    <span class="c"># setup for showing the fit curves</span>
+    <span class="n">ytp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nbins</span><span class="o">*</span><span class="mi">4</span> <span class="p">)</span>
+
+    <span class="n">densenorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">weights</span> <span class="p">)</span>
+
+    <span class="c"># now, for each bin ...</span>
+    <span class="k">for</span> <span class="n">mi</span><span class="p">,</span> <span class="n">m0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span> <span class="n">massbins</span> <span class="p">):</span>
+      <span class="c"># ... select the galaxies that fall in this bin</span>
+      <span class="n">inbin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">xobs</span> <span class="o">-</span> <span class="n">m0</span> <span class="o">-</span> <span class="n">massbin</span><span class="o">/</span><span class="mf">2.</span> <span class="p">)</span> <span class="o">&lt;</span> <span class="n">massbin</span><span class="o">/</span><span class="mf">2.</span> <span class="p">)</span> 
+
+      <span class="c"># histograms for the observed data</span>
+      <span class="n">hist</span><span class="p">,</span> <span class="n">cedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+          <span class="n">yobs</span><span class="p">[</span><span class="n">inbin</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">weights</span><span class="p">[</span><span class="n">inbin</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">nbins</span> <span class="p">)</span>
+      <span class="n">pbins</span> <span class="o">=</span> <span class="p">(</span> <span class="n">cedges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cedges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span>
+      <span class="n">cbinwidth</span> <span class="o">=</span> <span class="n">cedges</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">cedges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="n">hist</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span> <span class="s">&#39;f&#39;</span> <span class="p">)</span> <span class="o">/</span> <span class="n">densenorm</span> <span class="o">/</span> <span class="n">cbinwidth</span> <span class="o">*</span> <span class="n">scaleby</span>
+      <span class="c"># will be plotted later</span>
+
+      <span class="c"># bootstrapping to find statistical errors, if necessary</span>
+      <span class="n">histerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">pbins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+      <span class="k">if</span> <span class="n">bootstraps</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">:</span> 
+          <span class="n">hihist</span> <span class="o">=</span> <span class="n">hist</span>
+          <span class="n">lohist</span> <span class="o">=</span> <span class="n">hist</span>
+      <span class="k">else</span> <span class="p">:</span>
+          <span class="n">bootvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">pbins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bootstraps</span><span class="p">)</span> <span class="p">)</span>
+          <span class="n">binpop</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span> <span class="n">inbin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="c">#          print binpop</span>
+          <span class="k">for</span> <span class="n">bi</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span> <span class="n">bootstraps</span> <span class="p">):</span>
+              <span class="k">if</span> <span class="n">bi</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                  <span class="n">choices</span> <span class="o">=</span> <span class="n">inbin</span>
+              <span class="k">else</span> <span class="p">:</span>
+                  <span class="n">scores</span> <span class="o">=</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span> <span class="n">binpop</span> <span class="p">)</span> <span class="o">*</span> <span class="n">binpop</span> <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span> <span class="s">&#39;i&#39;</span> <span class="p">)</span>
+                  <span class="n">choices</span> <span class="o">=</span> <span class="n">inbin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span> <span class="n">scores</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="p">]</span>
+                  
+              <span class="n">boothist</span><span class="p">,</span> <span class="n">cedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+                  <span class="n">yobs</span><span class="p">[</span><span class="n">choices</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">weights</span><span class="p">[</span><span class="n">choices</span><span class="p">],</span> 
+                  <span class="nb">range</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">nbins</span> <span class="p">)</span>
+              <span class="n">bootvalues</span><span class="p">[</span> <span class="p">:,</span> <span class="n">bi</span> <span class="p">]</span> <span class="o">=</span> <span class="n">boothist</span>
+
+              <span class="n">nz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">boothist</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">)</span>
+
+          <span class="n">bootvalues</span> <span class="o">=</span> <span class="n">bootvalues</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span> <span class="s">&#39;f&#39;</span> <span class="p">)</span> <span class="o">/</span> <span class="n">densenorm</span> <span class="o">/</span> <span class="n">cbinwidth</span> <span class="o">*</span> <span class="n">scaleby</span>
+          <span class="n">counter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">bootstraps</span> <span class="p">)</span>
+          <span class="n">percentiles</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">0.158655</span><span class="p">,</span> <span class="mf">0.841345</span> <span class="p">]</span>
+          <span class="k">for</span> <span class="n">pi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">pbins</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">):</span>
+              <span class="nb">sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span> <span class="n">bootvalues</span><span class="p">[</span> <span class="n">pi</span><span class="p">,</span> <span class="p">:</span> <span class="p">]</span> <span class="p">)</span>
+              <span class="n">histerr</span><span class="p">[</span> <span class="p">:,</span> <span class="n">pi</span> <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span> <span class="n">percentiles</span><span class="p">,</span> <span class="n">counter</span><span class="p">,</span> 
+                                           <span class="n">bootvalues</span><span class="p">[</span> <span class="n">pi</span><span class="p">,</span> <span class="nb">sorted</span> <span class="p">]</span> <span class="p">)</span>
+          <span class="n">hihist</span> <span class="o">=</span> <span class="n">histerr</span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:</span> <span class="p">]</span>
+          <span class="n">lohist</span> <span class="o">=</span> <span class="n">histerr</span><span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:</span> <span class="p">]</span>
+
+      <span class="k">if</span> <span class="n">applyerrors</span> <span class="p">:</span>
+          <span class="c"># figure out how to deal with the observational errors </span>
+          <span class="n">redweight</span> <span class="o">=</span> <span class="p">(</span> <span class="n">redlike</span> <span class="o">/</span> <span class="n">yerr</span><span class="o">*</span><span class="mi">2</span> <span class="o">/</span> <span class="n">weights</span> <span class="p">)[</span> <span class="n">inbin</span> <span class="p">]</span>
+          <span class="n">reddymean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">redweight</span> <span class="o">*</span> <span class="n">yerr</span><span class="p">[</span><span class="n">inbin</span><span class="p">]</span> <span class="p">)</span> \
+              <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">redweight</span> <span class="p">)</span>
+
+          <span class="n">blueweight</span> <span class="o">=</span> <span class="p">(</span> <span class="n">redlike</span> <span class="o">/</span> <span class="n">yerr</span><span class="o">*</span><span class="mi">2</span> <span class="o">/</span> <span class="n">weights</span> <span class="p">)[</span> <span class="n">inbin</span> <span class="p">]</span>
+          <span class="n">bluedymean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">redweight</span> <span class="o">*</span> <span class="n">yerr</span><span class="p">[</span><span class="n">inbin</span><span class="p">]</span> <span class="p">)</span> \
+              <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">redweight</span> <span class="p">)</span>
+
+      <span class="c"># figure out how to show the fits themselves</span>
+      <span class="n">sumover</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">redm</span> <span class="o">-</span> <span class="n">m0</span> <span class="o">-</span> <span class="n">massbin</span><span class="o">/</span><span class="mf">2.</span> <span class="p">)</span> <span class="o">&lt;</span> <span class="n">massbin</span><span class="o">/</span><span class="mf">2.</span> <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="n">rxtp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="n">ytp</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
+      <span class="n">bxtp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="n">ytp</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
+      <span class="k">for</span> <span class="n">mj</span> <span class="ow">in</span> <span class="n">sumover</span><span class="p">:</span>
+          <span class="n">rednorm</span><span class="o">=</span> <span class="n">pred</span><span class="p">[</span> <span class="n">mj</span> <span class="p">]</span>
+          <span class="n">redcen</span> <span class="o">=</span> <span class="n">redy</span><span class="p">[</span> <span class="n">mj</span> <span class="p">]</span>
+          <span class="n">redvar</span> <span class="o">=</span> <span class="n">reddy</span><span class="p">[</span><span class="n">mj</span> <span class="p">]</span><span class="o">**</span><span class="mi">2</span> 
+          <span class="k">if</span> <span class="n">applyerrors</span> <span class="p">:</span> <span class="n">redvar</span> <span class="o">+=</span> <span class="n">reddymean</span><span class="o">**</span><span class="mf">2.</span>
+
+          <span class="n">rxtp</span> <span class="o">+=</span> <span class="n">rednorm</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">redvar</span> <span class="p">)</span> \
+              <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">ytp</span> <span class="o">-</span> <span class="n">redcen</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">redvar</span> <span class="p">)</span> 
+
+          <span class="n">bluenorm</span><span class="o">=</span> <span class="n">pblue</span><span class="p">[</span> <span class="n">mj</span> <span class="p">]</span>
+          <span class="n">bluecen</span> <span class="o">=</span> <span class="n">bluey</span><span class="p">[</span> <span class="n">mj</span> <span class="p">]</span>
+          <span class="n">bluevar</span> <span class="o">=</span> <span class="n">bluedy</span><span class="p">[</span><span class="n">mj</span> <span class="p">]</span><span class="o">**</span><span class="mf">2.</span>
+          <span class="k">if</span> <span class="n">applyerrors</span> <span class="p">:</span> <span class="n">bluevar</span> <span class="o">+=</span> <span class="n">bluedymean</span><span class="o">**</span><span class="mf">2.</span>
+              
+          <span class="n">bxtp</span> <span class="o">+=</span><span class="n">bluenorm</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span><span class="n">bluevar</span> <span class="p">)</span> \
+                  <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">ytp</span> <span class="o">-</span> <span class="n">bluecen</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span><span class="n">bluevar</span> <span class="p">)</span> 
+
+<span class="c">#          print redm[ mj ]</span>
+<span class="c">#          print &#39;red  :&#39;, np.sum(rxtp)/np.sum(rxtp+bxtp), redcen,np.sqrt( redvar)</span>
+<span class="c">#          print &#39;blue :&#39;, np.sum(bxtp)/np.sum(rxtp+bxtp),bluecen,np.sqrt(bluevar)</span>
+
+      <span class="n">rxtp</span> <span class="o">*=</span> <span class="n">massbin</span> <span class="o">*</span> <span class="n">scaleby</span> <span class="o">/</span> <span class="n">sumover</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="n">bxtp</span> <span class="o">*=</span> <span class="n">massbin</span> <span class="o">*</span> <span class="n">scaleby</span> <span class="o">/</span> <span class="n">sumover</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c">#      print &#39;red  :&#39;, np.sum(rxtp)/np.sum(rxtp+bxtp), redcen,np.sqrt( redvar)</span>
+<span class="c">#      print &#39;blue :&#39;, np.sum(bxtp)/np.sum(rxtp+bxtp),bluecen,np.sqrt(bluevar)</span>
+
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">nowhite</span> <span class="p">:</span>
+          <span class="c"># fill in white under curves for this bin</span>
+          <span class="n">p</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span> <span class="n">ytp</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="mi">0</span><span class="o">*</span><span class="n">ytp</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="n">rxtp</span><span class="o">+</span><span class="n">bxtp</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">-</span><span class="mf">0.8</span> <span class="p">)</span>
+          <span class="n">p</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span> <span class="n">pbins</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="mi">0</span><span class="o">*</span><span class="n">hihist</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="n">hihist</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">-</span><span class="mf">0.8</span> <span class="p">)</span>
+
+          <span class="c"># replot data points as necessary</span>
+          <span class="n">limit1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">ytp</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="n">rxtp</span><span class="o">+</span><span class="n">bxtp</span> <span class="p">)</span>
+          <span class="n">limit2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">pbins</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="n">hihist</span> <span class="p">)</span>
+          <span class="n">limit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">limit1</span> <span class="o">&gt;</span> <span class="n">limit2</span><span class="p">,</span> <span class="n">limit1</span><span class="p">,</span> <span class="n">limit2</span> <span class="p">)</span>
+          <span class="n">replot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="p">(</span> <span class="n">xobs</span> <span class="o">&gt;</span> <span class="n">m0</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span> <span class="n">xobs</span> <span class="o">&lt;</span> <span class="n">limit</span> <span class="p">)</span> <span class="p">)</span>
+          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span> <span class="n">replot</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="ow">and</span> <span class="n">showdata</span> <span class="p">:</span>
+              <span class="n">p</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span> <span class="n">yobs</span><span class="p">[</span><span class="n">replot</span><span class="p">],</span> <span class="n">xobs</span><span class="p">[</span><span class="n">replot</span><span class="p">],</span> <span class="n">psize</span><span class="p">[</span><span class="n">replot</span><span class="p">],</span> <span class="n">pcolor</span><span class="p">,</span> 
+                         <span class="n">alpha</span><span class="o">=</span><span class="n">palpha</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">-</span><span class="mf">0.7</span> <span class="p">)</span>
+
+      <span class="c"># fill in under the fit curves</span>
+      <span class="k">for</span> <span class="p">(</span> <span class="n">xtp</span><span class="p">,</span> <span class="n">ctp</span> <span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span> <span class="p">(</span> <span class="n">rxtp</span><span class="p">,</span> <span class="n">bxtp</span> <span class="p">),</span>  <span class="p">(</span> <span class="n">redcolor</span><span class="p">,</span> <span class="n">bluecolor</span> <span class="p">)</span> <span class="p">):</span>
+          <span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">xtp</span> <span class="o">&gt;</span> <span class="mf">1e-4</span> <span class="p">)</span>
+          <span class="n">p</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span> <span class="n">ytp</span><span class="p">[</span> <span class="n">sig</span> <span class="p">],</span> <span class="n">m0</span> <span class="o">+</span> <span class="mf">0.</span><span class="o">*</span><span class="n">xtp</span><span class="p">[</span> <span class="n">sig</span> <span class="p">],</span>
+                          <span class="n">m0</span><span class="o">+</span><span class="n">xtp</span><span class="p">[</span> <span class="n">sig</span> <span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">ctp</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">-</span><span class="mf">0.6</span>  <span class="p">)</span>
+                  
+      <span class="c"># plot the statistical uncertainties from bootstrapping</span>
+      <span class="k">if</span> <span class="n">bootstraps</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">:</span>
+          <span class="k">for</span> <span class="n">pi</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">hist</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span>
+              <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">pbins</span><span class="p">[</span><span class="n">pi</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="p">[</span> <span class="n">m0</span><span class="o">+</span><span class="n">lohist</span><span class="p">[</span><span class="n">pi</span><span class="p">],</span> <span class="n">m0</span><span class="o">+</span><span class="n">hihist</span><span class="p">[</span><span class="n">pi</span><span class="p">]</span> <span class="p">],</span> 
+                      <span class="s">&#39;w-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.4</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">-</span><span class="mf">0.5</span> <span class="p">)</span>
+              <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">pbins</span><span class="p">[</span><span class="n">pi</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="p">[</span> <span class="n">m0</span><span class="o">+</span><span class="n">lohist</span><span class="p">[</span><span class="n">pi</span><span class="p">],</span> <span class="n">m0</span><span class="o">+</span><span class="n">hihist</span><span class="p">[</span><span class="n">pi</span><span class="p">]</span> <span class="p">],</span> 
+                      <span class="s">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span> <span class="p">)</span>
+
+      <span class="c"># plot the histograms for the data</span>
+      <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">pbins</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="n">hist</span><span class="p">,</span> <span class="s">&#39;w-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s">&#39;steps-mid&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">-</span><span class="mf">0.5</span> <span class="p">)</span>
+      <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">pbins</span><span class="p">,</span> <span class="n">m0</span><span class="o">+</span><span class="n">hist</span><span class="p">,</span> <span class="s">&#39;k-&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.65</span><span class="p">,</span><span class="n">drawstyle</span><span class="o">=</span><span class="s">&#39;steps-mid&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="n">mi</span> <span class="p">)</span>
+
+      <span class="c"># actually show the fits</span>
+      <span class="k">for</span> <span class="p">(</span> <span class="n">xtp</span><span class="p">,</span> <span class="n">ctp</span><span class="p">,</span> <span class="n">lw</span> <span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span> <span class="p">(</span> <span class="n">rxtp</span> <span class="o">+</span> <span class="n">bxtp</span><span class="p">,</span> <span class="n">bxtp</span><span class="p">,</span> <span class="n">rxtp</span> <span class="p">),</span> 
+                                   <span class="p">(</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">bluecolor</span><span class="p">,</span> <span class="n">redcolor</span> <span class="p">),</span> 
+                                   <span class="p">(</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
+          <span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">xtp</span> <span class="o">&gt;</span> <span class="mf">1e-4</span> <span class="p">)</span>
+          <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ytp</span><span class="p">[</span> <span class="n">sig</span> <span class="p">],</span> <span class="n">m0</span><span class="o">+</span><span class="n">xtp</span><span class="p">[</span> <span class="n">sig</span> <span class="p">],</span> <span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span> <span class="p">)</span>
+          <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ytp</span><span class="p">[</span> <span class="n">sig</span> <span class="p">],</span> <span class="n">m0</span><span class="o">+</span><span class="n">xtp</span><span class="p">[</span> <span class="n">sig</span> <span class="p">],</span> <span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">ctp</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">+.</span><span class="mi">1</span> <span class="p">)</span>
+                  
+      <span class="c"># draw out the bin limits</span>
+      <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">m0</span><span class="p">,</span> <span class="s">&#39;-&#39;</span><span class="p">,</span> 
+              <span class="n">color</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">(</span> <span class="mf">0.7</span> <span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">mi</span><span class="o">+.</span><span class="mi">3</span> <span class="p">)</span>
+
+    <span class="c"># limits, labels, and draw the fucker</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">8.7</span><span class="p">,</span> <span class="mf">11.6</span><span class="p">,</span> <span class="mf">0.2</span> <span class="p">)</span> <span class="p">)</span> <span class="p">;</span> <span class="n">p</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="n">xlim</span> <span class="p">)</span> 
+
+    
+    <span class="n">ytv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.1</span> <span class="p">)</span>
+    <span class="n">ytn</span> <span class="o">=</span> <span class="n">ytv</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ytv</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span> <span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="n">ytv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mf">0.2</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="o">.</span><span class="mo">001</span> <span class="p">)</span> <span class="ow">and</span> <span class="p">(</span> <span class="p">(</span><span class="n">ytv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mf">0.2</span> <span class="p">)</span> <span class="o">&lt;</span> <span class="o">.</span><span class="mi">199</span> <span class="p">)</span> <span class="p">:</span>
+            <span class="n">ytn</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="o">=</span> <span class="s">&#39; &#39;</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">ytn</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%.1f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">ytv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span> <span class="n">ytv</span><span class="p">,</span> <span class="n">ytn</span> <span class="p">)</span> <span class="p">;</span> <span class="n">p</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="n">ylim</span> <span class="p">)</span>
+        
+    <span class="n">p</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s">&#39;xx-large&#39;</span> <span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s">&#39;xx-large&#39;</span> <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">figstring</span> <span class="o">!=</span> <span class="bp">None</span> <span class="p">:</span>
+        <span class="n">figstr</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> - </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span> <span class="n">figstring</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()[</span> <span class="mi">4</span><span class="p">:</span><span class="mi">16</span> <span class="p">]</span> <span class="p">)</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.995</span><span class="p">,</span> <span class="n">figstr</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s">&#39;small&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;gray&#39;</span><span class="p">,</span> 
+                   <span class="n">va</span><span class="o">=</span><span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;right&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s">&#39;vertical&#39;</span> <span class="p">)</span>
+
+    <span class="n">p</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+
+<span class="c"># _____________________________________________________________________________</span>
+<span class="c">#</span>
+<span class="c"># THE BASIC DEFINITION OF THE MODEL</span>
+<span class="c"># _____________________________________________________________________________</span>
+
+<span class="k">def</span> <span class="nf">bivarModel</span><span class="p">(</span> <span class="n">parVec</span><span class="p">,</span> <span class="n">parList</span><span class="p">,</span> 
+                <span class="n">xobs</span><span class="p">,</span> <span class="n">xunc</span><span class="p">,</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">yunc</span><span class="p">,</span> <span class="n">xycovar</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span>
+                <span class="n">bluePrior</span><span class="p">,</span> <span class="n">redPrior</span><span class="p">,</span> <span class="n">badPrior</span><span class="p">,</span> <span class="n">isinsample</span><span class="p">,</span> 
+                <span class="n">blueyfunc</span><span class="p">,</span> <span class="n">bluedyfunc</span><span class="p">,</span> <span class="n">redyfunc</span><span class="p">,</span> <span class="n">reddyfunc</span><span class="p">,</span> 
+                <span class="n">mbinsize</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> 
+                <span class="n">logyblue</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">redNormalMF</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">usePriors</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                <span class="n">plotprob</span><span class="o">=</span><span class="mf">1e-3</span> <span class="o">+</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="n">printprob</span><span class="o">=.</span><span class="mo">02</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">,</span> 
+                <span class="n">returnFullModel</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">computelogp</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">showdata</span><span class="o">=</span><span class="bp">True</span> <span class="p">)</span> <span class="p">:</span>
+
+        <span class="n">plotscore</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">plotme</span> <span class="o">=</span> <span class="n">plotscore</span> <span class="o">&lt;</span> <span class="n">plotprob</span>
+        <span class="n">printscore</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">printme</span> <span class="o">=</span> <span class="n">printscore</span> <span class="o">&lt;</span> <span class="n">printprob</span>
+
+        <span class="k">if</span> <span class="n">plotme</span> <span class="p">:</span> <span class="n">printme</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="n">printme</span> <span class="p">:</span>
+            <span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">par</span> <span class="o">=</span> <span class="n">unpackPars</span><span class="p">(</span> <span class="n">parVec</span><span class="p">,</span> <span class="n">parList</span> <span class="p">)</span>
+
+        <span class="n">mmod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="n">masslimit</span><span class="p">,</span> <span class="mf">11.75</span><span class="p">,</span> <span class="n">mbinsize</span> <span class="p">)</span> <span class="o">+</span> <span class="n">mbinsize</span><span class="o">/</span><span class="mf">2.</span>
+
+        <span class="c"># enforce priors as needed</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redfrac&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> 
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redfrac&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redfrac&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;red2frac&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;red2frac&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blue2frac&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blue2frac&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;badrate&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;badrate&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;yerrscale&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> 
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;xscatterbad&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;yscatterbad&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> 
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq0&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">9.</span><span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redq0&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redq2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">9.</span><span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq0&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">11.5</span> <span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redq0&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redq2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">11.5</span> <span class="p">)</span>
+<span class="c">#             | (par[&#39;bluet0&#39;]-par[&#39;bluet2&#39;] &lt; 9.)</span>
+<span class="c">#             | (par[&#39;redt0&#39;]-par[&#39;redt2&#39;] &lt; 9.)</span>
+<span class="c">#             | (par[&#39;bluet0&#39;]+par[&#39;bluet2&#39;] &gt; 11.5 )</span>
+<span class="c">#             | (par[&#39;redt0&#39;]+par[&#39;redt2&#39;] &gt; 11.5 )</span>
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redq2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> 
+             <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;redq2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> 
+<span class="c">#             | (par[&#39;bluet2&#39;] &lt; 0) | (par[&#39;redt2&#39;] &lt; 0) </span>
+<span class="c">#             | (par[&#39;bluet2&#39;] &gt; 3) | (par[&#39;redt2&#39;] &gt; 3) </span>
+             <span class="o">|</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluelogm0&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluelogm02&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redlogm0&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="p">)</span>
+             <span class="o">|</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redlogm02&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="p">)</span>
+             <span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">returnFullModel</span> <span class="p">:</span>
+<span class="c">#            print &#39;_&#39;,</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+        <span class="c"># compute blue mass function at discrete mmods</span>
+        <span class="n">bluem1</span><span class="p">,</span> <span class="n">pblue1</span> \
+            <span class="o">=</span> <span class="n">SchechterFunction</span><span class="p">(</span> <span class="n">mmod</span><span class="p">,</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluelogm0&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluealpha&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blue2frac&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">pblue1</span> <span class="o">*=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blue2frac&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redfrac&#39;</span> <span class="p">]</span> <span class="p">)</span>
+            <span class="n">bluem2</span><span class="p">,</span> <span class="n">pblue2</span> \
+                <span class="o">=</span> <span class="n">SchechterFunction</span><span class="p">(</span> <span class="n">mmod</span><span class="p">,</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;bluelogm02&#39;</span><span class="p">],</span><span class="n">par</span><span class="p">[</span><span class="s">&#39;bluealpha2&#39;</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">pblue2</span> <span class="o">*=</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blue2frac&#39;</span> <span class="p">]</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redfrac&#39;</span> <span class="p">]</span> <span class="p">)</span>
+            <span class="n">bluem</span> <span class="o">=</span> <span class="p">(</span> <span class="n">pblue1</span><span class="o">*</span><span class="n">bluem1</span> <span class="o">+</span> <span class="n">pblue2</span><span class="o">*</span><span class="n">bluem2</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="n">pblue1</span> <span class="o">+</span> <span class="n">pblue2</span> <span class="p">)</span>
+            <span class="n">pblue</span> <span class="o">=</span> <span class="n">pblue1</span> <span class="o">+</span> <span class="n">pblue2</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">bluem2</span><span class="p">,</span> <span class="n">pblue2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+            <span class="n">pblue1</span> <span class="o">*=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redfrac&#39;</span> <span class="p">]</span> <span class="p">)</span>
+            <span class="n">bluem</span><span class="p">,</span> <span class="n">pblue</span> <span class="o">=</span> <span class="n">bluem1</span><span class="p">,</span> <span class="n">pblue1</span>
+
+        <span class="c"># compute red mass function at discrete mmods</span>
+        <span class="n">redm1</span><span class="p">,</span> <span class="n">pred1</span> \
+            <span class="o">=</span> <span class="n">SchechterFunction</span><span class="p">(</span> <span class="n">mmod</span><span class="p">,</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redlogm0&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redalpha&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;red2frac&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">pred1</span> <span class="o">*=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;red2frac&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redfrac&#39;</span> <span class="p">]</span>
+            <span class="n">redm2</span><span class="p">,</span> <span class="n">pred2</span> \
+                <span class="o">=</span> <span class="n">SchechterFunction</span><span class="p">(</span> <span class="n">mmod</span><span class="p">,</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redlogm02&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redalpha2&#39;</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">pred2</span> <span class="o">*=</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;red2frac&#39;</span> <span class="p">]</span> <span class="o">*</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redfrac&#39;</span> <span class="p">]</span>
+            <span class="n">redm</span> <span class="o">=</span> <span class="p">(</span> <span class="n">pred1</span><span class="o">*</span><span class="n">redm1</span> <span class="o">+</span> <span class="n">pred2</span><span class="o">*</span><span class="n">redm2</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="n">pred1</span> <span class="o">+</span> <span class="n">pred2</span> <span class="p">)</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">pred1</span> <span class="o">+</span> <span class="n">pred2</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">redm2</span><span class="p">,</span> <span class="n">pred2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.</span>
+            <span class="n">pred1</span> <span class="o">*=</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redfrac&#39;</span> <span class="p">]</span>
+            <span class="n">redm</span><span class="p">,</span> <span class="n">pred</span> <span class="o">=</span> <span class="n">redm1</span><span class="p">,</span> <span class="n">pred1</span>
+
+<span class="c">#        print np.sum( pred1 )</span>
+
+        <span class="k">if</span> <span class="n">redNormalMF</span> <span class="p">:</span>
+            <span class="n">redm1</span> <span class="o">=</span> <span class="n">mmod</span>
+            <span class="n">pred1</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redfrac&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redalpha&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.</span> <span class="p">)</span> \
+                <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">redm1</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redlogm0&#39;</span><span class="p">]</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> 
+                          <span class="o">/</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redalpha&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.</span> <span class="p">)</span>
+            <span class="n">redm2</span> <span class="o">=</span> <span class="n">mmod</span>
+            <span class="n">pred2</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">pred1</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">pred1</span>
+<span class="c">#        print np.sum( pred1 )</span>
+
+        <span class="n">bluey</span> <span class="o">=</span> <span class="n">GeneralLines</span><span class="p">(</span> 
+            <span class="n">bluem</span><span class="p">,</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluep0&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluep1&#39;</span> <span class="p">],</span>
+            <span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq0&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq1&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq2&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blueq3&#39;</span> <span class="p">]</span> <span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="n">bluedyfunc</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="n">bluedyfunc</span> <span class="o">!=</span> <span class="bp">None</span> <span class="p">:</span>
+            <span class="n">bluedy</span><span class="o">=</span> <span class="n">bluedyfunc</span><span class="p">(</span> <span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet3&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet2&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet1&#39;</span><span class="p">],</span>
+                                 <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet0&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blues1&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blues0&#39;</span><span class="p">],</span>
+                                 <span class="p">),</span> <span class="n">bluem</span> <span class="o">-</span> <span class="mf">10.3</span> <span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">bluedy</span><span class="o">=</span> <span class="n">GeneralLines</span><span class="p">(</span>
+                <span class="n">bluem</span><span class="p">,</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blues0&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;blues1&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet0&#39;</span> <span class="p">],</span> 
+                <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet1&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet2&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;bluet3&#39;</span> <span class="p">]</span> <span class="p">)</span>
+
+        <span class="n">redy</span>  <span class="o">=</span> <span class="n">GeneralLines</span><span class="p">(</span>
+            <span class="n">redm</span> <span class="p">,</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redp0&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redp1&#39;</span> <span class="p">],</span>
+            <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redq0&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redq1&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redq2&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redq3&#39;</span> <span class="p">]</span> <span class="p">)</span> 
+
+        <span class="k">if</span> <span class="n">reddyfunc</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="n">reddyfunc</span> <span class="o">!=</span> <span class="bp">None</span> <span class="p">:</span>
+            <span class="n">reddy</span><span class="o">=</span> <span class="n">reddyfunc</span><span class="p">(</span> <span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redt3&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redt2&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redt1&#39;</span><span class="p">],</span>
+                                <span class="n">par</span><span class="p">[</span><span class="s">&#39;redt0&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;reds1&#39;</span><span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;reds0&#39;</span><span class="p">],</span>
+                                <span class="p">),</span> <span class="n">redm</span> <span class="o">-</span> <span class="mf">10.3</span> <span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">reddy</span> <span class="o">=</span> <span class="n">GeneralLines</span><span class="p">(</span> 
+                <span class="n">redm</span> <span class="p">,</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;reds0&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;reds1&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redt0&#39;</span> <span class="p">],</span> 
+                <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redt1&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;redt2&#39;</span> <span class="p">],</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;redt3&#39;</span> <span class="p">]</span> <span class="p">)</span> 
+
+<span class="c">#        bluedy = bluey - bluedy</span>
+<span class="c">#        reddy = reddy - redy</span>
+
+<span class="c">#        if np.any( bluedy &lt; 0 ) or np.any( reddy &lt; 0 ):</span>
+<span class="c">#            return -np.inf</span>
+
+        <span class="n">xvar</span> <span class="o">=</span> <span class="n">xunc</span><span class="o">**</span><span class="mf">2.</span>
+
+        <span class="c"># scale y uncertainties as required</span>
+        <span class="n">yerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;yerrscale&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">yunc</span> <span class="p">)</span><span class="o">**</span><span class="mf">2.</span>
+                        <span class="o">+</span> <span class="p">(</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;yerradjust&#39;</span><span class="p">]</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+
+        <span class="n">rhoxy</span> <span class="o">=</span> <span class="n">xycovar</span> <span class="o">*</span> <span class="n">xunc</span> <span class="o">*</span> <span class="n">yerr</span>
+
+        <span class="k">if</span> <span class="n">returnFullModel</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">computelogp</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span> <span class="n">xobs</span><span class="p">,</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">xunc</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">xycovar</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span>
+                     <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> 
+                     <span class="n">bluem</span><span class="p">,</span> <span class="n">pblue</span><span class="p">,</span> <span class="n">redm</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> 
+                     <span class="n">bluem1</span><span class="p">,</span> <span class="n">pblue1</span><span class="p">,</span> <span class="n">redm1</span><span class="p">,</span> <span class="n">pred1</span><span class="p">,</span> 
+                     <span class="n">bluem2</span><span class="p">,</span> <span class="n">pblue2</span><span class="p">,</span> <span class="n">redm2</span><span class="p">,</span> <span class="n">pred2</span><span class="p">,</span> 
+                     <span class="n">bluey</span><span class="p">,</span> <span class="n">bluedy</span><span class="p">,</span> <span class="n">redy</span><span class="p">,</span> <span class="n">reddy</span><span class="p">,</span> 
+                     <span class="mf">0.</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="p">(</span> <span class="n">reddy</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span> <span class="n">bluedy</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">returnFullModel</span><span class="p">:</span>
+<span class="c">#            print &#39;|&#39;,</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+        <span class="n">redlike</span><span class="p">,</span> <span class="n">bluelike</span><span class="p">,</span> <span class="n">badlike</span><span class="p">,</span> <span class="n">like</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">mr</span><span class="p">,</span> <span class="n">mb</span><span class="p">,</span> <span class="n">ry</span><span class="p">,</span> <span class="n">by</span><span class="p">,</span> <span class="n">rs</span><span class="p">,</span> <span class="n">bs</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">pb</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span> 
+            <span class="nb">zip</span><span class="p">(</span> <span class="n">redm</span><span class="p">,</span> <span class="n">bluem</span><span class="p">,</span> <span class="n">redy</span><span class="p">,</span> <span class="n">bluey</span><span class="p">,</span> <span class="n">reddy</span><span class="p">,</span> <span class="n">bluedy</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">pblue</span> <span class="p">)</span> <span class="p">):</span>
+
+            <span class="n">xoff</span> <span class="o">=</span> <span class="p">(</span> <span class="n">xobs</span> <span class="o">-</span> <span class="n">mr</span> <span class="p">)</span>
+            <span class="n">yoff</span> <span class="o">=</span> <span class="p">(</span> <span class="n">yobs</span> <span class="o">-</span> <span class="n">ry</span> <span class="p">)</span>
+
+            <span class="n">yvar</span> <span class="o">=</span> <span class="n">yerr</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">rs</span><span class="o">**</span><span class="mi">2</span>
+
+            <span class="n">red</span> <span class="o">=</span> <span class="n">pr</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">bluePrior</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">badPrior</span> <span class="p">)</span> \
+                <span class="o">*</span> <span class="n">Gaussian</span><span class="p">(</span> <span class="n">xoff</span><span class="p">,</span> <span class="n">yoff</span><span class="p">,</span> <span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">rhoxy</span> <span class="p">)</span>
+
+            <span class="n">badred</span> <span class="o">=</span> <span class="n">pr</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">bluePrior</span> <span class="p">)</span> <span class="o">*</span> <span class="n">badPrior</span> \
+                <span class="o">*</span> <span class="n">Gaussian</span><span class="p">(</span> <span class="n">xoff</span><span class="p">,</span> <span class="n">yoff</span><span class="p">,</span> <span class="n">xvar</span> <span class="o">+</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;xscatterbad&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> 
+                                <span class="n">yvar</span> <span class="o">+</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;yscatterbad&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">rhoxy</span> <span class="p">)</span>
+
+            <span class="n">xoff</span> <span class="o">=</span> <span class="p">(</span> <span class="n">xobs</span> <span class="o">-</span> <span class="n">mb</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">logyblue</span> <span class="p">:</span>
+                <span class="n">yoff</span> <span class="o">=</span> <span class="p">(</span> <span class="n">yobs</span> <span class="o">-</span> <span class="n">by</span> <span class="p">)</span>
+                <span class="n">yvar</span> <span class="o">=</span> <span class="n">yerr</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">bs</span><span class="o">**</span><span class="mi">2</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">yoff</span> <span class="o">=</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span> <span class="n">yobs</span> <span class="p">)</span> <span class="o">-</span> <span class="n">by</span> <span class="p">)</span>
+                <span class="n">yvar</span> <span class="o">=</span> <span class="p">(</span><span class="n">yerr</span><span class="o">/</span><span class="n">yobs</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">10.</span><span class="p">))</span><span class="o">**</span><span class="mf">2.</span> <span class="o">+</span> <span class="n">bs</span><span class="o">**</span><span class="mi">2</span>
+<span class="c">#                    yvar = bs**2</span>
+
+            <span class="n">blue</span> <span class="o">=</span> <span class="n">pb</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">redPrior</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">badPrior</span> <span class="p">)</span> \
+                <span class="o">*</span> <span class="n">Gaussian</span><span class="p">(</span> <span class="n">xoff</span><span class="p">,</span> <span class="n">yoff</span><span class="p">,</span> <span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">rhoxy</span> <span class="p">)</span>
+
+            <span class="n">badblue</span> <span class="o">=</span> <span class="n">pb</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">redPrior</span> <span class="p">)</span> <span class="o">*</span> <span class="n">badPrior</span> \
+                <span class="o">*</span> <span class="n">Gaussian</span><span class="p">(</span> <span class="n">xoff</span><span class="p">,</span> <span class="n">yoff</span><span class="p">,</span> <span class="n">xvar</span> <span class="o">+</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;xscatterbad&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> 
+                            <span class="n">yvar</span> <span class="o">+</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;yscatterbad&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">rhoxy</span> <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">logyblue</span> <span class="p">:</span>
+                <span class="n">blue</span><span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">yobs</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+                <span class="n">badblue</span><span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">yobs</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+
+            <span class="k">if</span> <span class="n">plotme</span> <span class="ow">or</span> <span class="n">returnFullModel</span> <span class="p">:</span>
+                <span class="n">redlike</span> <span class="o">+=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;badrate&#39;</span> <span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="n">red</span> \
+                    <span class="o">+</span> <span class="p">(</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;badrate&#39;</span> <span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="n">badred</span>
+                <span class="n">bluelike</span> <span class="o">+=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;badrate&#39;</span> <span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="n">blue</span> \
+                    <span class="o">+</span> <span class="p">(</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;badrate&#39;</span> <span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="n">badblue</span>
+                <span class="n">badlike</span> <span class="o">+=</span> <span class="p">(</span> <span class="n">par</span><span class="p">[</span> <span class="s">&#39;badrate&#39;</span> <span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">badred</span> <span class="o">+</span> <span class="n">badblue</span>  <span class="p">)</span>
+
+            <span class="n">like</span> <span class="o">+=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;badrate&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">red</span> <span class="o">+</span> <span class="n">blue</span> <span class="p">)</span> \
+                <span class="o">+</span> <span class="n">par</span><span class="p">[</span><span class="s">&#39;badrate&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span> <span class="n">badred</span> <span class="o">+</span> <span class="n">badblue</span> <span class="p">)</span>
+
+        <span class="n">use</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">isinsample</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">)</span>
+        <span class="n">finalval</span> <span class="o">=</span> <span class="n">isinsample</span> <span class="o">/</span> <span class="n">weights</span> <span class="o">*</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">like</span> <span class="p">)</span> <span class="o">-</span> <span class="mf">1.837377</span> <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">finalval</span><span class="p">[</span><span class="n">use</span><span class="p">]</span> <span class="p">)</span>
+<span class="c">#        print len( use[0] ), result</span>
+
+        <span class="k">if</span> <span class="n">plotme</span> <span class="ow">or</span> <span class="n">printprob</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">:</span>
+            <span class="n">headstr</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parList</span> <span class="p">:</span>
+                <span class="n">headstr</span> <span class="o">+=</span> <span class="n">param</span><span class="p">[</span> <span class="o">-</span><span class="mi">5</span><span class="p">:</span> <span class="p">]</span><span class="o">+</span><span class="s">&#39; &#39;</span>
+            <span class="k">print</span>  <span class="n">headstr</span>
+
+        <span class="k">if</span> <span class="n">plotme</span> <span class="p">:</span>
+            <span class="n">plotModel</span><span class="p">(</span> <span class="n">xobs</span><span class="p">,</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">xycovar</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span>
+                       <span class="n">redlike</span><span class="p">,</span> <span class="n">bluelike</span><span class="p">,</span> <span class="n">badlike</span><span class="p">,</span>
+                       <span class="n">bluem</span><span class="p">,</span> <span class="n">pblue</span><span class="p">,</span> <span class="n">redm</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> 
+                       <span class="n">bluem1</span><span class="p">,</span> <span class="n">pblue1</span><span class="p">,</span> <span class="n">redm1</span><span class="p">,</span> <span class="n">pred1</span><span class="p">,</span> 
+                       <span class="n">bluem2</span><span class="p">,</span> <span class="n">pblue2</span><span class="p">,</span> <span class="n">redm2</span><span class="p">,</span> <span class="n">pred2</span><span class="p">,</span> 
+                       <span class="n">bluey</span><span class="p">,</span> <span class="n">bluedy</span><span class="p">,</span> <span class="n">redy</span><span class="p">,</span> <span class="n">reddy</span><span class="p">,</span> 
+                       <span class="n">result</span><span class="p">,</span> <span class="n">logyblue</span><span class="o">=</span><span class="n">logyblue</span><span class="p">,</span> <span class="n">showdata</span><span class="o">=</span><span class="n">showdata</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">printme</span> <span class="p">:</span>
+            <span class="n">printstr</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parList</span> <span class="p">:</span>
+                <span class="n">printstr</span> <span class="o">+=</span> <span class="p">(</span><span class="s">&#39;</span><span class="si">%5.2f</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="n">par</span><span class="p">[</span> <span class="n">param</span> <span class="p">])</span>
+            <span class="k">print</span> <span class="n">printstr</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;</span><span class="si">%.1f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">),</span>
+            <span class="k">print</span> <span class="p">(</span> <span class="s">&#39; (</span><span class="si">%.3f</span><span class="s">s)&#39;</span> <span class="p">)</span> <span class="o">%</span> <span class="p">(</span> <span class="p">(</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">startTime</span> <span class="p">)</span> <span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">returnFullModel</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span> <span class="n">xobs</span><span class="p">,</span> <span class="n">yobs</span><span class="p">,</span> <span class="n">xunc</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">xycovar</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span>
+                     <span class="n">redlike</span><span class="p">,</span> <span class="n">bluelike</span><span class="p">,</span> <span class="n">badlike</span><span class="p">,</span>
+                     <span class="n">bluem</span><span class="p">,</span> <span class="n">pblue</span><span class="p">,</span> <span class="n">redm</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> 
+                     <span class="n">bluem1</span><span class="p">,</span> <span class="n">pblue1</span><span class="p">,</span> <span class="n">redm1</span><span class="p">,</span> <span class="n">pred1</span><span class="p">,</span> 
+                     <span class="n">bluem2</span><span class="p">,</span> <span class="n">pblue2</span><span class="p">,</span> <span class="n">redm2</span><span class="p">,</span> <span class="n">pred2</span><span class="p">,</span> 
+                     <span class="n">bluey</span><span class="p">,</span> <span class="n">bluedy</span><span class="p">,</span> <span class="n">redy</span><span class="p">,</span> <span class="n">reddy</span><span class="p">,</span> 
+                     <span class="n">result</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span> <span class="n">result</span> <span class="p">)</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+<span class="c"># _____________________________________________________________________________</span>
+
+<span class="k">def</span> <span class="nf">GeneralLines</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">transition</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">softening</span><span class="p">,</span> 
+                  <span class="n">dnorm</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="bp">False</span> <span class="p">):</span>
+
+    <span class="n">line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span> <span class="n">theta</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">x</span> <span class="o">-</span> <span class="n">transition</span> <span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
+
+    <span class="n">deflect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span> <span class="p">(</span> <span class="n">x</span> <span class="o">-</span> <span class="n">transition</span> <span class="p">)</span> <span class="o">/</span> <span class="n">softening</span> <span class="p">)</span> \
+              <span class="o">*</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span> <span class="n">delta</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">x</span> <span class="o">-</span> <span class="n">transition</span> <span class="p">)</span> <span class="o">+</span> <span class="n">dnorm</span> <span class="p">)</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span> <span class="n">deflect</span>
+
+    <span class="k">if</span> <span class="n">error</span> <span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span> <span class="n">value</span><span class="p">,</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="n">value</span> <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="c"># _____________________________________________________________________________</span>
+
+<span class="k">def</span> <span class="nf">SchechterFunction</span><span class="p">(</span> <span class="n">logm</span><span class="p">,</span> <span class="n">logm0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> 
+                       <span class="n">cutoff</span><span class="o">=</span><span class="n">masslimit</span><span class="p">,</span> <span class="n">justvalues</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                       <span class="n">logmstep</span><span class="o">=</span><span class="mf">0.005</span> <span class="p">):</span>
+
+    <span class="n">logmmin</span><span class="p">,</span> <span class="n">logmmax</span> <span class="o">=</span> <span class="n">masslimit</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">12.8</span>
+    <span class="n">distlogm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="n">logmmax</span><span class="p">,</span> <span class="n">logmmin</span><span class="p">,</span> <span class="o">-</span><span class="n">logmstep</span> <span class="p">)</span>
+
+    <span class="n">massfunc</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span> <span class="n">distlogm</span> <span class="o">-</span> <span class="n">logm0</span> <span class="p">)</span> <span class="p">)</span><span class="o">**</span><span class="p">(</span> <span class="n">alpha</span><span class="o">+</span><span class="mf">1.</span> <span class="p">)</span> \
+        <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span> <span class="n">distlogm</span> <span class="o">-</span> <span class="n">logm0</span> <span class="p">)</span> <span class="p">)</span>
+
+    <span class="n">cumfunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span> <span class="n">massfunc</span> <span class="p">)</span> <span class="o">*</span> <span class="n">logmstep</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span> <span class="p">[</span><span class="o">-</span><span class="n">masslimit</span><span class="p">],</span> <span class="o">-</span><span class="n">distlogm</span><span class="p">,</span> <span class="n">cumfunc</span> <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">cumfunc</span> <span class="o">/=</span> <span class="n">norm</span>
+    <span class="n">massfunc</span> <span class="o">/=</span> <span class="n">norm</span>
+
+    <span class="k">if</span> <span class="n">justvalues</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span> <span class="o">-</span><span class="n">logm</span><span class="p">,</span> <span class="o">-</span><span class="n">distlogm</span><span class="p">,</span> <span class="n">massfunc</span> <span class="p">)</span>
+
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="n">logm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">)</span>
+    <span class="n">edges</span><span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">=</span> <span class="n">logm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">edges</span><span class="p">[</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="n">logm</span><span class="p">[</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span> <span class="o">+</span> <span class="n">logm</span><span class="p">[</span> <span class="mi">1</span><span class="p">:</span> <span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span>
+    <span class="n">edges</span><span class="p">[</span> <span class="o">-</span><span class="mi">1</span> <span class="p">]</span> <span class="o">=</span> <span class="n">logm</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">nivalues</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span> <span class="o">-</span><span class="n">edges</span><span class="p">,</span> <span class="o">-</span><span class="n">distlogm</span><span class="p">,</span> <span class="o">-</span><span class="n">cumfunc</span> <span class="p">)</span>
+    <span class="n">fvalues</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span> <span class="n">nivalues</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span> <span class="n">edges</span> <span class="p">)</span>
+    <span class="c"># now integrated number of galaxies per bin</span>
+
+    <span class="n">nmivalues</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span> <span class="o">-</span><span class="n">edges</span><span class="p">,</span> <span class="o">-</span><span class="n">distlogm</span><span class="p">,</span> 
+                                <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span> <span class="n">massfunc</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="n">distlogm</span> <span class="p">)</span> <span class="o">*</span> <span class="n">logmstep</span> <span class="p">)</span>
+    <span class="n">newvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span> <span class="n">nmivalues</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span> <span class="n">nivalues</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="c">#        nogood = np.where( fvalues &lt;= 0 )</span>
+<span class="c">#        newvalues[ nogood ] = logm[ nogood ]</span>
+
+    <span class="k">return</span> <span class="n">newvalues</span><span class="p">,</span> <span class="n">fvalues</span>
+
+<span class="c"># _____________________________________________________________________________</span>
+
+<span class="k">def</span> <span class="nf">Gaussian</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">rhoxy</span><span class="o">=</span><span class="mi">0</span> <span class="p">):</span>
+        <span class="c"># NB. rhoxy must be understood to be the off-diagonal element of the</span>
+        <span class="c"># error/covar matrix, NOT the Peason correlation coeff.</span>
+
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">xvar</span> <span class="o">*</span> <span class="n">yvar</span> <span class="o">-</span> <span class="n">rhoxy</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c">#        print xvar[ ::500 ]</span>
+<span class="c">#        print yvar[ ::500 ]</span>
+<span class="c">#        print rhoxy[ ::500 ]</span>
+<span class="c">#        print norm[ ::500 ]</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">norm</span> <span class="p">)</span> \
+            <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">yvar</span> <span class="o">-</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">rhoxy</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">xvar</span> <span class="p">)</span>
+                     <span class="o">/</span> <span class="n">norm</span> <span class="p">)</span>
+
+<span class="c">#        check = np.where( value &lt;= 0 )[0] </span>
+<span class="c">#        print len( check[0] ), x[check], y[check]</span>
+
+        <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">unpackPars</span><span class="p">(</span> <span class="n">parVec</span><span class="o">=</span><span class="p">[],</span> <span class="n">parList</span><span class="o">=</span><span class="p">[],</span> <span class="n">fittingfor</span><span class="o">=</span><span class="s">&#39;gminusi_stars&#39;</span> <span class="p">):</span>
+
+<span class="c"># specify default parameters here</span>
+    <span class="n">parDict</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;bluelogm0&#39;</span> <span class="p">:</span> <span class="mf">10.5</span><span class="p">,</span>
+                <span class="s">&#39;bluealpha&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="s">&#39;redfrac&#39;</span>   <span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+                <span class="s">&#39;redlogm0&#39;</span>  <span class="p">:</span> <span class="mf">10.9</span><span class="p">,</span>
+                <span class="s">&#39;redalpha&#39;</span>  <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s">&#39;blue2frac&#39;</span> <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;bluelogm02&#39;</span><span class="p">:</span> <span class="mf">10.5</span><span class="p">,</span>
+                <span class="s">&#39;bluealpha2&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span>
+                <span class="s">&#39;red2frac&#39;</span>  <span class="p">:</span> <span class="mf">0.</span><span class="p">,</span>
+                <span class="s">&#39;redlogm02&#39;</span> <span class="p">:</span> <span class="mf">10.9</span><span class="p">,</span>
+                <span class="s">&#39;redalpha2&#39;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s">&#39;bluep0&#39;</span>    <span class="p">:</span> <span class="mf">0.40</span><span class="p">,</span>
+                <span class="s">&#39;bluep1&#39;</span>    <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;blueq0&#39;</span>    <span class="p">:</span> <span class="mf">10.2</span><span class="p">,</span>
+                <span class="s">&#39;blueq1&#39;</span>    <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;blueq2&#39;</span>    <span class="p">:</span> <span class="mf">0.10</span><span class="p">,</span>
+                <span class="s">&#39;blueq3&#39;</span>    <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;redp0&#39;</span>     <span class="p">:</span> <span class="mf">1.00</span><span class="p">,</span>
+                <span class="s">&#39;redp1&#39;</span>     <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;redq0&#39;</span>     <span class="p">:</span> <span class="mf">10.2</span><span class="p">,</span>
+                <span class="s">&#39;redq1&#39;</span>     <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;redq2&#39;</span>     <span class="p">:</span> <span class="mf">0.10</span><span class="p">,</span>
+                <span class="s">&#39;redq3&#39;</span>     <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;blues0&#39;</span>    <span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>
+                <span class="s">&#39;blues1&#39;</span>    <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;bluet0&#39;</span>    <span class="p">:</span> <span class="mf">10.2</span><span class="p">,</span>
+                <span class="s">&#39;bluet1&#39;</span>    <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;bluet2&#39;</span>    <span class="p">:</span> <span class="mf">0.10</span><span class="p">,</span>
+                <span class="s">&#39;bluet3&#39;</span>    <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;reds0&#39;</span>     <span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>
+                <span class="s">&#39;reds1&#39;</span>     <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;redt0&#39;</span>     <span class="p">:</span> <span class="mf">10.2</span><span class="p">,</span>
+                <span class="s">&#39;redt1&#39;</span>     <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;redt2&#39;</span>     <span class="p">:</span> <span class="mf">0.10</span><span class="p">,</span>
+                <span class="s">&#39;redt3&#39;</span>     <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;badrate&#39;</span>   <span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span>
+                <span class="s">&#39;xscatterbad&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s">&#39;yscatterbad&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s">&#39;yerrscale&#39;</span> <span class="p">:</span> <span class="mf">1.00</span><span class="p">,</span>
+                <span class="s">&#39;yerradjust&#39;</span><span class="p">:</span> <span class="mf">0.00</span> <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">fittingfor</span> <span class="o">==</span> <span class="s">&#39;EWHalpha&#39;</span> <span class="p">:</span>
+        <span class="n">parDict</span><span class="p">[</span> <span class="s">&#39;bluep0&#39;</span> <span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
+        <span class="n">parDict</span><span class="p">[</span> <span class="s">&#39;redp0&#39;</span> <span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+        <span class="n">parDict</span><span class="p">[</span> <span class="s">&#39;reds0&#39;</span> <span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">parDict</span><span class="p">[</span> <span class="s">&#39;blues0&#39;</span> <span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">parDict</span><span class="p">[</span> <span class="s">&#39;blueq0&#39;</span> <span class="p">]</span> <span class="o">=</span> <span class="mf">9.5</span>
+
+    <span class="k">for</span> <span class="n">parName</span><span class="p">,</span> <span class="n">parValue</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span> <span class="n">parList</span><span class="p">,</span> <span class="n">parVec</span> <span class="p">):</span>
+        <span class="n">parDict</span><span class="p">[</span> <span class="n">parName</span> <span class="p">]</span> <span class="o">=</span> <span class="n">parValue</span>
+
+    <span class="k">return</span> <span class="n">parDict</span>
+
+
+<span class="k">def</span> <span class="nf">makePlots</span><span class="p">():</span>
+
+    <span class="n">savefile</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span> <span class="nb">open</span><span class="p">(</span> <span class="s">&#39;bimix_intrinsic.json&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span> <span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">)</span>
+    <span class="n">parVec</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">savefile</span><span class="p">[</span> <span class="s">u&#39;parVec&#39;</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="n">argList</span> <span class="o">=</span> <span class="n">savefile</span><span class="p">[</span> <span class="s">u&#39;argList&#39;</span> <span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span> <span class="p">]:</span>
+        <span class="n">argList</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">argList</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="p">)</span>
+
+    <span class="n">plotFitDistros</span><span class="p">(</span> <span class="n">parVec</span><span class="p">,</span> <span class="n">argList</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.35</span> <span class="p">),</span> 
+        <span class="n">ylabel</span><span class="o">=</span><span class="s">&#39;intrinsic stellar colour, $(g-i)_*$     &#39;</span> <span class="p">)</span>
+
+    <span class="n">p</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s">&#39;bimix_intrinsic.pdf&#39;</span> <span class="p">)</span>
+
+
+    <span class="n">savefile</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span> <span class="nb">open</span><span class="p">(</span> <span class="s">&#39;bimix_effective.json&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span> <span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">)</span>
+    <span class="n">parVec</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">savefile</span><span class="p">[</span> <span class="s">u&#39;parVec&#39;</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="n">argList</span> <span class="o">=</span> <span class="n">savefile</span><span class="p">[</span> <span class="s">u&#39;argList&#39;</span> <span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span> <span class="p">]:</span>
+        <span class="n">argList</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">argList</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="p">)</span>
+
+    <span class="n">plotFitDistros</span><span class="p">(</span> <span class="n">parVec</span><span class="p">,</span> <span class="n">argList</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.55</span> <span class="p">),</span> 
+        <span class="n">ylabel</span><span class="o">=</span><span class="s">&#39;effective stellar colour, $(g-i)_*$     &#39;</span>  <span class="p">)</span>
+
+    <span class="n">p</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s">&#39;bimix_effective.pdf&#39;</span> <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span> <span class="p">:</span>
+
+    <span class="n">makePlots</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/ENTaylor_bimix.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/bimix_effective.json"><tt class="xref download docutils literal"><span class="pre">JSON</span> <span class="pre">source</span> <span class="pre">(Panel</span> <span class="pre">1)</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/bimix_intrinsic.json"><tt class="xref download docutils literal"><span class="pre">JSON</span> <span class="pre">source</span> <span class="pre">(Panel</span> <span class="pre">2)</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 7</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#caption">Caption</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#instructions">Instructions</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry6/index.html"
+                        title="previous chapter">Entry 6</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry8/index.html"
+                        title="next chapter">Entry 8</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry7/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry8/index.html" title="Entry 8"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry6/index.html" title="Entry 6"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

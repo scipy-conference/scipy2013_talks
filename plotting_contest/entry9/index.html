@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 9 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 10" href="../entry10/index.html" />
+    <link rel="prev" title="Entry 8" href="../entry8/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry10/index.html" title="Entry 10"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry8/index.html" title="Entry 8"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-9">
+<h1>Entry 9<a class="headerlink" href="#entry-9" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry9.png" src="../_images/entry9.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Lucía Avalle</li>
+<li>Leoncio Juan Ernesto Lopez</li>
+</ul>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/31032013_25Cm900_Data.txt.png"><tt class="xref download docutils literal"><span class="pre">Image</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/plotting-contest-LuciaAvalle2013_last_version.pdf"><tt class="xref download docutils literal"><span class="pre">Further</span> <span class="pre">information</span> <span class="pre">in</span> <span class="pre">PDF</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+
+<span class="c"># Copyright 2011</span>
+<span class="c">#Lucía B. Avalle</span>
+<span class="c">#Group of Electrochemistry. Experimental and Theoretical Aspects. Institute of Physics Enrique Gaviola (IFEG), FaMAF, UNC</span>
+<span class="c"># Córdoba, Argentina</span>
+
+<span class="c"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c"># it under the terms of the GNU General Public License as published by</span>
+<span class="c"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c"># (at your option) any later version.</span>
+
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c">#Using the GNU GPL will require that all the released improved versions be free software. </span>
+<span class="c">#This means you can avoid the risk of having to compete with a proprietary modified version of your own work.</span>
+
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="c"># Authors:</span>
+<span class="c">#       Leoncio Juan Ernesto Lopez (anicholo at gmail dot com)</span>
+
+<span class="c"># $Id: pulsefile.py 9 2011-06-06 00:27:31A takenoko $</span>
+
+
+<span class="sd">&quot;&quot;&quot;The potentiostatic pulses applied to the solid/liquid interface consist of different amplitudes, starting at a potential where no hydrogen evolves.&quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;This program was developed to load transient data from file at location filename. The in files are formated according the output of two-channel oscilloscope. The out files have only time and CH* (*= 1, 2) columns space-separated. The structure and program code meet educational goals&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">infilename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>  <span class="n">outfilename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;Usage:&quot;</span><span class="p">,</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;infile outfile&quot;</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">infilename</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">infilename</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">);</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">();</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span> <span class="c">#empty list</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[</span><span class="mi">24</span><span class="p">:]:</span> <span class="c">#eliminates the headers</span>
+        <span class="n">arglist</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">arglist</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">arglist</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c">#start from zero: space[0],space[1],space[2],number[3],number[4],</span>
+	<span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c">#tuple list</span>
+	<span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">values</span>
+
+<span class="k">def</span> <span class="nf">dump_data</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="c"># write out 2-column files:</span>
+    <span class="n">of</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+        <span class="n">of</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%12.5e</span><span class="s"> </span><span class="si">%12.5e</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> 
+    <span class="n">of</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">infilename</span><span class="p">)</span> <span class="c">#function call for execution</span>
+<span class="n">dump_data</span><span class="p">(</span><span class="n">outfilename</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;We are done!&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/pulsefile.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/plotting-contest-LuciaAvalle2013_last_version.tex"><tt class="xref download docutils literal"><span class="pre">LaTeX</span> <span class="pre">source</span> <span class="pre">for</span> <span class="pre">further</span> <span class="pre">information</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/F000CH1PotentialPulse.CSV"><tt class="xref download docutils literal"><span class="pre">CSV</span> <span class="pre">data</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/31032013_25Cm900_Data.txt"><tt class="xref download docutils literal"><span class="pre">TXT</span> <span class="pre">data</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 9</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry8/index.html"
+                        title="previous chapter">Entry 8</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry10/index.html"
+                        title="next chapter">Entry 10</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry9/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry10/index.html" title="Entry 10"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry8/index.html" title="Entry 8"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

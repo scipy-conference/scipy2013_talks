@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 8 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 9" href="../entry9/index.html" />
+    <link rel="prev" title="Entry 7" href="../entry7/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry9/index.html" title="Entry 9"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry7/index.html" title="Entry 7"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-8">
+<h1>Entry 8<a class="headerlink" href="#entry-8" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry8.png" src="../_images/entry8.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Nicolas Rougier</li>
+</ul>
+</div>
+<div class="section" id="title">
+<h2>Title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
+<p>Structural reorganization of the primary somatosensory cortex under
+the influence of attention and training</p>
+</div>
+<div class="section" id="short-caption">
+<h2>Short caption<a class="headerlink" href="#short-caption" title="Permalink to this headline">¶</a></h2>
+<p>Top: histograms of relative change of receptive field sizes in the
+region of interest under the influence of intensive stimulation,
+attention and a combination of both. Bottom: receptive field of a
+single cell recorded at the end of each of the aforementioned
+experiment.</p>
+</div>
+<div class="section" id="long-caption">
+<h2>Long caption<a class="headerlink" href="#long-caption" title="Permalink to this headline">¶</a></h2>
+<p>Figure 2: Relative change of receptive field sizes in the RoI compared
+to the reference. A. Histogram of receptive field relative sizes in
+the RoI after initial training (50 000 samples) without any gain
+modulation nor intensive stimulation. Values below zero indicate
+receptive field with size smaller than the mean (actual mean=0.029
+mm2, std=0.0058) B. Histogram of receptive field size changes with
+intensive stimulation in the RoI (with a 3 to 1 ratio) using 30 000
+extra samples. Values below zero indicate receptive field
+shrinkage. The solid vertical bar indicates the mean size change for
+the whole population within the RoI (actual mean=0.019 mm2,
+std=0.0053). C. Histogram of receptive field size changes with long
+term gain modulaton in the RoI using 30 000 extra samples. Values
+below zero indicate receptive field shrinkage. The solid vertical bar
+indicates the mean size change for the whole population within the RoI
+(actual mean=0.016 mm2, std=0.0045). D. Histogram of receptive field
+size changes with long term gain modulaton and intensive stimulation
+(with a 1/1 ratio) in the RoI using 30 000 extra samples. Values below
+zero indicate receptive field shrinkage. The solid vertical bar
+indicates the mean size change for the whole populatiuon within the
+RoI (actual mean=0.011 mm2, std=0.0053) Bottom row. Receptive field of
+a single cell recorded at the end of each of the aforementionned
+experiment. The receptive field size in the LTGM-IS experiment (0.010
+mm2) has shrunk to one third of the reference size (0.030 mm2) while
+being stronger.</p>
+<p>All the (real) data are in the
+<a class="reference external" href="http://webloria.loria.fr/~rougier/tmp/Scipy-2013/">http://webloria.loria.fr/~rougier/tmp/Scipy-2013/</a> but they&#8217;re rather
+big. The figure comes from a publication (in preparation) related to
+the self-organization of the somato-sensory cortex.</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/size-histogram.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">FormatStrFormatter</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Rectangle</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patheffects</span> <span class="kn">as</span> <span class="nn">PathEffects</span>
+
+
+<span class="k">def</span> <span class="nf">histogram</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">Ref</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)):</span>
+
+    <span class="n">ref_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Ref</span><span class="p">)</span>
+    <span class="n">x_mean</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">X</span>  <span class="o">=</span>  <span class="mf">100.0</span><span class="o">*</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">ref_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">ref_mean</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">ste</span> <span class="o">=</span> <span class="n">std</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+
+    <span class="n">x_mean</span> <span class="o">=</span> <span class="mf">100.0</span><span class="o">*</span><span class="p">(</span><span class="n">x_mean</span> <span class="o">-</span> <span class="n">ref_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">ref_mean</span>
+
+    <span class="n">bin_size</span><span class="o">=</span><span class="mf">8.0</span>
+    <span class="n">min_edge</span><span class="o">=-</span><span class="mf">95.0</span>
+    <span class="n">max_edge</span><span class="o">=</span><span class="mf">95.0</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_edge</span><span class="o">-</span><span class="n">min_edge</span><span class="p">)</span><span class="o">/</span><span class="n">bin_size</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">min_edge</span><span class="p">,</span> <span class="n">max_edge</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">bg</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">n_max</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">i_max</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+    <span class="n">x_max</span> <span class="o">=</span> <span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i_max</span><span class="p">]</span><span class="o">+</span><span class="n">bins</span><span class="p">[</span><span class="n">i_max</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">patch</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span><span class="n">patches</span><span class="p">):</span>
+        <span class="c">#v = np.sqrt((1-n/n_max))</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">n</span><span class="o">/</span><span class="n">n_max</span><span class="p">)</span>
+        <span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
+
+    <span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">80</span>
+    <span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">+</span><span class="mi">75</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="o">/</span><span class="p">(</span><span class="n">ymax</span><span class="o">+</span><span class="mf">1.</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=.</span><span class="mi">75</span><span class="p">,</span><span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_mean</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="o">/</span><span class="p">(</span><span class="n">ymax</span><span class="o">+</span><span class="mf">1.</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=.</span><span class="mi">75</span><span class="p">,</span><span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s">&#39;-&#39;</span><span class="p">)</span>
+
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span> <span class="mf">0.45</span> <span class="o">*</span> <span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ymax</span><span class="o">-</span><span class="n">ymin</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s">&#39;bottom&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="mi">50</span><span class="p">],[</span><span class="s">&#39;-50%&#39;</span><span class="p">,</span><span class="s">&#39;0&#39;</span><span class="p">,</span><span class="s">&#39;+50%&#39;</span><span class="p">])</span>
+
+    <span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">20.0</span><span class="p">))</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s">&#39;major&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">)</span>
+
+    <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;0.5&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_ticklabels</span><span class="p">()]</span>
+    <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;0.5&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_ticklabels</span><span class="p">()]</span>
+    <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_ticklines</span><span class="p">()]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xmin</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.95</span><span class="o">*</span><span class="n">ymax</span><span class="p">,</span><span class="n">letter</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s">&#39;xx-large&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">fg</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="n">ymax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">text</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;bottom&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s">&#39;right&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;.25&#39;</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span><span class="n">ymax</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;(Mean:</span><span class="si">%.2f%%</span><span class="s">, STE: </span><span class="si">%.1f</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">ste</span><span class="p">),</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;top&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s">&#39;right&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;.25&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="n">ymax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;# Cells&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;bottom&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;.5&#39;</span><span class="p">)</span>
+
+
+
+<span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">figref</span><span class="p">,</span> <span class="n">Z</span><span class="p">):</span>
+    <span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;bicubic&#39;</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+
+    <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;35%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s">&quot;5%&quot;</span><span class="p">,</span>  <span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">borderpad</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="o">=</span><span class="n">ins</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">&quot;horizontal&quot;</span><span class="p">,</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">])</span>
+    <span class="n">ins</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s">&quot;top&quot;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s">&#39;0&#39;</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;bold&#39;</span><span class="p">)</span>
+
+    <span class="n">CS</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">],</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;upper&#39;</span><span class="p">,</span>
+                      <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">axis</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
+    <span class="c">#axis.xaxis.set_minor_locator(MultipleLocator(0.01))</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
+    <span class="c">#axis.yaxis.set_minor_locator(MultipleLocator(0.01))</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">tick_bottom</span><span class="p">()</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">tick_left</span><span class="p">()</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;(mm)&#39;</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;(mm)&#39;</span><span class="p">)</span>
+
+    <span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">((</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span><span class="o">.</span><span class="mi">25</span><span class="p">),</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;None&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=.</span><span class="mi">75</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+    <span class="c">#t = axis.text(.26,.74, &quot;RoI&quot;, ha=&#39;left&#39;, va=&#39;top&#39;, zorder=1,</span>
+    <span class="c">#               weight=&#39;bold&#39;, color=&#39;w&#39;, fontsize=16, alpha=.5)</span>
+    <span class="c">#t.set_path_effects([PathEffects.withStroke(linewidth=.75,foreground=&quot;k&quot;,alpha=.25)])</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="n">text</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="n">letter</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">axis</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.95</span><span class="p">,</span><span class="n">figref</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span>  <span class="n">weight</span><span class="o">=</span><span class="s">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+
+    <span class="k">return</span> <span class="n">im</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">REF</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./REF-ROI-sizes.npy&#39;</span><span class="p">)</span>
+    <span class="n">STGM</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./STGM-ROI-sizes.npy&#39;</span><span class="p">)</span>
+    <span class="n">LTGM</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./LTGM-ROI-sizes.npy&#39;</span><span class="p">)</span>
+    <span class="n">IS</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./IS-ROI-sizes.npy&#39;</span><span class="p">)</span>
+    <span class="n">LTGMIS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./LTGMIS-ROI-sizes.npy&#39;</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mf">64.0</span><span class="o">*</span><span class="mf">64.0</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;REF:    mean=</span><span class="si">%.3f</span><span class="s">, std=</span><span class="si">%.4f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">REF</span><span class="p">),</span>    <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">REF</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;STGM:   mean=</span><span class="si">%.3f</span><span class="s">, std=</span><span class="si">%.4f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">STGM</span><span class="p">),</span>   <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">STGM</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;IS:     mean=</span><span class="si">%.3f</span><span class="s">, std=</span><span class="si">%.4f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">IS</span><span class="p">),</span>     <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">IS</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;LTGM:   mean=</span><span class="si">%.3f</span><span class="s">, std=</span><span class="si">%.4f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">LTGM</span><span class="p">),</span>   <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">LTGM</span><span class="p">))</span>
+    <span class="k">print</span> <span class="s">&quot;LTGMIS: mean=</span><span class="si">%.3f</span><span class="s">, std=</span><span class="si">%.4f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">LTGMIS</span><span class="p">),</span> <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">LTGMIS</span><span class="p">))</span>
+
+
+    <span class="n">fg</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span>
+    <span class="c">#matplotlib.rcParams[&#39;ytick.major.size&#39;] = 0</span>
+    <span class="c">#matplotlib.rcParams[&#39;ytick.minor.size&#39;] = 9</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;xtick.major.width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;ytick.major.width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;xtick.direction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;out&#39;</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;ytick.direction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;out&#39;</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">12.0</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">&#39;axes&#39;</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="n">bg</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">&#39;axes&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="n">fg</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">fg</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">fg</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">&#39;figure&#39;</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="n">bg</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">&#39;savefig&#39;</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="n">bg</span><span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">72</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">321</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">histogram</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;Reference (REF)&quot;</span><span class="p">,</span> <span class="n">REF</span><span class="p">,</span><span class="n">REF</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">322</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">histogram</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;Intensive Stimulation (IS)&quot;</span><span class="p">,</span> <span class="n">REF</span><span class="p">,</span><span class="n">IS</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">323</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">histogram</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">,</span><span class="s">&quot;Long Term Gain Modulation (LTGM)&quot;</span><span class="p">,</span> <span class="n">REF</span><span class="p">,</span><span class="n">LTGM</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">324</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">histogram</span><span class="p">(</span><span class="s">&quot;D&quot;</span><span class="p">,</span><span class="s">&quot;LTGM + IS&quot;</span><span class="p">,</span> <span class="n">REF</span><span class="p">,</span><span class="n">LTGMIS</span><span class="p">)</span>
+
+
+
+    <span class="n">REF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./model_response_64_ref.npy&#39;</span><span class="p">)</span>
+    <span class="n">IS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./model_response_64_is.npy&#39;</span><span class="p">)</span>
+    <span class="n">LTGM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./model_response_64_ltgm.npy&#39;</span><span class="p">)</span>
+    <span class="n">STGM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./model_response_64_stgm.npy&#39;</span><span class="p">)</span>
+    <span class="n">LTGMIS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;./model_response_64_ltgm_is.npy&#39;</span><span class="p">)</span>
+
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span><span class="mi">1</span>
+    <span class="n">RF_REF</span>    <span class="o">=</span> <span class="n">REF</span><span class="p">[</span><span class="n">x</span><span class="p">::</span><span class="mi">32</span><span class="p">,</span><span class="n">y</span><span class="p">::</span><span class="mi">32</span><span class="p">]</span>
+    <span class="n">RF_IS</span>     <span class="o">=</span> <span class="n">IS</span><span class="p">[</span><span class="n">x</span><span class="p">::</span><span class="mi">32</span><span class="p">,</span><span class="n">y</span><span class="p">::</span><span class="mi">32</span><span class="p">]</span>
+    <span class="n">RF_LTGM</span>   <span class="o">=</span> <span class="n">LTGM</span><span class="p">[</span><span class="n">x</span><span class="p">::</span><span class="mi">32</span><span class="p">,</span><span class="n">y</span><span class="p">::</span><span class="mi">32</span><span class="p">]</span>
+    <span class="n">RF_LTGMIS</span> <span class="o">=</span> <span class="n">LTGMIS</span><span class="p">[</span><span class="n">x</span><span class="p">::</span><span class="mi">32</span><span class="p">,</span><span class="n">y</span><span class="p">::</span><span class="mi">32</span><span class="p">]</span>
+
+<span class="c">#    print (RF_REF&gt;0).sum()/ float(64*64)</span>
+<span class="c">#    print (RF_IS&gt;0).sum()/ float(64*64)</span>
+<span class="c">#    print (RF_LTGM&gt;0).sum()/ float(64*64)</span>
+<span class="c">#    print (RF_LTGMIS&gt;0).sum()/ float(64*64)</span>
+
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">RF_REF</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">RF_IS</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">RF_LTGM</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">RF_LTGMIS</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;size: </span><span class="si">%.3f</span><span class="s"> $\mathrm{mm}^\mathrm{2}$&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">RF_REF</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">64</span><span class="o">*</span><span class="mi">64</span><span class="p">)),</span>
+           <span class="s">&quot;REF&quot;</span><span class="p">,</span><span class="s">&quot;A&#39;&quot;</span><span class="p">,</span><span class="n">RF_REF</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;size: </span><span class="si">%.3f</span><span class="s"> $\mathrm{mm}^\mathrm{2}$&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">RF_IS</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">64</span><span class="o">*</span><span class="mi">64</span><span class="p">)),</span>
+           <span class="s">&quot;IS&quot;</span><span class="p">,</span><span class="s">&quot;B&#39;&quot;</span><span class="p">,</span><span class="n">RF_IS</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;size: </span><span class="si">%.3f</span><span class="s"> $\mathrm{mm}^\mathrm{2}$&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">RF_LTGM</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">64</span><span class="o">*</span><span class="mi">64</span><span class="p">)),</span>
+           <span class="s">&quot;LTGM&quot;</span><span class="p">,</span> <span class="s">&quot;C&#39;&quot;</span><span class="p">,</span> <span class="n">RF_LTGM</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;size: </span><span class="si">%.3f</span><span class="s"> $\mathrm{mm}^\mathrm{2}$&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">RF_LTGMIS</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">64</span><span class="o">*</span><span class="mi">64</span><span class="p">)),</span>
+                <span class="s">&quot;LTGM + IS&quot;</span><span class="p">,</span> <span class="s">&quot;D&#39;&quot;</span><span class="p">,</span> <span class="n">RF_LTGMIS</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">])</span>
+
+    <span class="c"># ax = plt.gca()</span>
+    <span class="c"># axins = inset_axes(ax,</span>
+    <span class="c">#                    width=&quot;5%&quot;, # width = 10% of parent_bbox width</span>
+    <span class="c">#                    height=&quot;100%&quot;, # height : 50%</span>
+    <span class="c">#                    loc=3,</span>
+    <span class="c">#                    bbox_to_anchor=(1.05, 0., 1, 1),</span>
+    <span class="c">#                    bbox_transform=ax.transAxes,</span>
+    <span class="c">#                    borderpad=0 )</span>
+    <span class="c"># plt.colorbar(im, cax=axins, ticks=[0,1])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;size-histogram.pdf&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/size-histogram.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 8</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#title">Title</a></li>
+<li><a class="reference internal" href="#short-caption">Short caption</a></li>
+<li><a class="reference internal" href="#long-caption">Long caption</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry7/index.html"
+                        title="previous chapter">Entry 7</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry9/index.html"
+                        title="next chapter">Entry 9</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry8/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry9/index.html" title="Entry 9"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry7/index.html" title="Entry 7"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

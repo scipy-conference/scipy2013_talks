@@ -1,0 +1,30 @@
+Entry 5
+=======
+
+.. image:: entry5.png
+
+Authors
+-------
+
+- Adrian Price-Whelan
+
+Visualization of MCMC chains (walkers; left panels) and derived
+posterior probability distributions (right panels) for four parameters
+in the specified dark matter halo potential model. The model is
+evaluated against simulated observations of RR Lyrae in the
+Sagittarius stream. Steps -150 to 0 were considered burn-in and
+rejected from the displayed posteriors.
+
+Products
+--------
+
+- :download:`PDF <walkers.pdf>`
+
+Source
+------
+
+.. literalinclude:: walker_plot.py
+
+- :download:`Python source <walker_plot.py>`
+
+- :download:`2013-03-12_05-03-29_q1_qz_v_halo_phi_w200_s400.pickle`

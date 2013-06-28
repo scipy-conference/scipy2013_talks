@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 20 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 21" href="../entry21/index.html" />
+    <link rel="prev" title="Entry 19" href="../entry19/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry21/index.html" title="Entry 21"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry19/index.html" title="Entry 19"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-20">
+<h1>Entry 20<a class="headerlink" href="#entry-20" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry20.png" src="../_images/entry20.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>David Johnson</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>I am an undergraduate at CU Boulder and the plot was made as part of a
+homework assignment in a class about chaotic dynamics.</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/damped_pendulum.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># This script was created for a homework assignment in CSCI 4446: Chaotic</span>
+<span class="c"># Dynamics. It plots a state space diagram, omega vs theta, of the damped </span>
+<span class="c"># pendulum. For the chosen parameter values, the trajectory has become chaotic,</span>
+<span class="c"># resulting in an interesting graphic.</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="c"># First order system for the damped pendulum</span>
+<span class="c"># m is mass, l is the length of the pendulum, g is gravity, A is the</span>
+<span class="c"># aplitude of the driving force, beta is a damping factor related to friction</span>
+<span class="c"># and alpha is the drive frequency</span>
+<span class="k">def</span> <span class="nf">dpend</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">t</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">l</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">-</span> <span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">y0</span><span class="p">],[</span><span class="n">y1</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">y</span>
+ 
+<span class="c"># Integrator for first order systems using RK4</span>
+<span class="k">def</span> <span class="nf">rk</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t0</span>    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">v1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">v2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">v1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">v3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">v2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">v4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">v3</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">v1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">v2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">v3</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v4</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+    <span class="k">return</span> <span class="n">x</span>
+        
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50000</span> <span class="c"># number of time steps </span>
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># dimension of state space</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">3.15</span><span class="p">],[</span><span class="mi">0</span><span class="p">]])</span> <span class="c"># starting point in state space</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># start time</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c">#size of time step</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.1</span> 
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span> 
+<span class="n">l</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7809</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">l</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">rk</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dpend</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fmod</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="c"># theta is plotted modulo 2 pi</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Chaotic Trajectory in the State Space of the Damped Pendulum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&#39;$\theta$ modulo 2$\pi$ (radians)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&#39;$\omega$ (radians/second)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;damped_pendulum.ps&#39;</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">&#39;landscape&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/chaotic_damped_pendulum.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 20</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry19/index.html"
+                        title="previous chapter">Entry 19</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry21/index.html"
+                        title="next chapter">Entry 21</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry20/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry21/index.html" title="Entry 21"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry19/index.html" title="Entry 19"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
