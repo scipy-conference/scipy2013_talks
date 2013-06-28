@@ -704,7 +704,7 @@ div.output_prompt {
 <div class="reveal"><div class="slides">
 
 <div style=display:none>
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -732,7 +732,7 @@ For more information, type &apos;help(pylab)&apos;.
 </div>
 </div>
     </div><div style=display:none>
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -750,7 +750,7 @@ For more information, type &apos;help(pylab)&apos;.
 <h1>
 
 <a class="heading-anchor" id="Modeling_the_Earth_" href="#Modeling_the_Earth_">
-  Modeling the Earth 
+  Modeling the Earth
 </a>
 </h1>
 </div>
@@ -866,7 +866,7 @@ For more information, type &apos;help(pylab)&apos;.
 </h4>
 </div>
 <div style=display:none>
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -879,7 +879,7 @@ For more information, type &apos;help(pylab)&apos;.
 </div>
 </div>
     </div><div style=display:none>
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
@@ -893,7 +893,7 @@ For more information, type &apos;help(pylab)&apos;.
 <span class="n">gz</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">contaminate</span><span class="p">(</span><span class="n">gravmag</span><span class="o">.</span><span class="n">prism</span><span class="o">.</span><span class="n">gz</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">mesher</span><span class="o">.</span><span class="n">PrismMesh</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
 <span class="n">seeds</span> <span class="o">=</span> <span class="n">gravmag</span><span class="o">.</span><span class="n">harvester</span><span class="o">.</span><span class="n">sow</span><span class="p">([[</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="n">prop</span><span class="p">]],</span> <span class="n">mesh</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">gravmag</span><span class="o">.</span><span class="n">harvester</span><span class="o">.</span><span class="n">Gz</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">gz</span><span class="p">)]</span>    
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">gravmag</span><span class="o">.</span><span class="n">harvester</span><span class="o">.</span><span class="n">Gz</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">gz</span><span class="p">)]</span>
 <span class="n">estimate</span> <span class="o">=</span> <span class="n">gravmag</span><span class="o">.</span><span class="n">harvester</span><span class="o">.</span><span class="n">harvest</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">seeds</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">mesh</span><span class="o">.</span><span class="n">addprop</span><span class="p">(</span><span class="s">&#39;density&#39;</span><span class="p">,</span> <span class="n">estimate</span><span class="p">[</span><span class="s">&#39;density&#39;</span><span class="p">])</span>
 <span class="n">body</span> <span class="o">=</span> <span class="n">mesher</span><span class="o">.</span><span class="n">vremove</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;density&#39;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
@@ -901,7 +901,7 @@ For more information, type &apos;help(pylab)&apos;.
 <span class="n">fig</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.06666</span><span class="p">,</span> <span class="mf">0.06666</span><span class="p">,</span> <span class="mf">0.06666</span><span class="p">)</span>
 <span class="n">myv</span><span class="o">.</span><span class="n">prisms</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s">&#39;density&#39;</span><span class="p">)</span>
 <span class="n">myv</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">myv</span><span class="o">.</span><span class="n">outline</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">nlabels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="mf">0.001</span><span class="o">*</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bounds</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s">&quot;</span><span class="si">%.0f</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">myv</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">contour_surf</span><span class="p">(</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">),</span> <span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">reshape</span><span class="p">(</span><span class="n">gz</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">),</span> 
+<span class="n">p</span> <span class="o">=</span> <span class="n">myv</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">contour_surf</span><span class="p">(</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">),</span> <span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">reshape</span><span class="p">(</span><span class="n">gz</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">),</span>
     <span class="n">contours</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s">&#39;gist_rainbow&#39;</span><span class="p">)</span>
 <span class="n">p</span><span class="o">.</span><span class="n">contour</span><span class="o">.</span><span class="n">filled_contours</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">p</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2000</span><span class="p">)</span>
@@ -966,7 +966,7 @@ WARNING:root:DEPRECATED: pyface.wx.clipboard, use pyface.api instead.
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Linear algebra: 
+<p>Linear algebra:
 $\hat{\mathbf{p}} = (\mathbf{G}^T\mathbf{G} + \mu \mathbf{I})^{-1}\mathbf{G}^T\mathbf{d}$</p>
 <p>Numerical modeling: <em>differential equations, integration, arrays, etc.</em></p>
 </div></section>
@@ -1003,7 +1003,7 @@ $\hat{\mathbf{p}} = (\mathbf{G}^T\mathbf{G} + \mu \mathbf{I})^{-1}\mathbf{G}^T\m
             sinlatc = sin(d2r*glq_lat.nodes[j]);
             coslatc = cos(d2r*glq_lat.nodes[j]);
             coslon = cos(d2r*(lonp - glq_lon.nodes[k]));
-            sinlon = sin(d2r*(glq_lon.nodes[k] - lonp));    
+            sinlon = sin(d2r*(glq_lon.nodes[k] - lonp));
             l_sqr = rp*rp + rc*rc - 2*rp*rc*(sinlatp*sinlatc +
                     coslatp*coslatc*coslon);
 </code></pre>
@@ -1069,7 +1069,7 @@ $\hat{\mathbf{p}} = (\mathbf{G}^T\mathbf{G} + \mu \mathbf{I})^{-1}\mathbf{G}^T\m
 <li>Surfer &reg; (proprietary)</li>
 </ul>
 </div><div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <p style="margin-top:100px;">
 Don't get me wrong, these are great software!
@@ -1087,7 +1087,7 @@ Don't get me wrong, these are great software!
 </h2>
 </div>
 <div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>
 
@@ -1098,7 +1098,7 @@ Don't get me wrong, these are great software!
 </div>
 
     </div><div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>
 
@@ -1109,7 +1109,7 @@ Don't get me wrong, these are great software!
 </div>
 
     </div><div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>
 
@@ -1177,7 +1177,7 @@ Don't get me wrong, these are great software!
 <div class="text_cell_render border-box-sizing rendered_html">
 <pre><code>def _shapefunc(data, predicted):
     """
-    Calculate the total shape of anomaly function between 
+    Calculate the total shape of anomaly function between
     the observed and predicted data.
     """
         result = 0.
@@ -1769,7 +1769,7 @@ xhhzAi6wjDHGmBNwgWWMMcacgAssY4wx5gRcYBljjDEn+B+hBfyemxPX7gAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">fatiando.vis</span> <span class="kn">import</span> <span class="n">myv</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">myv</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> 
+<span class="n">f</span> <span class="o">=</span> <span class="n">myv</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">gray</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.066</span><span class="p">,</span><span class="mf">0.066</span><span class="p">,</span><span class="mf">0.066</span><span class="p">);</span> <span class="n">f</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">gray</span>
 <span class="n">myv</span><span class="o">.</span><span class="n">prisms</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <span class="n">wht</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -1796,7 +1796,7 @@ xhhzAi6wjDHGmBNwgWWMMcacgAssY4wx5gRcYBljjDEn+B+hBfyemxPX7gAAAABJRU5ErkJggg==
 </h2>
 </div>
 <div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>
 
@@ -1807,7 +1807,7 @@ xhhzAi6wjDHGmBNwgWWMMcacgAssY4wx5gRcYBljjDEn+B+hBfyemxPX7gAAAABJRU5ErkJggg==
 </div>
 
     </div><div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>
 
@@ -1818,7 +1818,7 @@ xhhzAi6wjDHGmBNwgWWMMcacgAssY4wx5gRcYBljjDEn+B+hBfyemxPX7gAAAABJRU5ErkJggg==
 </div>
 
     </div><div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>
 
@@ -1829,7 +1829,7 @@ xhhzAi6wjDHGmBNwgWWMMcacgAssY4wx5gRcYBljjDEn+B+hBfyemxPX7gAAAABJRU5ErkJggg==
 </div>
 
     </div><div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>
 
@@ -1950,7 +1950,7 @@ xhhzAi6wjDHGmBNwgWWMMcacgAssY4wx5gRcYBljjDEn+B+hBfyemxPX7gAAAABJRU5ErkJggg==
 </div>
 </div>
 </div><div style=display:none>
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[]:</div>
@@ -4907,7 +4907,7 @@ Hs9xhTdsHo/H4zmu8IbN4/F4PMcV3rB5PB6P57ji/wBAHvz0ZvmNygAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="The Love wave gif" src="figures/lovewave_irregular_crust_noloop.gif" align="center" width="920px"></p>
 </div><div class="fragment">
-    
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="The example seismogram" src="figures/example_seismogram.jpg" style="float:center" width="800px" ></p>
 </div>
@@ -5078,7 +5078,7 @@ UQYAAAAgAFEGAAAAIID/D0mSe7yTSsIHAAAAAElFTkSuQmCC
 </div>
 </div>
 </div><div style=display:none>
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
@@ -5090,7 +5090,7 @@ UQYAAAAgAFEGAAAAIID/D0mSe7yTSsIHAAAAAElFTkSuQmCC
 </div>
 </div>
     </div><div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[71]:</div>
@@ -5519,7 +5519,7 @@ cxssijBnahiVCJdBICIiIiIi67K5m9+JiIiIiOjBw4kJERERERFZHScmRERERERkdZyYEBERERGR
 <h2>
 
 <a class="heading-anchor" id="Present_and_future_" href="#Present_and_future_">
-  Present and future 
+  Present and future
 </a>
 </h2>
 </div>
@@ -5972,11 +5972,11 @@ gg==
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">fatiando</span> <span class="kn">import</span> <span class="n">seismic</span>
 <span class="n">quake_locations</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">random_points</span><span class="p">(</span><span class="n">area</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
-<span class="n">receiver_locations</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">circular_points</span><span class="p">(</span><span class="n">area</span><span class="p">,</span> 
+<span class="n">receiver_locations</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">circular_points</span><span class="p">(</span><span class="n">area</span><span class="p">,</span>
     <span class="mi">20</span><span class="p">,</span> <span class="n">random</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">quakes</span><span class="p">,</span> <span class="n">receivers</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">connect_points</span><span class="p">(</span>
     <span class="n">quake_locations</span><span class="p">,</span> <span class="n">receiver_locations</span><span class="p">)</span>
-<span class="n">traveltimes</span> <span class="o">=</span> <span class="n">seismic</span><span class="o">.</span><span class="n">ttime2d</span><span class="o">.</span><span class="n">straight</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s">&#39;vp&#39;</span><span class="p">,</span> 
+<span class="n">traveltimes</span> <span class="o">=</span> <span class="n">seismic</span><span class="o">.</span><span class="n">ttime2d</span><span class="o">.</span><span class="n">straight</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s">&#39;vp&#39;</span><span class="p">,</span>
     <span class="n">quakes</span><span class="p">,</span> <span class="n">receivers</span><span class="p">)</span>
 <span class="n">noisy</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">contaminate</span><span class="p">(</span><span class="n">traveltimes</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">noisy</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">noisy</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
@@ -11161,7 +11161,7 @@ SUVORK5CYII=
 <span class="n">velocity</span> <span class="o">=</span> <span class="n">seismic</span><span class="o">.</span><span class="n">srtomo</span><span class="o">.</span><span class="n">slowness2vel</span><span class="p">(</span><span class="n">slowness</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">addprop</span><span class="p">(</span><span class="s">&#39;vp&#39;</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">));</span> <span class="n">mpl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;scaled&#39;</span><span class="p">)</span>
-<span class="n">mpl</span><span class="o">.</span><span class="n">squaremesh</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s">&#39;vp&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">,</span> 
+<span class="n">mpl</span><span class="o">.</span><span class="n">squaremesh</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s">&#39;vp&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">,</span>
     <span class="n">vmin</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">m2km</span><span class="p">()</span>
@@ -11571,7 +11571,8 @@ margin: 0.0,
 width: 960,
 height: 900,
 
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+<!--theme: Reveal.getQueryHash().theme, // available themes are in /css/theme-->
+theme: 'night', // available themes are in /css/theme
 transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 
 // Optional libraries used to extend on reveal.js
