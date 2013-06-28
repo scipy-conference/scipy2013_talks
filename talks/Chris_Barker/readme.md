@@ -16,3 +16,6 @@ The General NOAA Operational Modeling Environment (GNOME) is a general purpose m
 
 The first version of the program has proven to be powerful, flexible, and easy to use. However, the program is written in C++, with the computational components and a desktop graphical interface code tightly integrated. As we move forward with development, we require a system that allows a new web-based user interface, easier extension of the model, easier scripting for automation, use of the core algorithms in other models, and easier testing. To achieve these goals, we are re-writing the model as a system of components, tied together with Python. Each component can be written in Python, or any language Python can call (primarily C++), and tested either individually or as part of the system with Python. We have written the new model driver in Python, and are wrapping the existing C++ components using Cython. In this paper, the model architecture is presented, with a discussion of the strengths and pitfalls of the approach.
 
+PDF of presentation is enclosed.
+
+
