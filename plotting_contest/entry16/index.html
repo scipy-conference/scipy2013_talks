@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 16 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 17" href="../entry17/index.html" />
+    <link rel="prev" title="Entry 15" href="../entry15/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry17/index.html" title="Entry 17"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry15/index.html" title="Entry 15"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-16">
+<h1>Entry 16<a class="headerlink" href="#entry-16" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry16.png" src="../_images/entry16.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Ludwig Schwardt</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>My first submission got me inspired to do something I&#8217;ve always wanted
+to: make my own Unknown Pleasures album cover.</p>
+<p>I consider this one of the most aesthetic and iconic scientific plots
+and to be able to reproduce something similar in 89 lines of Python
+(of which only 36 really count!) is a real thrill.</p>
+<p>For fun you can also substitute the B1919+21 pulsar used for the
+original cover with a pulsar of your choice from the online EPN
+archive, just to be different!</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/unknown_pleasures.pdf"><tt class="xref download docutils literal"><span class="pre">unknown_pleasures.pdf</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c">#</span>
+<span class="c"># Create your own Unknown Pleasures album cover! See the original at</span>
+<span class="c"># http://en.wikipedia.org/wiki/Unknown_Pleasures</span>
+<span class="c">#</span>
+<span class="c"># The plot represents a series of pulses produced by a pulsar (or pulsating</span>
+<span class="c"># neutron star) and recorded by a radio telescope, stacked on top of each</span>
+<span class="c"># other for analysis of the pulse structure. The specific pulsar on the iconic</span>
+<span class="c"># cover is PSR B1919+21, the very first one discovered in 1967. You can also</span>
+<span class="c"># choose your own pulsar for fun!</span>
+<span class="c">#</span>
+<span class="c"># Ludwig Schwardt</span>
+<span class="c"># 3 April 2013</span>
+<span class="c">#</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">resample</span><span class="p">,</span> <span class="n">filtfilt</span><span class="p">,</span> <span class="n">get_window</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
+
+<span class="c"># The integrated pulse profile for the original pulsar B1919+21 (the same</span>
+<span class="c"># pulsar used on the Unknown Pleasures cover), obtained from the EPN archive</span>
+<span class="c"># at http://www.jb.man.ac.uk/research/pulsar/Resources/epn/</span>
+<span class="c"># This is the 410 MHz version from the Lovell telescope (gl98_410.epn.asc)</span>
+<span class="n">pulse_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">60.3604279</span><span class="p">,</span> <span class="mf">479.295197</span><span class="p">,</span> <span class="mf">1965.36938</span><span class="p">,</span> <span class="mf">3677.84521</span><span class="p">,</span>
+                          <span class="mf">3769.74854</span><span class="p">,</span> <span class="mf">3510.14917</span><span class="p">,</span> <span class="mf">3006.14600</span><span class="p">,</span> <span class="mf">2514.34790</span><span class="p">,</span>
+                          <span class="mf">2126.71875</span><span class="p">,</span> <span class="mf">2143.31738</span><span class="p">,</span> <span class="mf">2370.14624</span><span class="p">,</span> <span class="mf">2517.27686</span><span class="p">,</span>
+                          <span class="mf">2097.36572</span><span class="p">,</span> <span class="mf">1361.16357</span><span class="p">,</span> <span class="mf">499.311279</span><span class="p">,</span> <span class="mf">152.751862</span><span class="p">])</span>
+<span class="c"># Alternatively, choose your own pulsar from the EPN archive, download the</span>
+<span class="c"># ASCII profile of choice and load it as follows:</span>
+<span class="c">#</span>
+<span class="c"># data = np.loadtxt(&#39;jnk98_673.epn.asc&#39;, skiprows=2)</span>
+<span class="c"># pulse_profile = np.abs(data[:,1]) / data[:,1].max()</span>
+<span class="c"># main_pulse = (pulse_profile &gt;= 0.05).nonzero()[0]</span>
+<span class="c"># pulse_profile = pulse_profile[main_pulse[0]:main_pulse[-1]]</span>
+<span class="c">#</span>
+<span class="c"># Some famous choices (the lower frequency data sets work better in general):</span>
+<span class="c"># - The Vela pulsar, B0833-45 (brightest in the Southern hemisphere)</span>
+<span class="c">#   http://www.jb.man.ac.uk/research/pulsar/Resources/epn/epndb/B0833-45/jnk98_673.epn.asc</span>
+<span class="c"># - The Crab pulsar, B0531+21 (only a youthful 959 years old!)</span>
+<span class="c">#   http://www.jb.man.ac.uk/research/pulsar/Resources/epn/epndb/B0531+21/mh96_330.epn.asc</span>
+
+<span class="c"># Pad pulse profile with zeros and interpolate to fixed number of samples</span>
+<span class="n">pad</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.45</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">pulse_profile</span><span class="p">))</span>
+<span class="n">padded_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">pad</span><span class="p">),</span> <span class="n">pulse_profile</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">pad</span><span class="p">)]</span>
+<span class="n">profile</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">padded_profile</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span> <span class="o">/</span> <span class="n">profile</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">profile</span> <span class="o">&gt;=</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c"># Define smoothing and non-linear operators to tweak each pulse trace</span>
+<span class="c"># The edge window gets rid of transient effects at the edges due to filtfilt</span>
+<span class="n">edge_window</span> <span class="o">=</span> <span class="n">get_window</span><span class="p">(</span><span class="s">&#39;hamming&#39;</span><span class="p">,</span> <span class="mi">17</span><span class="p">)[:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">edge_window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">edge_window</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">16</span><span class="p">),</span> <span class="n">edge_window</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="c"># Smooth traces symmetrically with simple moving average filter</span>
+<span class="n">smooth</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">edge_window</span>
+<span class="c"># The nonlinearity increases the peakiness of traces</span>
+<span class="n">nonlin_knee</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">nonlin</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">nonlin_knee</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">y</span> <span class="o">/</span> <span class="n">nonlin_knee</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c"># Make a figure that is exactly the size of a CD cover (12 cm x 12 cm)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span> <span class="o">/</span> <span class="mf">2.54</span><span class="p">,</span> <span class="mi">12</span> <span class="o">/</span> <span class="mf">2.54</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c"># The CD cover has 80 pulse traces</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">):</span>
+    <span class="c"># The signal is positive with a mean given by the integrated pulse profile</span>
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">profile</span><span class="p">))</span>
+    <span class="n">signal</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">profile</span><span class="p">)))</span>
+    <span class="c"># The signal and noise have different smoothing factors / bandwidths</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="n">smooth</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">nonlin</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="c"># Create overlapping traces via a manual painter&#39;s algorithm</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">Polygon</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">],</span> <span class="n">fc</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s">&#39;0.85&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                         <span class="n">closed</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="n">row</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+<span class="c"># Remove variability of top limit of plot due to peak amplitude of top traces</span>
+<span class="n">y_top</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="mf">0.285</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">,</span> <span class="mf">0.43</span><span class="p">,</span> <span class="mf">0.56</span> <span class="o">*</span> <span class="n">y_top</span> <span class="o">/</span> <span class="mf">82.</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span> <span class="o">*</span> <span class="n">y_top</span><span class="p">,</span> <span class="mf">1.01</span> <span class="o">*</span> <span class="n">y_top</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;unknown_pleasures.pdf&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/unknown_pleasures.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 16</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry15/index.html"
+                        title="previous chapter">Entry 15</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry17/index.html"
+                        title="next chapter">Entry 17</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry16/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry17/index.html" title="Entry 17"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry15/index.html" title="Entry 15"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

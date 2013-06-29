@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 3 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 4" href="../entry4/index.html" />
+    <link rel="prev" title="Entry 2" href="../entry2/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry4/index.html" title="Entry 4"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry2/index.html" title="Entry 2"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-3">
+<h1>Entry 3<a class="headerlink" href="#entry-3" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry3.png" src="../_images/entry3.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Jake Vanderplas</li>
+<li>Zeljko Ivezic</li>
+<li>Andrew Connolly</li>
+</ul>
+</div></blockquote>
+<p>This figure is based on data presented in figures 3-4 of Parker &amp;
+Ivezic et al (2008). A similar figure appears in the book &#8220;Statistics,
+Data Mining, and Machine Learning in Astronomy&#8221;, by Ivezic, Connolly,
+Vanderplas, and Gray (2013).</p>
+<p>Running this code requires astroML, a lightweight python package which
+can be quickly installed using <tt class="xref py py-obj docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">astroML</span></tt>.  See
+<a class="reference external" href="http://astroML.github.com">http://astroML.github.com</a> for more information.  AstroML will
+automatically download and cache the required dataset to
+<tt class="xref py py-obj docutils literal"><span class="pre">$HOME/astroML_data</span></tt>.</p>
+</div>
+<div class="section" id="figure-caption">
+<h2>Figure Caption<a class="headerlink" href="#figure-caption" title="Permalink to this headline">¶</a></h2>
+<p>These panels visualize a 4-dimensional correlation between orbits and
+surface color for about 35,000 main-belt asteroids (found between Mars
+and Jupiter) observed by the Sloan Digital Sky Survey. The left panel
+quantifies the variation of the asteroid surface chemistry using two
+measured colors: a* is an optical color (as would be seen by
+e.g. human eyes) and i-z is a near-infrared color (as would be seen by
+e.g. snake eyes). The dots corresponding to individual objects are
+color-coded according to the object&#8217;s position in this diagram. Blue
+shades are representative of carbonaceous surfaces, and orange and
+green shades correspond to silicate surfaces. The right panel is
+constructed with two orbital parameters: semi-major axis a (AU stands
+for astronomical unit, equal to Sun-Earth distance) and sine of the
+orbital inclination i. The vertical dashed lines mark the so-called
+Kirkwood gaps, where no objects are found because of resonant
+gravitational scattering due to Jupiter.  These gaps define the three
+main-belt zones. The easily discernible clusters of points correspond
+to the so-called orbital families of asteroids, believed to be smaller
+remnants of larger objects destroyed in collisions. The dots
+corresponding to individual objects are color-coded according to the
+two-dimensional color palette from the left panel and the measured
+surface colors. The vividly demonstrated fact that orbitally related
+asteroids also have similar colors (and therefore similar surface
+chemistry) is evidence that asteroids in these families share a common
+origin.</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/asteroids.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">astroML.datasets</span> <span class="kn">import</span> <span class="n">fetch_moving_objects</span>
+<span class="kn">from</span> <span class="nn">astroML.plotting.tools</span> <span class="kn">import</span> <span class="n">devectorize_axes</span>
+
+
+<span class="k">def</span> <span class="nf">black_bg_subplot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a subplot with black background&quot;&quot;&quot;</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;axisbg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;k&#39;</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c"># set ticks and labels to white</span>
+    <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">spine</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_major_ticks</span><span class="p">()</span> <span class="o">+</span> <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_major_ticks</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">tick</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+
+
+<span class="k">def</span> <span class="nf">compute_color</span><span class="p">(</span><span class="n">mag_a</span><span class="p">,</span> <span class="n">mag_i</span><span class="p">,</span> <span class="n">mag_z</span><span class="p">,</span> <span class="n">a_crit</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the scatter-plot color using code adapted from</span>
+<span class="sd">    TCL source used in Parker 2008.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># define the base color scalings</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">mag_i</span><span class="p">)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">mag_i</span> <span class="o">-</span> <span class="n">mag_z</span> <span class="o">-</span> <span class="mf">0.01</span><span class="p">))</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">8</span> <span class="o">*</span> <span class="p">(</span><span class="n">mag_a</span> <span class="o">+</span> <span class="mf">0.0</span><span class="p">))</span>
+
+    <span class="c"># enhance green beyond the a_crit cutoff</span>
+    <span class="n">G</span> <span class="o">+=</span> <span class="mf">10.</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">mag_a</span> <span class="o">-</span> <span class="n">a_crit</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.02</span><span class="p">))</span>
+
+    <span class="c"># normalize color of each point to its maximum component</span>
+    <span class="n">RGB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span><span class="p">])</span>
+    <span class="n">RGB</span> <span class="o">/=</span> <span class="n">RGB</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c"># return an array of RGB colors, which is shape (n_points, 3)</span>
+    <span class="k">return</span> <span class="n">RGB</span><span class="o">.</span><span class="n">T</span>
+
+
+<span class="c">#------------------------------------------------------------</span>
+<span class="c"># Fetch data and extract the desired quantities</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">fetch_moving_objects</span><span class="p">(</span><span class="n">Parker2008_cuts</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">mag_a</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;mag_a&#39;</span><span class="p">]</span>
+<span class="n">mag_i</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;mag_i&#39;</span><span class="p">]</span>
+<span class="n">mag_z</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;mag_z&#39;</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;aprime&#39;</span><span class="p">]</span>
+<span class="n">sini</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;sin_iprime&#39;</span><span class="p">]</span>
+
+<span class="c"># dither: magnitudes are recorded only to ± 0.01</span>
+<span class="n">mag_a</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">0.005</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">mag_a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">mag_i</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">0.005</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">mag_i</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">mag_z</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">0.005</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">mag_z</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c"># compute RGB color based on magnitudes</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">compute_color</span><span class="p">(</span><span class="n">mag_a</span><span class="p">,</span> <span class="n">mag_i</span><span class="p">,</span> <span class="n">mag_z</span><span class="p">)</span>
+
+<span class="c">#------------------------------------------------------------</span>
+<span class="c"># set up the plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                    <span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c"># plot the color-magnitude plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">black_bg_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mag_a</span><span class="p">,</span> <span class="n">mag_i</span> <span class="o">-</span> <span class="n">mag_z</span><span class="p">,</span>
+           <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c"># uncomment to convert SVG points to pixels</span>
+<span class="c">#devectorize_axes(ax, dpi=400)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="s">&#39;--w&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">],</span> <span class="s">&#39;--w&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Optical Color (a*)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Near-IR Color (i - z)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c"># plot the orbital parameters plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">black_bg_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sini</span><span class="p">,</span>
+           <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c"># uncomment to convert SVG points to pixels</span>
+<span class="c">#devectorize_axes(ax, dpi=400)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="s">&#39;--w&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">2.82</span><span class="p">,</span> <span class="mf">2.82</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="s">&#39;--w&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Semi-major Axis (AU)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Sine of Orbital Inclination&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c"># label the plot</span>
+<span class="n">text_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                   <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+                   <span class="n">ha</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s">&#39;Inner&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">text_kwargs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.53</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s">&#39;Mid&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">text_kwargs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.83</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s">&#39;Outer&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">text_kwargs</span><span class="p">)</span>
+
+<span class="c"># Saving the black-background figure requires some extra arguments:</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;asteroids.pdf&#39;</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/entry3.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 3</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#figure-caption">Figure Caption</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry2/index.html"
+                        title="previous chapter">Entry 2</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry4/index.html"
+                        title="next chapter">Entry 4</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry3/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry4/index.html" title="Entry 4"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry2/index.html" title="Entry 2"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

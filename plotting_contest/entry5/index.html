@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 5 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 6" href="../entry6/index.html" />
+    <link rel="prev" title="Entry 4" href="../entry4/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry6/index.html" title="Entry 6"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry4/index.html" title="Entry 4"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-5">
+<h1>Entry 5<a class="headerlink" href="#entry-5" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry5.png" src="../_images/entry5.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Adrian Price-Whelan</li>
+</ul>
+<p>Visualization of MCMC chains (walkers; left panels) and derived
+posterior probability distributions (right panels) for four parameters
+in the specified dark matter halo potential model. The model is
+evaluated against simulated observations of RR Lyrae in the
+Sagittarius stream. Steps -150 to 0 were considered burn-in and
+rejected from the displayed posteriors.</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/walkers.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a figure to visualize using MCMC (in particular, the Python package</span>
+<span class="sd">    emcee) to infer 4 parameters from a parametrized model of the Milky Way&#39;s</span>
+<span class="sd">    dark matter halo by using tracer stars from the Sagittarius Stream.</span>
+<span class="sd">    </span>
+<span class="sd">    If you&#39;re unfamiliar with the jargon here (walkers, Sgr, etc.), check out:</span>
+<span class="sd">        - Law &amp; Majewski 2010 </span>
+<span class="sd">            http://iopscience.iop.org/0004-637X/714/1/229/pdf/apj_714_1_229.pdf</span>
+<span class="sd">        - emcee</span>
+<span class="sd">            http://dan.iel.fm/emcee/</span>
+<span class="sd">        - Ensemble samplers with affine-invariance</span>
+<span class="sd">            http://msp.org/camcos/2010/5-1/camcos-v5-n1-p04-p.pdf</span>
+<span class="sd">        </span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># Standard library</span>
+<span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
+
+<span class="c"># Third-party dependencies</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="kn">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="kn">as</span> <span class="nn">cm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">as</span> <span class="nn">gridspec</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;sans-serif&quot;</span>
+<span class="n">font_color</span> <span class="o">=</span> <span class="s">&quot;#dddddd&quot;</span>
+<span class="n">tick_color</span> <span class="o">=</span> <span class="s">&quot;#cdcdcd&quot;</span>
+
+<span class="c"># Map the codified parameter names to their sexy latex equivalents</span>
+<span class="n">param_to_latex</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">q1</span><span class="o">=</span><span class="s">r&quot;$q_1$&quot;</span><span class="p">,</span>
+                      <span class="n">qz</span><span class="o">=</span><span class="s">r&quot;$q_z$&quot;</span><span class="p">,</span>
+                      <span class="n">v_halo</span><span class="o">=</span><span class="s">r&quot;$v_{halo}$&quot;</span><span class="p">,</span>
+                      <span class="n">phi</span><span class="o">=</span><span class="s">r&quot;$\phi$&quot;</span><span class="p">)</span>
+                      
+<span class="n">halo_params</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;q1&quot;</span><span class="p">,</span> <span class="s">&quot;qz&quot;</span><span class="p">,</span> <span class="s">&quot;v_halo&quot;</span><span class="p">,</span> <span class="s">&quot;phi&quot;</span><span class="p">]</span>
+<span class="n">acceptance_fractions</span><span class="p">,</span> <span class="n">flat_chain</span><span class="p">,</span> <span class="n">chain</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&quot;2013-03-12_05-03-29_q1_qz_v_halo_phi_w200_s400.pickle&quot;</span><span class="p">))</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="n">chain</span><span class="p">[(</span><span class="n">acceptance_fractions</span> <span class="o">&gt;</span> <span class="mf">0.15</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">acceptance_fractions</span> <span class="o">&lt;</span> <span class="mf">0.6</span><span class="p">)]</span>
+
+<span class="c"># Create a figure object with same aspect ratio as a sheet of paper...</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mf">20.6</span><span class="p">))</span>
+
+<span class="c"># I want the plot of individual walkers to span 2 columns</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c"># The halo velocity (v_halo) parameter is stored in units of kpc/Myr, but I</span>
+<span class="c">#   want to plot it in km/s</span>
+<span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">chain</span><span class="p">[</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">chain</span><span class="p">[</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kpc</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">Myr</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+
+<span class="c"># I could compute this, but for now I just hard code it by looking at the </span>
+<span class="c">#   plots by eye...</span>
+<span class="n">converged_idx</span> <span class="o">=</span> <span class="mi">150</span>
+
+<span class="c"># For each parameter, I want to plot each walker on one panel, and a histogram</span>
+<span class="c">#   of all links from all walkers past 150 steps (approximately when the chains</span>
+<span class="c">#   converged)</span>
+<span class="k">for</span> <span class="n">ii</span><span class="p">,</span><span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">halo_params</span><span class="p">):</span>
+    <span class="n">these_chains</span> <span class="o">=</span> <span class="n">chain</span><span class="p">[:,:,</span><span class="n">ii</span><span class="p">]</span>
+    
+    <span class="c"># I&#39;m going to color the walkers by their variance past the bulk convergence</span>
+    <span class="c">#   point, so here I compute the maximum variance to scale the others to 0-1</span>
+    <span class="n">max_var</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">these_chains</span><span class="p">[:,</span><span class="n">converged_idx</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_axis_bgcolor</span><span class="p">(</span><span class="s">&quot;#333333&quot;</span><span class="p">)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> 
+                <span class="n">color</span><span class="o">=</span><span class="s">&quot;#67A9CF&quot;</span><span class="p">,</span> 
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">walker</span> <span class="ow">in</span> <span class="n">these_chains</span><span class="p">:</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">walker</span><span class="p">))</span><span class="o">-</span><span class="n">converged_idx</span><span class="p">,</span> <span class="n">walker</span><span class="p">,</span>
+                <span class="n">drawstyle</span><span class="o">=</span><span class="s">&quot;steps&quot;</span><span class="p">,</span> 
+                <span class="n">color</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">bone_r</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">walker</span><span class="p">[</span><span class="n">converged_idx</span><span class="p">:])</span> <span class="o">/</span> <span class="n">max_var</span><span class="p">),</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+                
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">param_to_latex</span><span class="p">[</span><span class="n">param</span><span class="p">],</span> 
+                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span>
+                   <span class="n">labelpad</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+                   <span class="n">rotation</span><span class="o">=</span><span class="s">&quot;horizontal&quot;</span><span class="p">,</span>
+                   <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">)</span>
+    
+    <span class="c"># Don&#39;t show ticks on the y-axis</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+    
+    <span class="c"># For the plot on the bottom, add an x-axis label. Hide all others</span>
+    <span class="k">if</span> <span class="n">ii</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">halo_params</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;step number&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_axis_bgcolor</span><span class="p">(</span><span class="s">&quot;#555555&quot;</span><span class="p">)</span>
+    
+    <span class="c"># Create a histogram of all values past the converged point. Make 100 bins</span>
+    <span class="c">#   between the y-axis bounds defined by the &#39;walkers&#39; plot.</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">these_chains</span><span class="p">[:,</span><span class="n">converged_idx</span><span class="p">:]),</span> 
+             <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span><span class="mi">100</span><span class="p">),</span>
+             <span class="n">orientation</span><span class="o">=</span><span class="s">&#39;horizontal&#39;</span><span class="p">,</span>
+             <span class="n">facecolor</span><span class="o">=</span><span class="s">&quot;#67A9CF&quot;</span><span class="p">,</span>
+             <span class="n">edgecolor</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">)</span>
+    
+    <span class="c"># Same y-bounds as the walkers plot, so they line up</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">these_chains</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">these_chains</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick_right</span><span class="p">()</span>
+    
+    <span class="c"># For the first plot, add titles and shift them up a bit</span>
+    <span class="k">if</span> <span class="n">ii</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Walkers&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">set_y</span><span class="p">(</span><span class="mf">1.01</span><span class="p">)</span> 
+        <span class="n">t</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Posterior&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">set_y</span><span class="p">(</span><span class="mf">1.01</span><span class="p">)</span> 
+    
+    <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s">&quot;v_halo&quot;</span><span class="p">:</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;km/s&quot;</span><span class="p">,</span> 
+                       <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                       <span class="n">rotation</span><span class="o">=</span><span class="s">&quot;horizontal&quot;</span><span class="p">,</span>
+                       <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">,</span>
+                       <span class="n">labelpad</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s">&quot;phi&quot;</span><span class="p">:</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;rad&quot;</span><span class="p">,</span>
+                       <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                       <span class="n">rotation</span><span class="o">=</span><span class="s">&quot;horizontal&quot;</span><span class="p">,</span>
+                       <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">,</span>
+                       <span class="n">labelpad</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s">&quot;right&quot;</span><span class="p">)</span>
+    
+    <span class="c"># Adjust axis ticks, e.g. make them appear on the outside of the plots and</span>
+    <span class="c">#   change the padding / color.</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">tick_color</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s">&#39;out&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">tick_color</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    
+    <span class="c"># Removes the top tick marks</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">tick_bottom</span><span class="p">()</span>
+    
+    <span class="c"># Hack because the tick labels for phi are wonky... but this removed the </span>
+    <span class="c">#   first and last tick labels so I can squash the plots right up against</span>
+    <span class="c">#   each other</span>
+    <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s">&quot;phi&quot;</span><span class="p">:</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ax2</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ax2</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c"># Effing long equation for the logarithmic halo potential with a possible </span>
+<span class="c">#   rotation relative to the MW disk.</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">r&quot;$\Phi_{halo} = v_{halo}^2 \ln[(\frac{\cos^2\phi}{q_1^2}+\frac{\sin^2\phi}{q_2^2})x^2 + (\frac{\sin^2\phi}{q_1^2}+\frac{\cos^2\phi}{q_2^2})y^2 + 2\sin\phi\cos\phi(q_1^{-2}-q_2^{-2})xy + \frac{z^2}{q_z^2} + r_{halo}^2]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.075</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.88</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;walkers.pdf&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;#222222&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/walker_plot.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/2013-03-12_05-03-29_q1_qz_v_halo_phi_w200_s400.pickle"><tt class="xref download docutils literal"><span class="pre">2013-03-12_05-03-29_q1_qz_v_halo_phi_w200_s400.pickle</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 5</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry4/index.html"
+                        title="previous chapter">Entry 4</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry6/index.html"
+                        title="next chapter">Entry 6</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry5/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry6/index.html" title="Entry 6"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry4/index.html" title="Entry 4"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

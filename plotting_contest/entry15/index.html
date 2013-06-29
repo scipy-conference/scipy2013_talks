@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 15 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 16" href="../entry16/index.html" />
+    <link rel="prev" title="Entry 14" href="../entry14/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry16/index.html" title="Entry 16"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry14/index.html" title="Entry 14"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-15">
+<h1>Entry 15<a class="headerlink" href="#entry-15" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry15.png" src="../_images/entry15.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Elaine Angelino</li>
+<li>Dogus Cubuk</li>
+<li>Amos Waterland</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>We made the attached visualization of a molecular dynamics simulation
+of a valence hopping around a lattice; it wasn&#8217;t obvious how to
+visualize this data.  We used the rainbow colors not only for
+aesthetics but to show the trajectory of the valence and to highlight
+the jumps from one point in the lattice to another &#8211; the path goes
+from red to orange to yellow, green, cyan, blue, purple, magenta.</p>
+<p>[Editor&#8217;s Note: the data file is over 600MB, so it is not included
+here.]</p>
+<p>There is a little bit about the visualization here:
+<a class="reference external" href="http://www.eecs.harvard.edu/~elaine/sousvide/stories/molecules.html">http://www.eecs.harvard.edu/~elaine/sousvide/stories/molecules.html</a></p>
+<p>And some more context about the molecular dynamics simulations here:
+<a class="reference external" href="http://people.seas.harvard.edu/~apw/ap299r/">http://people.seas.harvard.edu/~apw/ap299r/</a></p>
+<p>Thank you for the opportunity to share our visualization using Python
+and matplotlib with the SciPy community!</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/entry15.png"><tt class="xref download docutils literal"><span class="pre">PNG</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Script to plot molecular dynamics simulation results.</span>
+
+<span class="sd">Author:  Elaine Angelino &lt;elaine at eecs dot harvard dot edu&gt;</span>
+
+<span class="sd">Copyright 2011</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tabular</span> <span class="kn">as</span> <span class="nn">tb</span>
+
+<span class="kn">import</span> <span class="nn">pylab</span>
+
+	
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">fz</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Split the input file into separate files for the three spatial dimensions.</span>
+<span class="sd">	</span>
+<span class="sd">	Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">		**fin** : str</span>
+<span class="sd">		</span>
+<span class="sd">			Name of input file.  There is no header.  Every set of three lines</span>
+<span class="sd">			corresponds to x-, y-, and z-coordinates for one time point.  Each</span>
+<span class="sd">			column corresponds to one atom. </span>
+<span class="sd">			</span>
+<span class="sd">		**fx** : str</span>
+<span class="sd">		</span>
+<span class="sd">			Name of output file for the x-dimension.  Each record corresponds to</span>
+<span class="sd">			one time point.  Each column corresponds to one atom.  The columns</span>
+<span class="sd">			are named in the first line of the file.</span>
+<span class="sd">			</span>
+<span class="sd">		**fy** : str</span>
+<span class="sd">		</span>
+<span class="sd">			Name of output file for the y-dimension, analogous to ``fx``.	</span>
+
+<span class="sd">		**fz** : str</span>
+<span class="sd">		</span>
+<span class="sd">			Name of output file for the z-dimension, analogous to ``fx``.				</span>
+<span class="sd">	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	
+	<span class="n">ncols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="s">&#39;rU&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+	<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">)]</span>
+	<span class="n">header</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+	
+	<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="s">&#39;rU&#39;</span><span class="p">)</span>
+	<span class="n">gx</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+	<span class="n">gy</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fy</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+	<span class="n">gz</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fz</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>	
+			
+	<span class="n">gx</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+	<span class="n">gy</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+	<span class="n">gz</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+	
+	<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span>			
+		<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">):</span>
+			<span class="k">break</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">gx</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+			<span class="n">gy</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+			<span class="n">gz</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+	
+	<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+	<span class="n">gx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+	<span class="n">gy</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+	<span class="n">gz</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+	
+	
+<span class="k">def</span> <span class="nf">traces_2d</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">fz</span><span class="p">,</span> <span class="n">dout</span><span class="p">,</span>
+		 	  <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="s">&#39;yellow&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> 
+		 	  		  <span class="s">&#39;cyan&#39;</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="s">&#39;purple&#39;</span><span class="p">,</span> <span class="s">&#39;magenta&#39;</span><span class="p">],</span> <span class="n">art</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Parameters:</span>
+<span class="sd">			</span>
+<span class="sd">		**fx** : str</span>
+<span class="sd">		</span>
+<span class="sd">			Name of input file for the x-dimension.  Each record corresponds to</span>
+<span class="sd">			one time point.  Each column corresponds to one atom.  The columns</span>
+<span class="sd">			are named in the first line of the file.</span>
+<span class="sd">			</span>
+<span class="sd">		**fy** : str</span>
+<span class="sd">		</span>
+<span class="sd">			Name of input file for the y-dimension, analogous to ``fx``.	</span>
+
+<span class="sd">		**fz** : str</span>
+<span class="sd">		</span>
+<span class="sd">			Name of input file for the z-dimension, analogous to ``fx``.</span>
+<span class="sd">		</span>
+<span class="sd">		**colors** : list of strings</span>
+<span class="sd">		</span>
+<span class="sd">		**art** : boolean</span>
+<span class="sd">		</span>
+<span class="sd">			Default is False; indicates whether or not graphic will be produced</span>
+<span class="sd">			in ``art&#39;&#39; mode.  If False, the trajectory is plotted on a white</span>
+<span class="sd">			background with axis ticks, axis labels, and a title.  If True, it </span>
+<span class="sd">			is plotted on a gray background without axis ticks, axis labels, or</span>
+<span class="sd">			a title.</span>
+<span class="sd">			</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dout</span><span class="p">):</span>
+		<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span>
+		
+	<span class="n">names</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="s">&#39;rU&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+		
+	<span class="n">recs</span> <span class="o">=</span> <span class="p">[]</span>
+	
+	<span class="n">flist</span> <span class="o">=</span> <span class="p">[</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">fz</span><span class="p">]</span>
+
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flist</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">fi</span> <span class="o">=</span> <span class="n">flist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+		<span class="n">di</span> <span class="o">=</span> <span class="n">fi</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">flist</span><span class="p">)):</span>
+			<span class="n">fj</span> <span class="o">=</span> <span class="n">flist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+			<span class="n">dj</span> <span class="o">=</span> <span class="n">fj</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>		
+			<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">[</span><span class="mi">18</span><span class="p">:]:</span>
+				<span class="k">print</span> <span class="n">di</span><span class="p">,</span> <span class="n">dj</span><span class="p">,</span> <span class="n">n</span>
+				<span class="c"># np1 = str(int(n) + 1)</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">di</span> <span class="o">==</span> <span class="s">&#39;x&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">dj</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span><span class="p">):</span>
+					<span class="n">ii</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tabarray</span><span class="p">(</span><span class="n">SVfile</span><span class="o">=</span><span class="n">fi</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+					<span class="n">jj</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tabarray</span><span class="p">(</span><span class="n">SVfile</span><span class="o">=</span><span class="n">fj</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+					<span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cast</span><span class="p">[</span><span class="nb">int</span><span class="p">](</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ii</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+					<span class="k">if</span> <span class="n">art</span><span class="p">:</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">axisbg</span><span class="o">=</span><span class="s">&#39;gray&#39;</span><span class="p">)</span>					
+					<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+						<span class="n">a</span> <span class="o">=</span> <span class="n">ind</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+						<span class="n">b</span> <span class="o">=</span> <span class="n">ind</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ii</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="p">],</span> <span class="n">jj</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="p">],</span> <span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+					<span class="k">if</span> <span class="n">art</span><span class="p">:</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">xticks</span><span class="p">((),())</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">yticks</span><span class="p">((),())</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span> 
+									  <span class="s">&#39;</span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s">-art-gray.png&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">di</span><span class="p">,</span> <span class="n">dj</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span>
+					<span class="k">else</span><span class="p">:</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;n = </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">di</span><span class="p">)</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">dj</span><span class="p">)</span>
+						<span class="n">pylab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span> 
+									  <span class="s">&#39;</span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s">.png&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">di</span><span class="p">,</span> <span class="n">dj</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+					<span class="k">break</span>
+					
+
+<span class="k">def</span> <span class="nf">template</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span><span class="p">,</span> <span class="n">art</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+	<span class="n">normalize</span><span class="p">(</span><span class="n">fin</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span><span class="p">),</span> 
+			  <span class="n">fx</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span> <span class="o">+</span> <span class="s">&#39;-x&#39;</span><span class="p">),</span>
+			  <span class="n">fy</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span> <span class="o">+</span> <span class="s">&#39;-y&#39;</span><span class="p">),</span>
+			  <span class="n">fz</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span> <span class="o">+</span> <span class="s">&#39;-z&#39;</span><span class="p">))</span>
+
+	<span class="n">traces_2d</span><span class="p">(</span><span class="n">fx</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span> <span class="o">+</span> <span class="s">&#39;-x&#39;</span><span class="p">),</span>
+		 	  <span class="n">fy</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span> <span class="o">+</span> <span class="s">&#39;-y&#39;</span><span class="p">),</span>
+		 	  <span class="n">fz</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span> <span class="o">+</span> <span class="s">&#39;-z&#39;</span><span class="p">),</span>
+		 	  <span class="n">dout</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span> <span class="o">+</span> <span class="s">&#39;-traces-2d&#39;</span><span class="p">),</span>
+		 	  <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="s">&#39;yellow&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> 
+		 	  		  <span class="s">&#39;cyan&#39;</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="s">&#39;purple&#39;</span><span class="p">,</span> <span class="s">&#39;magenta&#39;</span><span class="p">],</span> <span class="n">art</span><span class="o">=</span><span class="n">art</span><span class="p">)</span>
+		 	  		  
+<span class="k">def</span> <span class="nf">driver_out11</span><span class="p">(</span><span class="n">droot</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">froot</span><span class="o">=</span><span class="s">&#39;out11&#39;</span><span class="p">,</span> <span class="n">art</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+	<span class="n">template</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span><span class="p">,</span> <span class="n">art</span><span class="p">)</span>
+	
+<span class="k">def</span> <span class="nf">driver_out12</span><span class="p">(</span><span class="n">droot</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">froot</span><span class="o">=</span><span class="s">&#39;out12&#39;</span><span class="p">,</span> <span class="n">art</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+	<span class="n">template</span><span class="p">(</span><span class="n">droot</span><span class="p">,</span> <span class="n">froot</span><span class="p">,</span> <span class="n">art</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/molecules.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 15</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry14/index.html"
+                        title="previous chapter">Entry 14</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry16/index.html"
+                        title="next chapter">Entry 16</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry15/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry16/index.html" title="Entry 16"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry14/index.html" title="Entry 14"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

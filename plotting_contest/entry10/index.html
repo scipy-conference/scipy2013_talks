@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 10 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 11" href="../entry11/index.html" />
+    <link rel="prev" title="Entry 9" href="../entry9/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry11/index.html" title="Entry 11"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry9/index.html" title="Entry 9"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-10">
+<h1>Entry 10<a class="headerlink" href="#entry-10" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry10.png" src="../_images/entry10.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Kristen Thyng</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>This figure is from a paper for the European Wave and Tidal Energy
+Conference (EWTEC) that I am working on with a co-author. The paper
+describes a study we did together combining a simulation of an
+idealized tidal channel with a symmetric headland in the middle and an
+array of ten turbines near the headland. This combination of efforts
+allows us to start to understand the effects of turbines on
+increasingly realistic flows, both near the turbine array and farther
+field, kilometers away down the channel.</p>
+<p>The plot shows the difference in maximum turbulent kinetic energy
+(TKE) between a simulation with no turbines and a simulation with an
+array of turbines. Positive (red) values indicate areas in which the
+initial case has larger maximum values and negative (grey) values
+indicate areas in which the turbine array case has larger values. Line
+plots to the left (bottom) of the main plot area show the along-
+(across-) channel average of the plot values, with coloring indicating
+position greater than (red) or less than (grey) zero.</p>
+<p>There is a distinction in relative behavior in the cases in the near-
+and far-field. Very near to the turbines and in their wake, the TKE is
+stronger in the turbine case, which is expected given that several
+terms have been added to the turbulence equations in order to model
+the effect of the turbines. Further downstream, the initial, no
+turbine case TKE is larger than the turbine case, probably due to the
+dissipation due to the turbines in the regular array case. These
+trends are reflected in the along- and across-channel averages shown
+alongside the plot: the initial case tends to be larger except near
+the turbines themselves.</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/tkemax.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span></tt></a></li>
+</ul>
+<p>Source</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">plot_gen</span> <span class="kn">as</span> <span class="nn">pg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c"># # Some subtraction plots</span>
+<span class="c"># # vorticity (da) </span>
+<span class="c"># # levels = np.linspace(-.09,.09,10)</span>
+<span class="c"># smax: np.linspace(-.9,.9,10), smean: np.linspace(-.45,.45,10)</span>
+<span class="c"># zetamax: np.linspace(-.01,.01,9)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;vort&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-.</span><span class="mo">0045</span><span class="p">,</span><span class="o">.</span><span class="mo">0045</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$Max vertical vorticity $(1/s)$&#39;</span><span class="p">},</span>
+	   <span class="s">&#39;tke&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-.</span><span class="mi">09</span><span class="p">,</span><span class="o">.</span><span class="mi">09</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$Max TKE ($m^2/s^2$)&#39;</span><span class="p">},</span>
+	   <span class="s">&#39;w&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-.</span><span class="mi">9</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$Max vertical velocity $(m/s)$&#39;</span><span class="p">},</span>
+	   <span class="s">&#39;s&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-.</span><span class="mi">9</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$Max horizontal speed $(m/s)$&#39;</span><span class="p">},</span>
+	   <span class="s">&#39;zeta&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-.</span><span class="mo">0001</span><span class="p">,</span><span class="o">.</span><span class="mo">0001</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$Mean zeta $(m)$&#39;</span><span class="p">},</span>
+	   <span class="s">&#39;mkpd&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-.</span><span class="mi">9</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$ mean kinetic power density $(kW/m^2)$&#39;</span><span class="p">},</span>
+	   <span class="s">&#39;abi&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$ asymmetry (degrees)&#39;</span><span class="p">},</span>
+	   <span class="s">&#39;stdbi&#39;</span><span class="p">:{</span><span class="s">&#39;levels&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">27</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="s">&#39;colormap&#39;</span><span class="p">:</span><span class="s">&#39;RdGy_r&#39;</span><span class="p">,</span><span class="s">&#39;title&#39;</span><span class="p">:</span><span class="s">r&#39;$\Delta$ directional deviation (degrees)&#39;</span><span class="p">}}</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;tke&#39;</span> <span class="c"># when i want to do more do a loop</span>
+<span class="n">oper</span> <span class="o">=</span> <span class="s">&#39;max&#39;</span> <span class="c"># operation (max, mean, metric, min,gradmean)</span>
+<span class="n">zoom</span> <span class="o">=</span> <span class="s">&#39;zmid&#39;</span>
+<span class="c"># vlevel = &#39;hubheight&#39; #&#39;surface&#39;#&#39;hubheight&#39; (depth-averaged)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;diff.npz&#39;</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;diff&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;mask&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c">### TEMP</span>
+<span class="c"># ind = np.arange(0,50)#15,15+25) # half the cycle</span>
+
+<span class="c"># diff = d.max(axis=0)-dr.max(axis=0)</span>
+
+<span class="n">pg</span><span class="o">.</span><span class="n">plt</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span><span class="n">y</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span><span class="n">diff</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="n">zoom</span><span class="p">,</span>
+	<span class="n">var</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;colormap&#39;</span><span class="p">],</span><span class="n">var</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;levels&#39;</span><span class="p">],</span>
+	<span class="n">name</span> <span class="o">+</span> <span class="n">oper</span> <span class="o">+</span> <span class="s">&#39;.pdf&#39;</span><span class="p">,</span>
+	<span class="n">var</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;title&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/run.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">(run.py)</span></tt></a></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">troc_plot_gen.py</span>
+<span class="sd">Kristen M. Thyng</span>
+<span class="sd">November 2012</span>
+
+<span class="sd">Plot properties that were saved and calculated in troc_calc.py, at </span>
+<span class="sd">multiple depths. More general than troc_plot.py.</span>
+
+<span class="sd">Movies:</span>
+<span class="sd">	Density</span>
+<span class="sd">	U Velocity</span>
+<span class="sd">	V Velocity</span>
+<span class="sd">	TKE (5 m down)</span>
+<span class="sd">	Vertical Velocity (5 m down)</span>
+<span class="sd">	Free Surface</span>
+<span class="sd">Plots:</span>
+<span class="sd">	Asymmetry properties:</span>
+<span class="sd">		bidirectionality</span>
+<span class="sd">		directional deviation</span>
+<span class="sd">	Vorticity (need to calculate in sigma coordinates)</span>
+<span class="sd">	Mean speed</span>
+<span class="sd">	Mean Density</span>
+<span class="sd">	Mean TKE</span>
+<span class="sd">	Mean w</span>
+<span class="sd">	Mean vorticity</span>
+<span class="sd">	Mean kinetic power density</span>
+<span class="sd">	Mean free surface</span>
+<span class="sd">	Free surface signal at edge of domain</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c"># import matplotlib</span>
+<span class="c"># matplotlib.use(&quot;Agg&quot;) # set matplotlib to use the backend that does not require a windowing system</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="kn">as</span> <span class="nn">colors</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span><span class="p">,</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">troc_calc</span> <span class="kn">as</span> <span class="nn">tr</span>
+<span class="kn">import</span> <span class="nn">pdb</span>
+<span class="kn">import</span> <span class="nn">op</span>
+<span class="kn">import</span> <span class="nn">netCDF4</span> <span class="kn">as</span> <span class="nn">netCDF</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">zoomed_inset_axes</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">mark_inset</span>
+
+<span class="c">#rc(&#39;text&#39;, usetex=True) # for latex rendering</span>
+<span class="c">##rc(&#39;font&#39;, family=&#39;serif&#39;)</span>
+
+<span class="c"># # User stuff</span>
+<span class="c"># var = &#39;mssurface&#39;</span>
+<span class="c"># vtype = &#39;calculate&#39;</span>
+<span class="c"># zoom = &#39;zout&#39;</span>
+<span class="c"># xlims = (0,40)</span>
+<span class="c"># ylims = (0,7)</span>
+
+<span class="n">hgrey</span> <span class="o">=</span> <span class="s">&#39;#737373&#39;</span>
+<span class="n">hred</span> <span class="o">=</span> <span class="s">&#39;#c94741&#39;</span>
+
+<span class="k">def</span> <span class="nf">plt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="n">zoom</span><span class="p">,</span><span class="n">colormap</span><span class="p">,</span><span class="n">levels</span><span class="p">,</span><span class="n">fname</span><span class="p">,</span><span class="n">Title</span><span class="p">):</span>
+
+	<span class="k">if</span> <span class="n">zoom</span> <span class="o">==</span> <span class="s">&#39;zout&#39;</span><span class="p">:</span>
+		<span class="n">xlims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+		<span class="n">ylims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+		<span class="n">dy</span> <span class="o">=</span> <span class="mi">24</span>
+		<span class="n">dx</span> <span class="o">=</span> <span class="mi">18</span>
+		<span class="n">ms</span> <span class="o">=</span> <span class="mf">1.5</span>
+	<span class="k">elif</span> <span class="n">zoom</span> <span class="o">==</span> <span class="s">&#39;zmid&#39;</span><span class="p">:</span>
+		<span class="n">xlims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+		<span class="n">ylims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+		<span class="n">dy</span> <span class="o">=</span> <span class="mi">24</span>
+		<span class="n">dx</span> <span class="o">=</span> <span class="mi">14</span>
+		<span class="n">ms</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c"># min shaft length</span>
+	<span class="k">elif</span> <span class="n">zoom</span> <span class="o">==</span> <span class="s">&#39;zin&#39;</span><span class="p">:</span>
+		<span class="n">xlims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
+		<span class="n">ylims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+		<span class="n">dy</span> <span class="o">=</span> <span class="mi">12</span><span class="c">#6</span>
+		<span class="n">dx</span> <span class="o">=</span> <span class="mi">8</span><span class="c">#4</span>
+		<span class="n">ms</span> <span class="o">=</span> <span class="o">.</span><span class="mi">25</span>
+
+	<span class="c"># Make plots</span>
+	<span class="c"># rc(&#39;text&#39;,usetex=True)</span>
+	<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+	<span class="c"># if vtype == &#39;calculate&#39;:</span>
+		<span class="c"># if var == &#39;abisurface&#39; or var == &#39;abihubheight&#39; or var == &#39;stdbisurface&#39; or var == &#39;stdbihubheight&#39;:</span>
+		<span class="c"># 	figure(figsize=(18,6))</span>
+		<span class="c"># 	contourf(x,y,d,[5,10,15,20,25,30,35,40],cmap=colormap)#,vmin=dmin,vmax=dmax)</span>
+		<span class="c"># 	xlim(xlims)</span>
+		<span class="c"># 	ylim(ylims)</span>
+		<span class="c"># 	colorbar()</span>
+		<span class="c"># 	xlabel(&#39;Along-channel distance (km)&#39;)</span>
+		<span class="c"># 	ylabel(&#39;Across-channel distance (km)&#39;)</span>
+		<span class="c"># 	title(Title)</span>
+		<span class="c"># 	savefig(&#39;figures/calculate/&#39; + var + zoom + &#39;.png&#39;,bbox_inches=&#39;tight&#39;)</span>
+		<span class="c"># 	close()</span>
+		<span class="c"># else:</span>
+	<span class="c"># figure(figsize=(18,6))</span>
+	
+	<span class="c"># definitions for axes, a la http://matplotlib.org/examples/pylab_examples/scatter_hist.html</span>
+	<span class="n">left</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span> <span class="c"># for very left and very bottom</span>
+	<span class="n">thickx</span><span class="p">,</span> <span class="n">thicky</span> <span class="o">=</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.125</span> <span class="c"># thickness of the left and bottom plots</span>
+	<span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.6</span> <span class="c"># width and height of main plot</span>
+	<span class="n">dpx</span> <span class="o">=</span> <span class="o">.</span><span class="mo">025</span> <span class="c"># space between plots</span>
+	<span class="n">dpy</span> <span class="o">=</span> <span class="o">.</span><span class="mi">08</span>
+
+	<span class="c"># axes for each of the three plots: [left,bottom,width,height]</span>
+	<span class="n">rect_main</span> <span class="o">=</span> <span class="p">[</span><span class="n">left</span><span class="o">+</span><span class="n">thickx</span><span class="o">+</span><span class="n">dpx</span><span class="p">,</span><span class="n">bottom</span><span class="o">+</span><span class="n">thicky</span><span class="o">+</span><span class="n">dpy</span><span class="p">,</span><span class="n">width</span><span class="o">+.</span><span class="mi">153</span><span class="p">,</span><span class="n">height</span><span class="p">]</span> <span class="c"># main plot</span>
+	<span class="n">rect_left</span> <span class="o">=</span> <span class="p">[</span><span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="o">+</span><span class="n">thicky</span><span class="o">+</span><span class="n">dpy</span><span class="p">,</span><span class="n">thickx</span><span class="p">,</span><span class="n">height</span><span class="p">]</span> <span class="c"># left side small plot</span>
+	<span class="n">rect_bottom</span> <span class="o">=</span> <span class="p">[</span><span class="n">left</span><span class="o">+</span><span class="n">thickx</span><span class="o">+</span><span class="n">dpx</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">thicky</span><span class="p">]</span> <span class="c"># bottom small plot</span>
+	<span class="n">nullfmt</span>   <span class="o">=</span> <span class="n">NullFormatter</span><span class="p">()</span>         <span class="c"># no labels</span>
+	<span class="n">nullloc</span>   <span class="o">=</span> <span class="n">NullLocator</span><span class="p">()</span>         
+
+	<span class="c"># start with a rectangular figure</span>
+	<span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span><span class="c">#18,6))</span>
+
+	<span class="n">axMain</span> <span class="o">=</span> <span class="n">axes</span><span class="p">(</span><span class="n">rect_main</span><span class="p">)</span>
+
+	<span class="c"># main plot</span>
+
+	<span class="c"># pcolormesh(x,y,z,cmap=colormap)#,vmin=dmin,vmax=dmax)</span>
+	<span class="c"># cmap = cm.PRGn</span>
+	<span class="c"># levels=[-0.08      , -0.06222222, -0.04444444, -0.02666667, -0.00888889,</span>
+ <span class="c">#        0.00888889,  0.02666667,  0.04444444,  0.06222222,  0.08]</span>
+ 	<span class="c"># dmax = np.max(z.max(),abs(z.min()))</span>
+	<span class="c"># this is to prevent the whiting out of larger values in the contour maps</span>
+	<span class="n">dmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+	<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">&gt;=</span><span class="n">dmax</span><span class="p">)</span>
+	<span class="n">z</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmax</span>
+	<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">&lt;=-</span><span class="n">dmax</span><span class="p">)</span>
+	<span class="n">z</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">dmax</span>
+	<span class="c"># pdb.set_trace()</span>
+	<span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">levels</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">colormap</span><span class="p">))</span><span class="c">#levels=np.linspace(-dmax,dmax,10))#,levels=np.linspace(-.09,.09,10))#cmap=cm.get_cmap(colormap, len(levels)-1))#cmap=colormap)#,vmin=dmin,vmax=dmax#levels=np.linspace(dmin,dmax,9))</span>
+	<span class="c"># pcolormesh(x,y,z,cmap=colormap,vmin=-dmax,vmax=dmax)</span>
+	<span class="n">colorbar</span><span class="p">(</span><span class="n">pad</span><span class="o">=.</span><span class="mo">02</span><span class="p">)</span>
+	<span class="c">#set_cmap(colormap)</span>
+
+	<span class="n">axMain</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlims</span><span class="p">)</span>
+	<span class="n">axMain</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylims</span><span class="p">)</span>
+	<span class="n">axMain</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">Title</span><span class="p">)</span>
+	<span class="n">axMain</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Across-channel distance (km)&#39;</span><span class="p">)</span>
+	<span class="n">axMain</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Along-channel distance (km)&#39;</span><span class="p">)</span>
+	<span class="c"># axMain.xaxis.set_major_formatter(nullfmt) # no labels</span>
+	<span class="c"># axMain.yaxis.set_major_formatter(nullfmt) # no labels</span>
+
+	<span class="c"># Draw in headland to distinguish from the flow in whiter plots</span>
+	<span class="n">hold</span><span class="p">(</span><span class="s">&#39;on&#39;</span><span class="p">)</span>
+	<span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">colors</span><span class="o">=</span><span class="s">&#39;grey&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+	<span class="c"># ind = (mask == 0)</span>
+	<span class="c"># pcolor(x,y,ind*.5)</span>
+
+	<span class="c"># Try including various averages along the edges of the plots: left and bottom</span>
+	<span class="c"># Left plot: averaged along-channel</span>
+	<span class="n">axLeft</span> <span class="o">=</span> <span class="n">axes</span><span class="p">(</span><span class="n">rect_left</span><span class="p">,</span><span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="c">#,sharey=axMain)</span>
+	<span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+	<span class="c"># pdb.set_trace()</span>
+	<span class="c"># zacross = z.mean(axis=1)</span>
+	<span class="c"># poor man&#39;s nanmean</span>
+	<span class="n">zacross</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">ind</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+	<span class="n">indp</span> <span class="o">=</span> <span class="p">(</span><span class="n">zacross</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">indn</span> <span class="o">=</span> <span class="p">(</span><span class="n">zacross</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">zacrossp</span> <span class="o">=</span> <span class="n">zacross</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+	<span class="n">zacrossp</span><span class="p">[</span><span class="n">indn</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+	<span class="n">zacrossn</span> <span class="o">=</span> <span class="n">zacross</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+	<span class="n">zacrossn</span><span class="p">[</span><span class="n">indp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+	<span class="n">axLeft</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zacrossp</span><span class="p">,</span><span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">hred</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+	<span class="n">hold</span><span class="p">(</span><span class="s">&#39;on&#39;</span><span class="p">)</span>
+	<span class="c"># ind = (zacross&lt;=0)</span>
+	<span class="n">axLeft</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zacrossn</span><span class="p">,</span><span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">hgrey</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">7</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+	<span class="c"># axLeft.plot(np.zeros(y.shape[0]),y[:,0],&#39;:k&#39;)</span>
+	<span class="n">xmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">zacross</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="nb">abs</span><span class="p">(</span><span class="n">zacross</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span>
+	<span class="n">axLeft</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="n">xmax</span><span class="p">,</span><span class="o">-</span><span class="n">xmax</span><span class="p">))</span>	
+	<span class="n">axLeft</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylims</span><span class="p">)</span>
+	<span class="n">axLeft</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n\n</span><span class="s"> Channel</span><span class="se">\n</span><span class="s"> Directional</span><span class="se">\n</span><span class="s"> averages&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">hgrey</span><span class="p">)</span>
+	<span class="c"># locs,labels = xticks()</span>
+	<span class="c"># setp(labels,visible=False)#rotation=90,color=&#39;grey&#39;)</span>
+	<span class="c"># setp(locs,visible=False)#rotation=90,color=&#39;grey&#39;)</span>
+	<span class="n">axLeft</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">nullloc</span><span class="p">)</span> <span class="c"># no labels</span>
+	<span class="n">axLeft</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">nullloc</span><span class="p">)</span> <span class="c"># no labels</span>
+
+	<span class="c"># Bottom plot: averaged across-channel</span>
+	<span class="n">axBottom</span> <span class="o">=</span> <span class="n">axes</span><span class="p">(</span><span class="n">rect_bottom</span><span class="p">,</span><span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="c">#,sharex=axMain)</span>
+	<span class="n">zalong</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">indp</span> <span class="o">=</span> <span class="p">(</span><span class="n">zalong</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">indn</span> <span class="o">=</span> <span class="p">(</span><span class="n">zalong</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">zalongp</span> <span class="o">=</span> <span class="n">zalong</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+	<span class="n">zalongp</span><span class="p">[</span><span class="n">indn</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+	<span class="n">zalongn</span> <span class="o">=</span> <span class="n">zalong</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+	<span class="n">zalongn</span><span class="p">[</span><span class="n">indp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+	<span class="n">axBottom</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span><span class="n">zalongn</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">hgrey</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">7</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+	<span class="n">hold</span><span class="p">(</span><span class="s">&#39;on&#39;</span><span class="p">)</span>
+	<span class="n">axBottom</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span><span class="n">zalongp</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">hred</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+	<span class="c"># axBottom.plot(x[0,:],np.zeros(x.shape[1]),&#39;:k&#39;)</span>
+	<span class="n">axBottom</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlims</span><span class="p">)</span>
+	<span class="n">ymax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">zalong</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="nb">abs</span><span class="p">(</span><span class="n">zalong</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span>
+	<span class="n">axBottom</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="o">-</span><span class="n">ymax</span><span class="p">,</span><span class="n">ymax</span><span class="p">))</span>	
+	<span class="n">axBottom</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">nullloc</span><span class="p">)</span> <span class="c"># no labels</span>
+	<span class="n">axBottom</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">nullloc</span><span class="p">)</span> <span class="c"># no labels</span>
+	<span class="c"># axBottom.yaxis.tick_right()</span>
+
+	<span class="c"># Inset magnified plot</span>
+	<span class="c"># Inset image</span>
+	<span class="n">axins</span> <span class="o">=</span> <span class="n">zoomed_inset_axes</span><span class="p">(</span><span class="n">axMain</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c"># zoom=6</span>
+	<span class="c"># pcolormesh(x,y,d[i,:,:],cmap=colormap,vmin=dmin,vmax=dmax)</span>
+	<span class="c"># pcolormesh(x,y,z,cmap=colormap,vmin=-dmax,vmax=dmax)</span>
+	<span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">levels</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">colormap</span><span class="p">))</span>
+	<span class="n">hold</span><span class="p">(</span><span class="s">&#39;on&#39;</span><span class="p">)</span>
+	<span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">colors</span><span class="o">=</span><span class="s">&#39;grey&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+	<span class="c"># clabel(C,fontsize=14,fmt=&#39;%2.1f&#39;)#,manual=True)</span>
+	<span class="c"># subregion of the original image</span>
+	<span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mf">2.75</span><span class="p">,</span><span class="mf">4.5</span>
+	<span class="n">axins</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+	<span class="n">axins</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+	<span class="n">xticks</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="n">yticks</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="n">setp</span><span class="p">(</span><span class="n">axins</span><span class="p">,</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span><span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+	<span class="c"># draw a bbox of the region of the inset axes in the parent axes and</span>
+	<span class="c"># connecting lines between the bbox and the inset axes area</span>
+	<span class="n">mark_inset</span><span class="p">(</span><span class="n">axMain</span><span class="p">,</span> <span class="n">axins</span><span class="p">,</span> <span class="n">loc1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc2</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s">&quot;0.5&quot;</span><span class="p">)</span>
+	<span class="n">draw</span><span class="p">()</span>
+	<span class="n">show</span><span class="p">()</span>
+
+
+
+	<span class="c"># title(Title)</span>
+	<span class="n">savefig</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+	<span class="c"># savefig(&#39;figures/&#39; + var + zoom + &#39;.png&#39;,bbox_inches=&#39;tight&#39;)</span>
+	<span class="n">show</span><span class="p">()</span>
+	<span class="c"># close()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/plot_gen.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">(plotgen.py)</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/diff.npz"><tt class="xref download docutils literal"><span class="pre">diff.npz</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 10</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry9/index.html"
+                        title="previous chapter">Entry 9</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry11/index.html"
+                        title="next chapter">Entry 11</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry10/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry11/index.html" title="Entry 11"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry9/index.html" title="Entry 9"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
