@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 19 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 20" href="../entry20/index.html" />
+    <link rel="prev" title="Entry 18" href="../entry18/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry20/index.html" title="Entry 20"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../entry18/index.html" title="Entry 18"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-19">
+<h1>Entry 19<a class="headerlink" href="#entry-19" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry19.png" src="../_images/entry19.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Elaine Angelino</li>
+<li>Diana Cai</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>We are attaching a visualization we did of the &#8220;ingredient phase
+space&#8221; for flour-based baked goods.  With Prof. Michael Brenner, we
+downloaded thousands of recipes from allrecipes.com for cookies,
+cakes, brownies, etc. and looked at the top 5 ingredients: flour (F),
+sugar (S), liquid (L), eggs (E) and fat (T).  We normalized their
+volumes to obtain ratios, making this a 4-dimensional space that we
+visualized by projecting onto the faces of a tetrahedron.  Each vertex
+of the tetrahedron corresponds to one of 4 ingredients (F, S, L, E).
+In our diagram, individual points correspond to recipes.  Each
+semantic category (cookies, cakes, etc.) is given a separate color,
+and we also draw a convex hull for each category around a majority of
+recipes that are closest to the average recipe in that category.</p>
+<p>We used Python to do all of the downloading and parsing and to plot
+each face of the tetrahedron.  The last step of putting the faces
+together was done by hand.</p>
+<p>We have had a lot of fun with this project &#8211; we printed out large
+tetrahedra on poster paper that we cut out and folded up and shared
+through many presentations.</p>
+<p>We used this code to draw the convex hulls (not our code):
+<a class="reference external" href="http://code.activestate.com/recipes/66527-finding-the-convex-hull-of-a-set-of-2d-points/">http://code.activestate.com/recipes/66527-finding-the-convex-hull-of-a-set-of-2d-points/</a></p>
+<p>There is a little bit about it here:
+<a class="reference external" href="http://www.eecs.harvard.edu/~elaine/sousvide/stories/bakery.html">http://www.eecs.harvard.edu/~elaine/sousvide/stories/bakery.html</a></p>
+<p>And it was in the Boston Globe:
+<a class="reference external" href="http://www.bostonglobe.com/ideas/2011/12/11/food-pyramid-made-cookies/Ev66x0eHjUIcBSEAl1EIYI/story.html">http://www.bostonglobe.com/ideas/2011/12/11/food-pyramid-made-cookies/Ev66x0eHjUIcBSEAl1EIYI/story.html</a></p>
+<p>The Boston Globe infoviz team made this graphic based on our Python version:
+<a class="reference external" href="http://cache.boston.com/ideas/graphics/buildatetrahedron.pdf">http://cache.boston.com/ideas/graphics/buildatetrahedron.pdf</a></p>
+<p>Elaine and Michael also talked about
+<a class="reference external" href="http://alumni.harvard.edu/events/science-and-history-cookies-and-brownies">http://alumni.harvard.edu/events/science-and-history-cookies-and-brownies</a></p>
+<p>Thanks for the opportunity to share this with the SciPy community!</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/tetrahedron.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span></tt></a></li>
+<li>Individual elements that make up the tetrahedron:<ul>
+<li><a class="reference download internal" href="../_downloads/some_egg_liquid_flour.pdf"><tt class="xref download docutils literal"><span class="pre">Some</span> <span class="pre">egg,</span> <span class="pre">liquid,</span> <span class="pre">flour</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/some_liquid_egg_sugar.pdf"><tt class="xref download docutils literal"><span class="pre">Some</span> <span class="pre">liquid,</span> <span class="pre">egg,</span> <span class="pre">sugar</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/some_sugar_flour_egg.pdf"><tt class="xref download docutils literal"><span class="pre">Some</span> <span class="pre">sugar,</span> <span class="pre">flour,</span> <span class="pre">egg</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/some_sugar_flour_liquid.pdf"><tt class="xref download docutils literal"><span class="pre">Some</span> <span class="pre">sugar,</span> <span class="pre">flour,</span> <span class="pre">liquid</span></tt></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<p>The code to draw the scatter plots for the faces of the tetrahedra is
+in the attached plot2d.py (see the simplex() function)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">tabular</span> <span class="kn">as</span> <span class="nn">tb</span>
+
+<span class="kn">import</span> <span class="nn">pylab</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Ellipse</span>
+
+<span class="kn">from</span> <span class="nn">convexhull</span> <span class="kn">import</span> <span class="n">convexHull</span>
+
+<span class="kn">import</span> <span class="nn">files</span>
+<span class="kn">import</span> <span class="nn">utils</span>
+
+<span class="c">#(z, data)=scatter(fin=&#39;../data/words/ingredients-T.tsv&#39;, out=&#39;../data/scatter/20110907/&#39;)</span>
+<span class="k">def</span> <span class="nf">scatter</span><span class="p">(</span><span class="n">fin</span><span class="o">=</span><span class="s">&#39;../data/original.tsv&#39;</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="s">&#39;../data/scatter/20110902/&#39;</span><span class="p">,</span> <span class="n">figname</span><span class="o">=</span><span class="s">&#39;some&#39;</span><span class="p">,</span> <span class="n">ellipses</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">contours</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">conv_hull</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">conv_thresh</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">],</span> <span class="n">xnum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ynum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">special</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">simple</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">typevec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">colorvec</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+	<span class="k">print</span> <span class="n">figname</span>
+
+	<span class="n">utils</span><span class="o">.</span><span class="n">safe_mkdir</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+	<span class="n">z</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">filter_hack</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">tabarray</span><span class="p">(</span><span class="n">SVfile</span><span class="o">=</span><span class="n">fin</span><span class="p">))</span>
+	
+	<span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">,</span> <span class="s">&#39;names&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;ingredients&#39;</span><span class="p">]])</span>
+	
+	<span class="n">a</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">names</span><span class="p">]</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+	
+	<span class="k">if</span> <span class="n">norm</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="n">a</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>	<span class="c"># normalize data </span>
+
+	<span class="k">if</span> <span class="n">figname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;some&#39;</span><span class="p">):</span>
+		<span class="n">typevec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;chocolate-cakes&#39;</span><span class="p">,</span> <span class="s">&#39;angel-food-cakes&#39;</span><span class="p">,</span> <span class="s">&#39;brownies&#39;</span><span class="p">,</span> <span class="s">&#39;sugar-cookies&#39;</span><span class="p">,</span> <span class="s">&#39;scones&#39;</span><span class="p">,</span> <span class="s">&#39;loaves&#39;</span><span class="p">,</span> <span class="s">&#39;pancakes&#39;</span><span class="p">,</span> <span class="s">&#39;crepes&#39;</span><span class="p">]</span>
+		<span class="n">colorvec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;brown&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+	<span class="k">elif</span> <span class="n">figname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;all&#39;</span><span class="p">):</span>
+		<span class="n">typevec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
+		<span class="n">z</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+		<span class="n">colorvec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;g&#39;</span><span class="p">]</span>
+	
+	<span class="n">ingredientvec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;white sugar&#39;</span><span class="p">,</span> <span class="s">&#39;all-purpose flour&#39;</span><span class="p">]</span>
+	<span class="n">name_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))))</span>	
+	
+	<span class="n">idict</span> <span class="o">=</span> <span class="p">{}</span>	
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;egg&#39;</span><span class="p">,</span> <span class="s">&#39;flour&#39;</span><span class="p">,</span> <span class="s">&#39;sugar&#39;</span><span class="p">,</span> <span class="s">&#39;oil&#39;</span><span class="p">]:</span>
+		<span class="n">idict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">n</span><span class="p">]</span>
+
+	<span class="n">idict</span><span class="p">[</span><span class="s">&#39;liquid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;water&#39;</span><span class="p">]</span>
+	<span class="n">idict</span><span class="p">[</span><span class="s">&#39;liquid&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="k">if</span> <span class="p">(</span><span class="s">&#39;milk&#39;</span> <span class="ow">in</span> <span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s">&#39;powder&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s">&#39;chip&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">n</span><span class="p">)]</span>
+	<span class="n">idict</span><span class="p">[</span><span class="s">&#39;liquid&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="k">if</span> <span class="p">(</span><span class="s">&#39;juice&#39;</span> <span class="ow">in</span> <span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s">&#39;with&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">n</span><span class="p">)]</span>
+	
+	<span class="n">idict</span><span class="p">[</span><span class="s">&#39;sugar&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;corn syrup&#39;</span><span class="p">,</span> <span class="s">&#39;light corn syrup&#39;</span><span class="p">]</span>
+
+	<span class="n">idict</span><span class="p">[</span><span class="s">&#39;butter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;butter&#39;</span><span class="p">,</span> <span class="s">&#39;margarine&#39;</span><span class="p">,</span> <span class="s">&#39;butter or margarine&#39;</span><span class="p">,</span> <span class="s">&#39;butter or stick margarine&#39;</span><span class="p">]</span>
+	<span class="n">idict</span><span class="p">[</span><span class="s">&#39;oil&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="k">if</span> <span class="s">&#39;shortening&#39;</span> <span class="ow">in</span> <span class="n">n</span><span class="p">]</span>	
+	<span class="n">idict</span><span class="p">[</span><span class="s">&#39;fat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idict</span><span class="p">[</span><span class="s">&#39;butter&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">idict</span><span class="p">[</span><span class="s">&#39;oil&#39;</span><span class="p">]</span>
+	<span class="n">idict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;butter&#39;</span><span class="p">)</span>
+	<span class="n">idict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;oil&#39;</span><span class="p">)</span>
+	
+	<span class="k">print</span> <span class="n">idict</span>
+	
+	<span class="n">columns</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="n">ingredientvec</span> <span class="o">=</span> <span class="n">idict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ingredientvec</span><span class="p">:</span>
+		<span class="n">name_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">name_dict</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">idict</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+		<span class="n">columns</span> <span class="o">+=</span> <span class="p">[</span><span class="n">a</span><span class="p">[:,</span> <span class="n">name_list</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+	<span class="n">data</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tabarray</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">ingredientvec</span><span class="p">)</span>
+	<span class="k">print</span> <span class="n">data</span>
+	<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ingredientvec</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+		<span class="n">i</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
+		<span class="n">array</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">d</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+		<span class="n">data</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tabarray</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+	
+	<span class="k">for</span> <span class="n">j1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">i1</span> <span class="o">=</span> <span class="n">ingredientvec</span><span class="p">[</span><span class="n">j1</span><span class="p">]</span>
+		<span class="k">for</span> <span class="n">j2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j1</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+			<span class="n">i2</span> <span class="o">=</span> <span class="n">ingredientvec</span><span class="p">[</span><span class="n">j2</span><span class="p">]</span>
+			<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="n">pylab</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+			<span class="k">for</span> <span class="n">kind</span> <span class="ow">in</span> <span class="n">typevec</span><span class="p">:</span>		
+				<span class="n">color</span> <span class="o">=</span> <span class="n">colorvec</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+		
+		
+				<span class="c">#p = a[z[&#39;type&#39;]==kind][:,name_dict[i1]]</span>
+				<span class="c">#q = a[z[&#39;type&#39;]==kind][:,name_dict[i2]]</span>
+				<span class="n">p</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">kind</span><span class="p">][</span><span class="n">i1</span><span class="p">]</span>
+				<span class="n">q</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">kind</span><span class="p">][</span><span class="n">i2</span><span class="p">]</span>
+				
+				<span class="k">if</span> <span class="n">simple</span><span class="p">:</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s">&#39;+&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="n">mew</span><span class="p">)</span>
+					
+				<span class="k">if</span> <span class="n">conv_hull</span><span class="p">:</span>
+					
+					<span class="k">for</span> <span class="n">ct</span> <span class="ow">in</span> <span class="n">conv_thresh</span><span class="p">:</span>
+				
+						<span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+						<span class="n">y</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+						<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+						<span class="n">ind</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">ct</span><span class="p">)]</span>							
+						<span class="n">pts</span> <span class="o">=</span> <span class="p">[(</span><span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ind</span><span class="p">]</span>
+						<span class="k">if</span> <span class="n">pts</span><span class="p">:</span>
+							<span class="n">hull</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">convexHull</span><span class="p">(</span><span class="n">pts</span><span class="p">))</span>
+							<span class="n">pylab</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">hull</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">hull</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+						<span class="c">#else:</span>
+						<span class="c">#	print t		</span>
+					
+				<span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+			<span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">i1</span><span class="p">)</span>
+			<span class="n">pylab</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">i2</span><span class="p">)</span>
+
+			<span class="k">if</span> <span class="n">special</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+				<span class="n">p</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">special</span><span class="p">][</span><span class="n">i1</span><span class="p">]</span>
+				<span class="n">q</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">special</span><span class="p">][</span><span class="n">i2</span><span class="p">]</span>
+				<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+			
+			<span class="k">if</span> <span class="n">legend</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">special</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">typevec</span> <span class="o">+</span> <span class="p">[</span><span class="n">special</span><span class="p">])</span>	
+				<span class="k">else</span><span class="p">:</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">typevec</span><span class="p">)</span>	
+				
+			<span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+				<span class="n">pylab</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+			
+			<span class="n">pylab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="n">figname</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">i1</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="n">i2</span> <span class="o">+</span><span class="s">&#39;.pdf&#39;</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">special</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">typevec</span> <span class="o">+</span> <span class="p">[</span><span class="n">special</span><span class="p">])</span>	
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">typevec</span><span class="p">)</span>	
+	<span class="n">pylab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="n">figname</span> <span class="o">+</span> <span class="s">&#39;_legend.pdf&#39;</span><span class="p">)</span>
+
+	<span class="n">data</span> <span class="o">=</span> <span class="n">z</span><span class="p">[[</span><span class="s">&#39;type&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">colstack</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">figname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;some&#39;</span><span class="p">):</span>
+		<span class="n">data</span><span class="o">.</span><span class="n">saveSV</span><span class="p">(</span><span class="s">&#39;../data/words/ingredients-basic.tsv&#39;</span><span class="p">)</span>
+		
+	<span class="k">return</span> <span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">simplex</span><span class="p">(</span><span class="n">fin</span><span class="o">=</span><span class="s">&#39;../data/words/ingredients-basic.tsv&#39;</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="s">&#39;../data/simplex/20110920/&#39;</span><span class="p">,</span> <span class="n">figname</span><span class="o">=</span><span class="s">&#39;some&#39;</span><span class="p">,</span> <span class="n">ellipses</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">contours</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">conv_hull</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">conv_thresh</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">],</span> <span class="n">xnum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ynum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">special</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+	<span class="n">utils</span><span class="o">.</span><span class="n">safe_mkdir</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+	<span class="n">z</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tabarray</span><span class="p">(</span><span class="n">SVfile</span><span class="o">=</span><span class="n">fin</span><span class="p">)</span>
+	
+	<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">,</span> <span class="s">&#39;names&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;ingredients&#39;</span><span class="p">]]</span>
+	
+	<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+
+	<span class="n">array</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">names</span><span class="p">]</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+	<span class="n">data</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tabarray</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>	
+
+	<span class="k">if</span> <span class="n">figname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;some&#39;</span><span class="p">):</span>
+		<span class="n">typevec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;chocolate-cakes&#39;</span><span class="p">,</span> <span class="s">&#39;angel-food-cakes&#39;</span><span class="p">,</span> <span class="s">&#39;brownies&#39;</span><span class="p">,</span> <span class="s">&#39;sugar-cookies&#39;</span><span class="p">,</span> <span class="s">&#39;scones&#39;</span><span class="p">,</span> <span class="s">&#39;loaves&#39;</span><span class="p">,</span> <span class="s">&#39;pancakes&#39;</span><span class="p">,</span> <span class="s">&#39;crepes&#39;</span><span class="p">]</span>
+		<span class="n">colorvec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;brown&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+	<span class="k">elif</span> <span class="n">figname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;all&#39;</span><span class="p">):</span>
+		<span class="n">typevec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
+		<span class="n">z</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+		<span class="n">colorvec</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;g&#39;</span><span class="p">]</span>
+	
+	<span class="k">for</span> <span class="n">j1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+		<span class="n">i1</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">j1</span><span class="p">]</span>
+		<span class="k">for</span> <span class="n">j2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+			<span class="n">i2</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">j2</span><span class="p">]</span>
+			<span class="k">for</span> <span class="n">j3</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+				<span class="n">i3</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">j3</span><span class="p">]</span>
+				<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+				<span class="n">pylab</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+				<span class="k">for</span> <span class="n">kind</span> <span class="ow">in</span> <span class="n">typevec</span><span class="p">:</span>		
+					<span class="n">color</span> <span class="o">=</span> <span class="n">colorvec</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+			
+					<span class="n">p</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">kind</span><span class="p">][</span><span class="n">i1</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">kind</span><span class="p">][</span><span class="n">i2</span><span class="p">]</span>
+					<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">kind</span><span class="p">][</span><span class="n">i3</span><span class="p">]</span>
+
+					<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s">&#39;+&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="n">mew</span><span class="p">)</span>
+					
+					<span class="k">if</span> <span class="n">conv_hull</span><span class="p">:</span>
+						
+						<span class="k">for</span> <span class="n">ct</span> <span class="ow">in</span> <span class="n">conv_thresh</span><span class="p">:</span>
+					
+							<span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+							<span class="n">y</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+							<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+							<span class="n">ind</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">ct</span><span class="p">)]</span>							
+							<span class="n">pts</span> <span class="o">=</span> <span class="p">[(</span><span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ind</span><span class="p">]</span>
+							<span class="k">if</span> <span class="n">pts</span><span class="p">:</span>
+								<span class="n">hull</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">convexHull</span><span class="p">(</span><span class="n">pts</span><span class="p">))</span>
+								<span class="n">pylab</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">hull</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">hull</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+						
+					<span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+				<span class="k">if</span> <span class="n">special</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+					<span class="n">p</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">special</span><span class="p">][</span><span class="n">i1</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">special</span><span class="p">][</span><span class="n">i2</span><span class="p">]</span>
+					<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">special</span><span class="p">][</span><span class="n">i3</span><span class="p">]</span>				
+					<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+				<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s">&#39;k-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>
+				<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span> <span class="s">&#39;k-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>
+				<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="s">&#39;k-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>				
+	
+				<span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+					<span class="n">pylab</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+				
+				<span class="n">pylab</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+				<span class="n">pylab</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
+				
+				<span class="n">pylab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="n">figname</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span><span class="p">])</span> <span class="o">+</span><span class="s">&#39;.pdf&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">special</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">typevec</span> <span class="o">+</span> <span class="p">[</span><span class="n">special</span><span class="p">])</span>	
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">typevec</span><span class="p">)</span>		
+	<span class="n">pylab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="n">figname</span> <span class="o">+</span> <span class="s">&#39;_legend.pdf&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+		
+	<span class="k">return</span> <span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_contours</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xnum</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ynum</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+	<span class="n">xmin</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+	<span class="n">xmax</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+	<span class="n">ymin</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+	<span class="n">ymax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+	<span class="n">xm</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span> <span class="o">*</span> <span class="n">margin</span>
+	<span class="n">ym</span> <span class="o">=</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">)</span> <span class="o">*</span> <span class="n">margin</span>
+
+	<span class="n">xvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span> <span class="o">-</span> <span class="n">xm</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">+</span> <span class="n">xm</span><span class="p">,</span> <span class="n">xnum</span><span class="p">)</span>
+	<span class="n">yvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span> <span class="o">-</span> <span class="n">ym</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">+</span> <span class="n">ym</span><span class="p">,</span> <span class="n">ynum</span><span class="p">)</span>
+	<span class="n">xhalf</span> <span class="o">=</span> <span class="p">(</span><span class="n">xvec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">xvec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+	<span class="n">yhalf</span> <span class="o">=</span> <span class="p">(</span><span class="n">yvec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">yvec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+	<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">xnum</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ynum</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">xnum</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ynum</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">z</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">xvec</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">xvec</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">yvec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">yvec</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+			<span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+	<span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xvec</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">xhalf</span><span class="p">,</span> <span class="n">yvec</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">yhalf</span><span class="p">)</span>		
+	<span class="k">return</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>	<span class="c"># input to pylab.contour</span>
+
+<span class="k">def</span> <span class="nf">plot_contours</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xnum</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ynum</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+	<span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span> <span class="o">=</span> <span class="n">make_contours</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xnum</span><span class="p">,</span> <span class="n">ynum</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+	<span class="n">pylab</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>	
+
+<span class="k">def</span> <span class="nf">get_ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>	<span class="c"># mean center</span>
+	<span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+	<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">((</span><span class="o">-</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>		<span class="c"># indices for the top 2 eigenvalues</span>
+	<span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">((</span><span class="o">-</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>	
+	<span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+	<span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span>
+	<span class="n">height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span>
+	<span class="n">unit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+	<span class="n">vi</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+	<span class="c">#vi = vi / norm(vi)		# already normalized</span>
+	<span class="n">theta</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_theta</span><span class="p">(</span><span class="n">vi</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span>
+	<span class="n">angle</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">rad_to_deg</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+	<span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+	<span class="n">e</span> <span class="o">=</span> <span class="n">Ellipse</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+	<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+	<span class="c">#e.set_clip_box(ax.bbox)</span>
+	<span class="n">e</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+	<span class="n">e</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/plot2d.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/original.tsv"><tt class="xref download docutils literal"><span class="pre">TSV</span> <span class="pre">data</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 19</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../entry18/index.html"
+                        title="previous chapter">Entry 18</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry20/index.html"
+                        title="next chapter">Entry 20</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry19/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry20/index.html" title="Entry 20"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../entry18/index.html" title="Entry 18"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entry 1 &mdash; 2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0001',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation" href="../index.html" />
+    <link rel="next" title="Entry 2" href="../entry2/index.html" />
+    <link rel="prev" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../entry2/index.html" title="Entry 2"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entry-1">
+<h1>Entry 1<a class="headerlink" href="#entry-1" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/entry1.png" src="../_images/entry1.png" />
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Frédéric Vogt</li>
+<li>Luke Shingles</li>
+</ul>
+<p>Please find attached to this email our entry to the 2013 Scipy John
+Hunter Excellence in Plotting Contest.</p>
+<p>We rely on the Mayavi plotting module to create an interactive 3D map
+of the oxygen-rich ejecta in the young supernova remnant N132D. These
+&#8216;chunks&#8217; of pure oxygen correspond to the outer layers of a star that
+have been expelled into space as it exploded some 2500 years
+ago. Their distribution in 3D space is key to understanding the
+explosion mechanism of the parent stars and its asymmetries. This data
+was originally used and published in Vogt&amp;Dopita, Ap&amp;SS (2011), 331,
+521 (<a class="reference external" href="http://adsabs.harvard.edu/abs/2010arXiv1009.0964V">http://adsabs.harvard.edu/abs/2010arXiv1009.0964V</a>), and more
+recently in Vogt&amp;Shingles, Ap&amp;SS (2013), submitted.</p>
+<p>Our plot is both &#8216;interactive&#8217; and &#8216;augmented&#8217;. Relying on the
+advances in PDF technology, we embed the interactive 3D map behind its
+projection. When using Adobe Acrobat Reader, the viewer can load and
+freely zoom, rotate and fly through the interactive model. In
+addition, we rely on the latest advances in the area of augmented
+reality to allow smartphone users to access an animation of the 3D map
+directly on their device. The animation (and additional contact and
+share options) can be accessed by snapping a picture of our plot with
+a smartphone and the Layar app (freely available). A copy of the
+interactive plot and of the movie is accessible online :
+<a class="reference external" href="http://www.mso.anu.edu.au/~fvogt/dokuwiki/doku.php?id=Online_Material">http://www.mso.anu.edu.au/~fvogt/dokuwiki/doku.php?id=Online_Material</a></p>
+<p>Understanding the 3D structure of the ejecta in this complex system
+has been subject to much debate in the past. Being able to share with
+the science community the exact 3D model, and giving them the
+opportunity to directly interact and visualise it is key to a better
+understanding of the mechanisms shaping young supernova remnants.</p>
+<p>All plots are strictly produced with Python (see the attached code,
+which was used to produce the projection, the interactive model and
+the individual movie frames). To assemble our 3-layers final plot, we
+rely on Latex and the movie15 package. We used ffmpeg to assemble the
+movie frames into an animation, and used the PDF3D software to
+transform the .vrml file produced from Mayavi into a .u3d file
+compatible with Latex.</p>
+<p>A pickled file containing the original data has not been included in
+the submission because of its large size (~650Mb). If required, we
+would be happy to make this file available online for the Contest
+Organisers to access.</p>
+<p>We are very much looking forward to the outcome of this exciting new
+contest, and would welcome a confirmation that our entry has been
+received.</p>
+<p>With our best regards,
+Frédéric Vogt and Luke Shingles</p>
+</div>
+<div class="section" id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/Vogt+Shingles.pdf"><tt class="xref download docutils literal"><span class="pre">PDF</span> <span class="pre">with</span> <span class="pre">interactive</span> <span class="pre">3D</span> <span class="pre">visualization</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/Vogt+Shingles.eps"><tt class="xref download docutils literal"><span class="pre">EPS</span> <span class="pre">version</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">enthought.tvtk.api</span> <span class="kn">import</span> <span class="n">tvtk</span>
+<span class="kn">from</span> <span class="nn">enthought.mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
+<span class="kn">from</span> <span class="nn">enthought.mayavi</span> <span class="kn">import</span> <span class="n">modules</span>
+<span class="kn">import</span> <span class="nn">pyfits</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c"># Some constants ...</span>
+<span class="n">size_x</span> <span class="o">=</span> <span class="mi">142</span>
+<span class="n">size_y</span> <span class="o">=</span> <span class="mi">162</span>
+<span class="n">astopc</span> <span class="o">=</span> <span class="mf">0.286040071</span> <span class="c"># &quot; to pc</span>
+
+<span class="c"># Forground stars position ... chopped them off, </span>
+<span class="c"># and replace the by black spheres</span>
+<span class="n">stars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">50</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">40</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">119</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">67</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mi">122</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">67</span><span class="p">,</span><span class="mi">142</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">110</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">138</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">136</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">97</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+
+<span class="c"># Load the data ... a tad big, but it&#39;s a real IFU observation after all ...</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s">&#39;./data.pkl&#39;</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;De-pickling data ...&#39;</span>
+<span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">x_b</span><span class="p">,</span><span class="n">y_b</span><span class="p">,</span><span class="n">z_b</span><span class="p">,</span>
+ <span class="n">scidata_cleana</span><span class="p">,</span><span class="n">scidata_cleana_noplane</span><span class="p">,</span><span class="n">scidata_cleanb</span><span class="p">]</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="s">&#39;Plotting it ...&#39;</span>
+<span class="c"># Start plotting ... make it an interactive 3D map !</span>
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">bgcolor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),</span><span class="n">fgcolor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span><span class="mi">900</span><span class="p">))</span>
+
+<span class="n">surf2</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">contour3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">scidata_cleana</span><span class="p">,</span><span class="n">contours</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span>\
+                <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s">&#39;RdYlBu&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;[O III]-1&#39;</span><span class="p">)</span>
+<span class="n">mlab</span><span class="o">.</span><span class="n">outline</span><span class="p">()</span>
+<span class="n">surf3</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">contour3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">scidata_cleana</span><span class="p">,</span><span class="n">contours</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span>\
+                <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;[O III]-2&#39;</span><span class="p">)</span>
+
+<span class="n">surf5</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">contour3d</span><span class="p">(</span><span class="n">x_b</span><span class="p">,</span><span class="n">y_b</span><span class="p">,</span><span class="n">z_b</span><span class="p">,</span><span class="n">scidata_cleanb</span><span class="p">,</span><span class="n">contours</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span>\
+                           <span class="n">opacity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">colormap</span><span class="o">=</span><span class="s">&#39;autumn&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;Hbeta&#39;</span><span class="p">)</span>
+
+<span class="n">surf6</span> <span class="o">=</span>  <span class="n">mlab</span><span class="o">.</span><span class="n">points3d</span><span class="p">((</span><span class="n">stars</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">size_x</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">astopc</span><span class="p">,(</span><span class="n">stars</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">size_y</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">astopc</span><span class="p">,</span><span class="n">stars</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">0.0</span><span class="p">,</span><span class="n">stars</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">astopc</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">scale_factor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;Stars&#39;</span><span class="p">)</span>
+
+<span class="c"># Now to make it look decent ...</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span><span class="n">nb_labels</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">fly_mode</span> <span class="o">=</span> <span class="s">&#39;outer_edges&#39;</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">title_text_property</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">title_text_property</span><span class="o">.</span><span class="n">font_family</span> <span class="o">=</span> <span class="s">&#39;courier&#39;</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">label_text_property</span><span class="o">.</span><span class="n">font_family</span> <span class="o">=</span> <span class="s">&#39;courier&#39;</span>
+
+<span class="c"># And a bit of references if anyone is interested ...</span>
+<span class="n">mlab</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.95</span><span class="p">,</span><span class="s">&#39;Oxygen-rich ejecta in SNR N132D. Vogt &amp; Dopita, Ap&amp;SS, 311, 521 (2011); Vogt &amp; Shingles, Ap&amp;SS (2013), submitted.&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">mlab</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="s">&#39;fvogt@mso.anu.edu.au&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c"># Label the axes ...</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">x_label</span> <span class="o">=</span> <span class="s">&#39;X (Dec.) [pc]&#39;</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">y_label</span> <span class="o">=</span> <span class="s">&#39;Y (R.A.) [pc]&#39;</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">z_label</span> <span class="o">=</span> <span class="s">&#39;Z [pc]&#39;</span>
+<span class="n">mlab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c"># Define the view point - useful to make a movie (not build here) ...</span>
+<span class="n">mlab</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span> 
+
+<span class="c"># Save it all ...</span>
+<span class="c">#mlab.savefig(&#39;Vogt+Shingles_test.wrl&#39;)</span>
+<span class="c">#mlab.savefig(&#39;Vogt+Shingles_test.eps&#39;)</span>
+<span class="c">#mlab.savefig(&#39;Vogt+Shingles_test.png&#39;)</span>
+
+<span class="k">print</span> <span class="s">&#39;All done !&#39;</span>
+<span class="c"># End of the World as we know it ...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/Vogt+Shingles.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/Vogt+Shingles.u3d"><tt class="xref download docutils literal"><span class="pre">U3D</span> <span class="pre">file</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/Vogt+Shingles.wrl"><tt class="xref download docutils literal"><span class="pre">VRML</span> <span class="pre">.wrl</span> <span class="pre">file</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/Vogt+Shingles.tex"><tt class="xref download docutils literal"><span class="pre">LaTeX</span> <span class="pre">source</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entry 1</a><ul>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#products">Products</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">2013 Scipy John Hunter Excellence in Plotting Contest Entries</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../entry2/index.html"
+                        title="next chapter">Entry 2</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/entry1/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../entry2/index.html" title="Entry 2"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="2013 Scipy John Hunter Excellence in Plotting Contest Entries"
+             >previous</a> |</li>
+        <li><a href="../index.html">2013 Scipy John Hunter Excellence in Plotting Contest Entries 0.0001 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Michael Droettboom.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
