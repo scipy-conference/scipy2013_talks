@@ -1,0 +1,21 @@
+<launch>
+
+  <node name="cage1" pkg="scipy" type="assay.py">
+    <param name="device" type="int" value="0" />
+  </node>
+  <node name="cage2" pkg="scipy" type="assay.py">
+    <param name="device" type="int" value="-1" />
+  </node>
+  <node name="cage3" pkg="scipy" type="assay.py">
+    <param name="device" type="int" value="-1" />
+  </node>
+
+  <node name="experiment" pkg="scipy" type="experiment.py">
+    <param name="rate" type="double" value="0.5" />
+    <param name="onval" type="int" value="200" />
+    <param name="offval" type="int" value="20" />
+  </node>
+
+  <node name="recorder" pkg="rosbag" type="rosbag" args="record -j -a -o $(find scipy)/" />
+
+</launch>
