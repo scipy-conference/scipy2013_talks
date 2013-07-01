@@ -1,0 +1,23 @@
+<package>
+  <description brief="scipy">
+
+     scipy
+
+  </description>
+  <author>John Stowers</author>
+
+  <depend package="std_msgs"/>
+  <depend package="std_srvs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="rospy"/>
+  <depend package="rosmsg"/>
+  <depend package="rosnode"/>
+  <depend package="rostopic"/>
+  <depend package="roslaunch"/>
+  <depend package="rosgobject"/>
+  <depend package="ros_flydra"/>
+
+</package>
+
+
