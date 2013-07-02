@@ -27,3 +27,13 @@ MIST takes care of a few documented and known issues. It also moves to use new s
 
 The Reference Model for disease progression intends to use MIST as its main platform. Yet MIST is equipped with a Micro-simulation compiler designed to accommodate Monte Carlo simulations for other purposes.
 
+
+Additional Information : 
+------------------------
+
+- Video of Talk : http://www.youtube.com/watch?v=AD896WakR94
+
+- Soruce Code : https://github.com/Jacob-Barhak/MIST
+
+- Slogan : MIST runs over the cloud!
+
