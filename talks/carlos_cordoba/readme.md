@@ -11,7 +11,7 @@ Authors :
 Track : 
 -------
 
-Reproducible Science, [Wednesday June 26, 11:30 - 11:50, Room 204](http://conference.scipy.org/scipy2013/presentation_detail.php?id=172)
+Reproducible Science, [Wednesday June 26, 11:30 - 11:50, Room 203](http://conference.scipy.org/scipy2013/presentation_detail.php?id=172)
 
 
 Abstract : 
