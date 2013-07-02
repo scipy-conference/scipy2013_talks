@@ -27,8 +27,12 @@ the same time and specially after reading its roadmap for the next two years,
 we at Spyder believe that its real focus is different from that aim. IPython
 developers are working hard to build several powerful and flexible interfaces
 to evaluate and document code, but they seem to have some troubles on going
-from a console application to a GUI one (e.g see GitHub Issues 1747, 2203,
-2522, 2974 and 2985).
+from a console application to a GUI one (e.g see GitHub Issues
+[1747](https://github.com/ipython/ipython/issues/1747),
+[2203](https://github.com/ipython/ipython/issues/2203),
+[2522](https://github.com/ipython/ipython/issues/2522),
+[2974](https://github.com/ipython/ipython/issues/2974) and
+[2985](https://github.com/ipython/ipython/issues/2985)).
 
 We consider Spyder can really help to solve these issues, by integrating
 IPython in a richer and more intuitive, yet powerful, environment. After
