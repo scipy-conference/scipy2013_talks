@@ -1,5 +1,5 @@
-Entry 3
-=======
+Entry 3 (Third Place)
+=====================
 
 .. image:: entry3.png
 
