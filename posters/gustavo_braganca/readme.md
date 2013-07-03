@@ -1,4 +1,3 @@
-
 Title : Using Python to Study Rotational Velocities of Hot Stars
 ================================================================
 
@@ -52,6 +51,5 @@ verifying if the models that generate the synthetic electromagnetic spectra of
 star are consistent with observational data. For these tests we are using
 python and its availabe libraries.
 
-http://arxiv.org/abs/1208.1674
-https://gist.github.com/gabraganca/5285645
-http://www.on.br/wsaon/program.html
+Original work can be found on [ArXiv](http://arxiv.org/abs/1208.1674)
+
