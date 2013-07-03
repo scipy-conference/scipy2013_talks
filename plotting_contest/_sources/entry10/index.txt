@@ -1,5 +1,5 @@
-Entry 10
-========
+Entry 10 (Second Place)
+=======================
 
 .. image:: entry10.png
 
