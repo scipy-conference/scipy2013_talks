@@ -4,7 +4,7 @@
 
 ## Authors : 
 
-- Brian Granger, Cal Poly San Luis Obispo, The IPython Project
+- Brian Granger (ellisonbg), Cal Poly San Luis Obispo, The IPython Project
 
 
 ## Track : 
